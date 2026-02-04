@@ -19,8 +19,30 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
   <style>
+    html,
+    body {
+      overflow-x: hidden;
+      max-width: 100vw;
+    }
+
     body {
       font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    [style*="--border-gradient"]::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      padding: 1px;
+      border-radius: var(--border-radius-before, inherit);
+      -webkit-mask: linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      background: var(--border-gradient);
+      pointer-events: none;
     }
 
     /* Smooth scrolling for charts */
@@ -333,15 +355,41 @@ scaleY(var(--tw-scale-y, 1))
       </div>
 
       <a href="#"
-        class="hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium"
+        class="hidden md:inline-flex hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium"
         style="">
         Bắt đầu ngay
       </a>
+
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 mr-2 text-slate-600 hover:text-slate-900 transition-colors"
+        onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="4" x2="20" y1="12" y2="12" />
+          <line x1="4" x2="20" y1="6" y2="6" />
+          <line x1="4" x2="20" y1="18" y2="18" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+      class="hidden absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-3xl shadow-xl p-6 flex flex-col gap-4">
+      <a href="/features"
+        class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">Tính năng</a>
+      <a href="/about-vn"
+        class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">Về chúng tôi</a>
+      <a href="/contact-vn"
+        class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">Liên hệ</a>
+      <div class="h-px bg-gray-100 my-1"></div>
+      <a href="#"
+        class="text-base text-center text-white bg-[#0F172A] rounded-full py-3 shadow-lg font-medium hover:bg-slate-800 transition-all">Bắt
+        đầu ngay</a>
     </div>
   </nav>
 
   <!-- Hero Section -->
-  <main class="flex flex-col overflow-visible max-w-7xl mr-auto ml-auto pt-40 pb-20 relative items-center">
+  <main class="flex flex-col overflow-x-clip max-w-7xl mr-auto ml-auto pt-40 pb-20 relative items-center">
     <!-- Decoration Elements (Floating) -->
     <!-- Left Calendar -->
     <div class="hidden lg:block absolute left-10 top-60 w-32 h-32 rotate-[-12deg] animate-float-slow opacity-80 z-0"
@@ -404,21 +452,36 @@ scaleY(var(--tw-scale-y, 1))
     <!-- CTA Buttons -->
     <div
       class="flex flex-col sm:flex-row gap-4 w-full mb-24 pr-4 pl-4 items-center justify-center aura-animate-fade-up delay-400">
+      <a href="/contact"
+        class="group w-full sm:w-auto shadow-indigo-500/30 hover:shadow-indigo-500/60 transition-all duration-300 overflow-hidden hover:bg-indigo-700 font-medium text-white bg-indigo-600 rounded-lg pt-4 pr-8 pb-4 pl-8 relative shadow-lg inline-flex items-center justify-center"
+        style="box-shadow: 0 18px 40px -15px rgba(79, 70, 229, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2);">
+        <div
+          class="group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-300 bg-white/10 absolute top-0 right-0 bottom-0 left-0 translate-y-full opacity-0">
+        </div>
+        <span class="flex items-center justify-center gap-2 relative">
+          Liên hệ
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
+            class="lucide lucide-send group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 w-4 h-4"
+            fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+            <path
+              d="M9 6.75a.75.75 0 0 1 0-1.5h9a.75.75 0 0 1 .75.75v9a.75.75 0 0 1-1.5 0V7.81L6.53 18.53a.75.75 0 0 1-1.06-1.06L16.19 6.75z"
+              fill="currentColor" stroke="none"></path>
+          </svg>
+        </span>
+      </a>
       <button
-        class="w-full sm:w-auto px-8 py-4 bg-[#0F172A] hover:bg-slate-800 text-white rounded-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] transition-all transform hover:-translate-y-0.5 text-lg font-sans font-medium"
-        style="">
-        Dùng thử miễn phí
-      </button>
-      <button
-        class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-slate-900 border border-gray-200/80 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5 text-lg flex items-center justify-center gap-2 font-sans font-medium"
-        style="">
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-          data-lucide="play-circle" class="lucide lucide-play-circle w-5 h-5 text-gray-400">
-          <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"></path>
-          <circle cx="12" cy="12" r="10"></circle>
+        class="hover:bg-slate-50 hover:text-slate- transition-all flex text-sm font-medium text-slate-600 bg-gradient-to-b from-black/10 via-black/20 to-black/10 rounded-full pt-4 pr-8 pb-4 pl-8 shadow-[0px_0px_0px_1px_rgba(0,0,0,0.06),0px_1px_1px_-0.5px_rgba(0,0,0,0.06),0px_3px_3px_-1.5px_rgba(0,0,0,0.06),_0px_6px_6px_-3px_rgba(0,0,0,0.06),0px_12px_12px_-6px_rgba(0,0,0,0.06),0px_24px_24px_-12px_rgba(0,0,0,0.06)] gap-x-2 gap-y-2 items-center w-full sm:w-auto justify-center"
+        style="box-shadow: 0 18px 35px rgba(31, 41, 55, 0.25), 0 0 0 1px rgba(209, 213, 219, 0.3); color: #e5e7eb; position: relative; --border-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.8)); --border-radius-before: 9999px">
+
+        <span class="text-sm font-medium text-black/60 tracking-tight">
+          Xem Bảng Giá
+        </span><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+          stroke="#666" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="w-[16px] h-[16px]"
+          data-lucide="arrow-right" data-icon-set="lucide" data-icon-replaced="true"
+          style="color: rgb(229, 231, 235); width: 16px; height: 16px;">
+          <path d="M5 12h14" class=""></path>
+          <path d="m12 5 7 7-7 7"></path>
         </svg>
-        Xem Demo
       </button>
     </div>
 
@@ -958,7 +1021,7 @@ scaleY(var(--tw-scale-y, 1))
                   <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                   <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                 </svg>
-                app.educhill.io/student/assignment
+                app.educhill.net/student/assignment
               </div>
             </div>
 
@@ -1591,6 +1654,14 @@ scaleY(var(--tw-scale-y, 1))
                   class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity delay-500">A+</span>
               </div>
             </div>
+            <!-- Student Names -->
+            <div class="flex justify-between px-4 mt-2 text-[10px] font-bold text-slate-400 uppercase tracking-wider">
+              <span class="w-8 text-center">Minh</span>
+              <span class="w-8 text-center">Henry</span>
+              <span class="w-8 text-center">Giang</span>
+              <span class="w-8 text-center">Stacy</span>
+              <span class="w-8 text-center">Owen</span>
+            </div>
           </div>
         </div>
 
@@ -2003,6 +2074,81 @@ scaleY(var(--tw-scale-y, 1))
     </section>
 
 
+    <!-- Contact Form Section -->
+    <section class="w-full max-w-4xl mx-auto px-4 mb-32">
+      <div class="max-w-4xl w-full mx-auto text-center aura-animate-fade-up delay-200">
+        <div class="bg-indigo-900 rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
+          <!-- Background decoration -->
+          <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500 rounded-full blur-[120px]">
+            </div>
+          </div>
+
+          <div class="relative z-10 max-w-2xl mx-auto">
+            <span
+              class="inline-block py-1 px-3 rounded-full bg-indigo-800/50 border border-indigo-700 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
+              Kết nối ngay
+            </span>
+            <h2 class="text-4xl md:text-5xl font-newsreader mb-6 leading-tight">
+              Liên hệ
+            </h2>
+            <p class="text-lg text-indigo-200 mb-10 font-sans leading-relaxed">
+              Bạn có câu hỏi hoặc muốn xem bản demo? Điền vào form bên dưới hoặc đặt lịch hẹn trực tiếp với
+              chúng tôi.
+            </p>
+
+            <div class="bg-white/5 p-6 md:p-8 rounded-3xl border border-indigo-500/30 backdrop-blur-sm mb-10 text-left">
+              <form class="space-y-4">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1" for="name">Tên</label>
+                    <input
+                      class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                      id="name" type="text" placeholder="Nguyễn Văn A">
+                  </div>
+                  <div>
+                    <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1" for="email">Email</label>
+                    <input
+                      class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                      id="email" type="email" placeholder="example@school.edu">
+                  </div>
+                </div>
+                <div>
+                  <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1" for="message">Tin
+                    nhắn</label>
+                  <textarea
+                    class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32"
+                    id="message" placeholder="Chia sẻ nhu cầu của bạn..."></textarea>
+                </div>
+                <button type="button"
+                  class="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
+                  Gửi tin nhắn
+                </button>
+              </form>
+            </div>
+
+            <div class="flex flex-col items-center gap-6">
+              <div class="flex items-center gap-4 w-full justify-center opacity-50">
+                <div class="h-px bg-indigo-400 flex-1"></div>
+                <span class="text-indigo-300 text-sm font-medium uppercase tracking-wider">Hoặc đặt lịch
+                  trực tiếp</span>
+                <div class="h-px bg-indigo-400 flex-1"></div>
+              </div>
+              <a href="https://calendly.com/vuonghoanggiang0811/30min" target="_blank"
+                class="w-full sm:w-auto px-8 py-4 bg-transparent border border-indigo-500 text-white rounded-full font-bold hover:bg-indigo-800 transition-colors flex items-center justify-center gap-2 group">
+                <svg class="w-5 h-5 text-indigo-300 group-hover:text-white transition-colors" fill="none"
+                  viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                </svg>
+                Book a Call
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- Footer -->

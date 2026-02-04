@@ -16,6 +16,8 @@
 
         body {
             font-family: 'Instrumentation Sans', sans-serif;
+            overflow-x: hidden;
+            width: 100%;
         }
 
         .font-newsreader {
@@ -89,9 +91,37 @@
             </div>
 
             <a href="#"
-                class="hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium">
+                class="hidden md:inline-flex hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium">
                 Get Started
             </a>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                class="md:hidden p-2 mr-2 text-slate-600 hover:text-slate-900 transition-colors"
+                onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="4" x2="20" y1="12" y2="12" />
+                    <line x1="4" x2="20" y1="6" y2="6" />
+                    <line x1="4" x2="20" y1="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu"
+            class="hidden absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-3xl shadow-xl p-6 flex flex-col gap-4">
+            <a href="/"
+                class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">Features</a>
+            <a href="/about"
+                class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">About
+                Us</a>
+            <a href="/contact"
+                class="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">Contact</a>
+            <div class="h-px bg-gray-100 my-1"></div>
+            <a href="#"
+                class="text-base text-center text-white bg-[#0F172A] rounded-full py-3 shadow-lg font-medium hover:bg-slate-800 transition-all">Get
+                Started</a>
         </div>
     </nav>
 
@@ -166,15 +196,15 @@
                                 Directly</span>
                             <div class="h-px bg-indigo-400 flex-1"></div>
                         </div>
-                        <button
+                        <a href="https://calendly.com/vuonghoanggiang0811/30min" target="_blank"
                             class="w-full sm:w-auto px-8 py-4 bg-transparent border border-indigo-500 text-white rounded-full font-bold hover:bg-indigo-800 transition-colors flex items-center justify-center gap-2 group">
                             <svg class="w-5 h-5 text-indigo-300 group-hover:text-white transition-colors" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            Book a Calendly Call
-                        </button>
+                            Book a Call
+                        </a>
                     </div>
                 </div>
             </div>
