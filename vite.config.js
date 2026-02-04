@@ -36,9 +36,9 @@ export default defineConfig({
       input: {
         main: 'index.html',
         vi: 'vi.html',
-        about: 'about.html',
+        about: 'about-vn.html',
         aboutEn: 'about-en.html',
-        contact: 'contact.html',
+        contact: 'contact-vn.html',
         contactEn: 'contact-en.html',
       },
     },

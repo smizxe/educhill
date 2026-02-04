@@ -14,7 +14,7 @@
         },
         {
             "source": "/about-vn",
-            "destination": "/about.html"
+            "destination": "/about-vn.html"
         },
         {
             "source": "/contact",
@@ -22,7 +22,7 @@
         },
         {
             "source": "/contact-vn",
-            "destination": "/contact.html"
+            "destination": "/contact-vn.html"
         },
         {
             "source": "/features",
