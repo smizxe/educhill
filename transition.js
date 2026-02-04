@@ -1,7 +1,61 @@
 
+// --- URL Mapping for Clean URLs ---
+const urlToFile = {
+    '/': '/index.html',
+    '/home': '/index.html',
+    '/about': '/about-en.html',
+    '/about-vn': '/about.html',
+    '/contact': '/contact-en.html',
+    '/contact-vn': '/contact.html',
+    '/features': '/vi.html',
+};
+
+const fileToUrl = {
+    '/index.html': '/',
+    '/about-en.html': '/about',
+    '/about.html': '/about-vn',
+    '/contact-en.html': '/contact',
+    '/contact.html': '/contact-vn',
+    '/vi.html': '/features',
+};
+
+function getCleanUrl(fileUrl) {
+    try {
+        const url = new URL(fileUrl, location.origin);
+        const pathname = url.pathname;
+        return fileToUrl[pathname] || pathname;
+    } catch {
+        return fileUrl;
+    }
+}
+
+function getFilePath(cleanUrl) {
+    try {
+        const url = new URL(cleanUrl, location.origin);
+        const pathname = url.pathname;
+        // If it's already an HTML file, return as is
+        if (pathname.endsWith('.html')) {
+            return pathname;
+        }
+        return urlToFile[pathname] || pathname;
+    } catch {
+        return cleanUrl;
+    }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // Initialize transition logic
     initPageTransition();
+
+    // Convert current URL to clean URL on page load (if not already clean)
+    const currentPath = location.pathname;
+    const cleanPath = getCleanUrl(location.href);
+    if (currentPath !== cleanPath && !currentPath.endsWith('.html') === false) {
+        // Only replace if we have a mapping and URL contains .html
+        if (currentPath.endsWith('.html') && fileToUrl[currentPath]) {
+            history.replaceState(null, '', cleanPath);
+        }
+    }
 });
 
 function initPageTransition() {
@@ -40,8 +94,19 @@ function initPageTransition() {
 
 async function handleTransition(url, pushState = true) {
     try {
-        // 1. Fetch the new page
-        const response = await fetch(url);
+        // Determine the actual file to fetch
+        const targetUrl = new URL(url, location.origin);
+        const filePath = getFilePath(targetUrl.pathname);
+        const fetchUrl = new URL(filePath, location.origin).href;
+        const cleanUrl = getCleanUrl(fetchUrl);
+
+        // 1. Fetch the new page (with cache busting to prevent loading old content)
+        const response = await fetch(fetchUrl, {
+            cache: 'no-store',
+            headers: {
+                'Cache-Control': 'no-cache'
+            }
+        });
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const text = await response.text();
 
@@ -49,19 +114,15 @@ async function handleTransition(url, pushState = true) {
         const parser = new DOMParser();
         const newDoc = parser.parseFromString(text, 'text/html');
 
-        // 3. Update History
+        // 3. Update History with CLEAN URL
         if (pushState) {
-            history.pushState(null, '', url);
+            history.pushState(null, '', cleanUrl);
         }
 
         // 4. Update Title
         document.title = newDoc.title;
 
         // 5. Swap Content
-        // Strategy: Swap everything EXCEPT the fixed background div
-        // We assume the background div is the one with 'fixed' and '-z-10' classes
-        // Or we simply swap Nav, Main, Footer.
-
         const currentAppContainer = document.querySelector('main');
         const newAppContainer = newDoc.querySelector('main');
 
@@ -87,15 +148,6 @@ async function handleTransition(url, pushState = true) {
             // Swap Main
             if (currentAppContainer && newAppContainer) {
                 currentAppContainer.outerHTML = newAppContainer.outerHTML;
-                // Ensure new main is visible (it might have opacity 0 from CSS or just be clean)
-                // Re-query because we just replaced it
-                const insertedMain = document.querySelector('main');
-                // Trigger reflow?
-                if (insertedMain) {
-                    // Remove fade-up animations classes initially to restart them?
-                    // The new HTML has them. They should run automatically if they use CSS animation.
-                    // If they use IntersectionObserver, we might need to re-init.
-                }
             }
 
             // Swap Footer
@@ -103,16 +155,33 @@ async function handleTransition(url, pushState = true) {
                 currentFooter.outerHTML = newFooter.outerHTML;
             }
 
-            // Swap Language Switcher if present (it's usually outside main/nav/footer in my code?)
-            // In previous code, it was at the bottom of body.
+            // Swap Language Switcher if present
             const currentLang = document.getElementById('lang-switcher');
             const newLang = newDoc.getElementById('lang-switcher');
             if (currentLang && newLang) {
                 currentLang.outerHTML = newLang.outerHTML;
             } else if (!currentLang && newLang) {
-                document.body.appendChild(newLang);
+                // Insert before transition.js script
+                document.body.insertBefore(newLang.cloneNode(true), document.querySelector('script[src="transition.js"]'));
             } else if (currentLang && !newLang) {
                 currentLang.remove();
+            }
+
+            // Re-inject the toggleLangMenu function since we replaced the lang-switcher
+            if (newLang || currentLang) {
+                window.toggleLangMenu = function () {
+                    const menu = document.getElementById('lang-menu');
+                    if (!menu) return;
+                    const isClosed = menu.classList.contains('invisible');
+
+                    if (isClosed) {
+                        menu.classList.remove('invisible', 'opacity-0', 'scale-90');
+                        menu.classList.add('visible', 'opacity-100', 'scale-100');
+                    } else {
+                        menu.classList.add('invisible', 'opacity-0', 'scale-90');
+                        menu.classList.remove('visible', 'opacity-100', 'scale-100');
+                    }
+                };
             }
 
             // Re-run scripts
@@ -122,41 +191,51 @@ async function handleTransition(url, pushState = true) {
             }
 
             // Re-init Gallery if on About Page
-            initGallery(); // Call this to bind logic if elements exist
+            initGallery();
 
-            // Re-attach IntersectionObserver for animations
-            // We can extract the script content from the new doc or just run a known init function.
-            // Since the IO script is inline in HTML, fetching it won't execute it automatically.
-            // We actally need to manually trigger the observer logic again.
-
-            const observerScript = `
-        const o = new IntersectionObserver(e => { e.forEach(t => { t.isIntersecting && (t.target.classList.add("scroll-enter-active"), o.unobserve(t.target)) }) }, { threshold: .1, rootMargin: "0px 0px -50px 0px" });
-        document.querySelectorAll(".scroll-enter").forEach(e => o.observe(e));
-        
-        // Also restart CSS animations if needed
-        const faders = document.querySelectorAll('.aura-animate-fade-up');
-        faders.forEach(el => {
-            el.style.animation = 'none';
-            el.offsetHeight; /* trigger reflow */
-            el.style.animation = null; 
-        });
-        `;
-
-            try {
-                const f = new Function(observerScript); // Or just eval
-                // Better: just implement the logic directly here
-                const o = new IntersectionObserver(e => {
-                    e.forEach(t => {
-                        if (t.isIntersecting) {
-                            t.target.classList.add("scroll-enter-active");
-                            o.unobserve(t.target);
-                        }
-                    })
-                }, { threshold: .1, rootMargin: "0px 0px -50px 0px" });
-                document.querySelectorAll(".scroll-enter").forEach(e => o.observe(e));
-            } catch (err) {
-                console.error("Error reinforcing animations", err);
+            // --- RE-EXECUTE INLINE SCRIPTS from the new main content ---
+            // This is critical for animations like the dashboard demo
+            const newMainEl = document.querySelector('main');
+            if (newMainEl) {
+                const inlineScripts = newMainEl.querySelectorAll('script');
+                inlineScripts.forEach(oldScript => {
+                    const newScript = document.createElement('script');
+                    // Copy attributes
+                    Array.from(oldScript.attributes).forEach(attr => {
+                        newScript.setAttribute(attr.name, attr.value);
+                    });
+                    // Copy inline content
+                    newScript.textContent = oldScript.textContent;
+                    // Replace old script with new one to trigger execution
+                    oldScript.parentNode.replaceChild(newScript, oldScript);
+                });
             }
+
+            // --- ANIMATION FIX: Force restart CSS animations ---
+            requestAnimationFrame(() => {
+                // Restart fade-up animations
+                const faders = document.querySelectorAll('.aura-animate-fade-up');
+                faders.forEach(el => {
+                    el.style.animation = 'none';
+                    el.offsetHeight; // Trigger reflow
+                    el.style.animation = '';
+                });
+
+                // Re-attach IntersectionObserver for scroll animations
+                const scrollObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add("scroll-enter-active");
+                            scrollObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+                document.querySelectorAll(".scroll-enter").forEach(el => {
+                    el.classList.remove("scroll-enter-active"); // Reset state
+                    scrollObserver.observe(el);
+                });
+            });
 
         }, 300); // Wait for the 0.3s fade out
 
@@ -168,9 +247,9 @@ async function handleTransition(url, pushState = true) {
 
 // --- Gallery Logic for About Us Page ---
 const founderImages = [
-    'assets/images/giang-vuong-portrait.jpg',
-    'assets/images/giang-vuong-speaking.jpg',
-    'assets/images/giang-vuong-sky.jpg'
+    'src/assets/portrait.jpg',
+    'src/assets/speaking.jpg',
+    'src/assets/sky.jpg'
 ];
 let currentImageIndex = 0;
 

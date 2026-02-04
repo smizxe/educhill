@@ -21,5 +21,10 @@ def remove_background(input_path, output_path):
     except Exception as e:
         print(f"Error: {e}")
 
+import sys
+
 if __name__ == "__main__":
-    remove_background("educhill logo with text.jpg", "educhill-logo-transparent.png")
+    if len(sys.argv) > 2:
+        remove_background(sys.argv[1], sys.argv[2])
+    else:
+        remove_background("educhill logo no text.jpg", "educhill-logo-no-text-transparent.png")

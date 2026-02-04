@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Về chúng tôi - Educhill</title>
+    <title>Contact Us - Educhill</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -79,20 +79,18 @@
             </a>
 
             <div class="hidden md:flex items-center gap-8">
-                <a href="/features"
-                    class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Tính
-                    năng</a>
-                <a href="/about-vn"
-                    class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors font-sans font-bold">Về chúng
-                    tôi</a>
-                <a href="/contact-vn"
-                    class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Liên
-                    hệ</a>
+                <a href="/"
+                    class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Features</a>
+                <a href="/about"
+                    class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">About
+                    Us</a>
+                <a href="/contact"
+                    class="text-sm text-indigo-600 hover:text-indigo-800 transition-colors font-sans font-bold">Contact</a>
             </div>
 
             <a href="#"
                 class="hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium">
-                Bắt đầu ngay
+                Get Started
             </a>
         </div>
     </nav>
@@ -102,120 +100,120 @@
 
         <!-- Hero Title -->
         <h1 class="font-newsreader text-5xl md:text-7xl text-slate-900 text-center mb-12 aura-animate-fade-up">
-            Người sáng lập <span class="italic text-indigo-600">Educhill</span>.
+            Chat with <span class="italic text-indigo-600">Educhill</span>.
         </h1>
 
-        <!-- Profile Card -->
-        <div class="max-w-5xl w-full grid grid-cols-1 md:grid-cols-12 gap-8 items-start aura-animate-fade-up delay-200">
-
-            <!-- Left: Image (Giang Vuong) -->
-            <div class="md:col-span-5 relative group">
-                <div
-                    class="absolute inset-0 bg-indigo-200 rounded-[2rem] rotate-3 group-hover:rotate-6 transition-transform duration-500">
-                </div>
-                <!-- Image Container -->
-                <div
-                    class="relative overflow-hidden rounded-[2rem] shadow-xl aspect-[3/4] group-hover:shadow-2xl transition-all duration-500">
-                    <img id="founder-img" src="src/assets/portrait.jpg" alt="Giang Vuong"
-                        class="w-full h-full object-cover transition-all duration-700">
-
-                    <!-- Overlay Controls (Hidden by default, shown on hover) -->
+        <!-- Contact Form Section -->
+        <div class="max-w-4xl w-full mx-auto text-center aura-animate-fade-up delay-200">
+            <div class="bg-indigo-900 rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
+                <!-- Background decoration -->
+                <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
                     <div
-                        class="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <button onclick="changeFounderImage(-1)"
-                            class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 hover:bg-white/40 text-white transition-all transform hover:scale-110 active:scale-95">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m15 18-6-6 6-6" />
+                        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500 rounded-full blur-[120px]">
+                    </div>
+                </div>
+
+                <div class="relative z-10 max-w-2xl mx-auto">
+                    <span
+                        class="inline-block py-1 px-3 rounded-full bg-indigo-800/50 border border-indigo-700 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
+                        Get in Touch
+                    </span>
+                    <h2 class="text-4xl md:text-5xl font-newsreader mb-6 leading-tight">
+                        Contact Us
+                    </h2>
+                    <p class="text-lg text-indigo-200 mb-10 font-sans leading-relaxed">
+                        Have questions or want a custom demo? Fill out the form below or book a call directly with our
+                        team.
+                    </p>
+
+                    <div
+                        class="bg-white/5 p-6 md:p-8 rounded-3xl border border-indigo-500/30 backdrop-blur-sm mb-10 text-left">
+                        <form class="space-y-4">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1"
+                                        for="name">Name</label>
+                                    <input
+                                        class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                                        id="name" type="text" placeholder="Jane Doe">
+                                </div>
+                                <div>
+                                    <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1"
+                                        for="email">Email</label>
+                                    <input
+                                        class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                                        id="email" type="email" placeholder="jane@school.edu">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-indigo-200 text-sm font-bold mb-2 ml-1"
+                                    for="message">Message</label>
+                                <textarea
+                                    class="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32"
+                                    id="message" placeholder="Tell us about your needs..."></textarea>
+                            </div>
+                            <button type="button"
+                                class="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                    <div class="flex flex-col items-center gap-6">
+                        <div class="flex items-center gap-4 w-full justify-center opacity-50">
+                            <div class="h-px bg-indigo-400 flex-1"></div>
+                            <span class="text-indigo-300 text-sm font-medium uppercase tracking-wider">Or Schedule
+                                Directly</span>
+                            <div class="h-px bg-indigo-400 flex-1"></div>
+                        </div>
+                        <button
+                            class="w-full sm:w-auto px-8 py-4 bg-transparent border border-indigo-500 text-white rounded-full font-bold hover:bg-indigo-800 transition-colors flex items-center justify-center gap-2 group">
+                            <svg class="w-5 h-5 text-indigo-300 group-hover:text-white transition-colors" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                        </button>
-                        <button onclick="changeFounderImage(1)"
-                            class="p-2 rounded-full bg-white/20 backdrop-blur-md border border-white/40 hover:bg-white/40 text-white transition-all transform hover:scale-110 active:scale-95">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                stroke-linejoin="round">
-                                <path d="m9 18 6-6-6-6" />
-                            </svg>
+                            Book a Calendly Call
                         </button>
                     </div>
                 </div>
-            </div>
-
-            <!-- Right: Content -->
-            <div class="md:col-span-7 flex flex-col justify-center h-full space-y-8 p-4">
-
-                <div>
-                    <h2 class="text-4xl text-slate-900 font-newsreader font-medium mb-2">Giang Vuong</h2>
-                    <p class="text-indigo-600 font-medium tracking-wide uppercase text-sm">Founder - CEO</p>
-                </div>
-
-                <div class="space-y-6 text-lg text-slate-600 leading-relaxed font-newsreader">
-                    <p>
-                        Giang Vuong cũng là founder của <a href="https://www.yangai.site" target="_blank"
-                            class="text-indigo-600 underline decoration-indigo-300 hover:decoration-indigo-600 transition-all">Yangai</a>
-                        - agency chuyên phát triển Web, App và giải pháp AI cho doanh nghiệp.
-                    </p>
-                    <p>
-                        Bảo chứng bởi kinh nghiệm thực tế là một giáo viên tiếng Anh, Giang hiểu sâu sắc những "nỗi đau"
-                        về thời gian và áp lực quản lý mà các giáo viên và trung tâm đào tạo phải đối mặt hàng ngày.
-                    </p>
-                    <p class="text-slate-900 font-medium italic">
-                        "Educhill ra đời không chỉ là một công cụ, mà là giải pháp để giải phóng giáo viên khỏi gánh
-                        nặng hành chính, giúp họ tập trung vào điều quan trọng nhất: Truyền cảm hứng cho học sinh."
-                    </p>
-                </div>
-
-                <!-- Signature / Link -->
-                <div class="pt-6 border-t border-indigo-100">
-                    <a href="https://www.yangai.site" target="_blank"
-                        class="inline-flex items-center gap-2 text-slate-900 font-medium hover:gap-4 transition-all group">
-                        Tìm hiểu thêm về tôi tại Yangai
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                            class="text-indigo-600">
-                            <path d="M5 12h14"></path>
-                            <path d="m12 5 7 7-7 7"></path>
-                        </svg>
-                    </a>
-                </div>
-
             </div>
         </div>
     </main>
 
     <!-- Footer (Simplified) -->
     <footer class="text-center py-10 text-slate-500 font-sans text-sm border-t border-slate-100 mt-auto">
-        <p>Bản quyền © Educhill. Bảo lưu mọi quyền.</p>
+        <p>Copyright © Educhill. All rights reserved.</p>
     </footer>
 
     <script>
         lucide.createIcons();
     </script>
 
-    <!-- Floating Language Switcher (Copied from vi.html) -->
+    <!-- Floating Language Switcher -->
     <div class="fixed bottom-6 right-6 z-50 font-sans" id="lang-switcher">
         <!-- Options Menu -->
         <div id="lang-menu"
             class="absolute bottom-full right-0 mb-4 bg-white rounded-2xl shadow-[0_10px_40px_-10px_rgba(0,0,0,0.1)] border border-gray-100 p-2 transform scale-90 opacity-0 invisible transition-all duration-200 origin-bottom-right w-48 overflow-hidden">
-            <!-- English -->
-            <a href="about-en.html"
-                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors mb-1">
+            <!-- English (Active) -->
+            <a href="contact-en.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-100/80 transition-colors mb-1">
                 <div class="w-6 h-4 rounded-sm bg-slate-200 overflow-hidden relative shadow-sm">
                     <img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover" alt="English">
                 </div>
-                <span class="font-medium text-slate-700 text-sm flex-1">English</span>
-            </a>
-            <!-- Vietnamese (Active) -->
-            <a href="vi.html" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-100/80 transition-colors">
-                <div class="w-6 h-4 rounded-sm bg-slate-200 overflow-hidden relative shadow-sm">
-                    <img src="https://flagcdn.com/w40/vn.png" class="w-full h-full object-cover" alt="Vietnamese">
-                </div>
-                <span class="font-medium text-slate-900 text-sm">Tiếng Việt</span>
+                <span class="font-medium text-slate-900 text-sm flex-1">English</span>
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-900" viewBox="0 0 24 24" fill="none"
                     stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                     <polyline points="20 6 9 17 4 12" />
                 </svg>
+            </a>
+            <!-- Vietnamese -->
+            <a href="contact.html"
+                class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors">
+                <div class="w-6 h-4 rounded-sm bg-slate-200 overflow-hidden relative shadow-sm">
+                    <img src="https://flagcdn.com/w40/vn.png" class="w-full h-full object-cover" alt="Vietnamese">
+                </div>
+                <span class="font-medium text-slate-700 text-sm">Vietnamese</span>
             </a>
         </div>
 
