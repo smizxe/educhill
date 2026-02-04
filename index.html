@@ -515,7 +515,7 @@ scaleY(var(--tw-scale-y, 1))
         </style>
       </div>
 
-      <div
+      <div style="overflow: visible !important"
         class="overflow-visible bg-white border-gray-200/80 border rounded-3xl relative shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px]">
         <!-- Browser Header -->
         <div class="flex bg-[#F9FAFB] h-10 border-gray-200 border-b pr-4 pl-4 items-center justify-between">
@@ -541,7 +541,8 @@ scaleY(var(--tw-scale-y, 1))
 
         <!-- App Layout -->
         <!-- App Layout -->
-        <div class="flex md:h-[600px] bg-white h-[700px] relative overflow-visible" id="app-layout">
+        <div class="flex md:h-[600px] bg-white h-[700px] relative overflow-visible" id="app-layout"
+          style="overflow: visible !important">
           <style>
             @keyframes float-pdf {
               0% {
@@ -563,7 +564,7 @@ scaleY(var(--tw-scale-y, 1))
           </style>
 
           <!-- Sidebar -->
-          <aside class="hidden md:flex flex-col bg-[#FCFCFD] w-64 border-gray-100 border-r p-5 z-20">
+          <aside class="hidden md:flex flex-col bg-[#FCFCFD] w-64 border-gray-100 border-r p-5 z-20 rounded-bl-3xl">
             <div class="flex items-center gap-3 mb-8">
               <div
                 class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-200">
@@ -618,7 +619,7 @@ scaleY(var(--tw-scale-y, 1))
           </aside>
 
           <!-- Main Stage -->
-          <main class="flex-1 bg-white relative">
+          <main class="flex-1 bg-white relative rounded-b-3xl md:rounded-bl-none md:rounded-br-3xl">
 
             <!-- STAGE 1: IMPORT -->
             <div id="stage-import"

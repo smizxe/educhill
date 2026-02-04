@@ -247,9 +247,9 @@ async function handleTransition(url, pushState = true) {
 
 // --- Gallery Logic for About Us Page ---
 const founderImages = [
-    'src/assets/portrait.jpg',
-    'src/assets/speaking.jpg',
-    'src/assets/sky.jpg'
+    '/assets/portrait.jpg',
+    '/assets/speaking.jpg',
+    '/assets/sky.jpg'
 ];
 let currentImageIndex = 0;
 
