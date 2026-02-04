@@ -155,6 +155,15 @@ async function handleTransition(url, pushState = true) {
                 currentFooter.outerHTML = newFooter.outerHTML;
             }
 
+            // Swap Ambient Background
+            const currentBg = document.getElementById('ambient-bg');
+            const newBg = newDoc.getElementById('ambient-bg');
+            if (currentBg && newBg) {
+                currentBg.outerHTML = newBg.outerHTML;
+            } else if (!currentBg && newBg) {
+                document.body.insertBefore(newBg.cloneNode(true), document.body.firstChild);
+            }
+
             // Swap Language Switcher if present
             const currentLang = document.getElementById('lang-switcher');
             const newLang = newDoc.getElementById('lang-switcher');
