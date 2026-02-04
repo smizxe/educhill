@@ -1,21 +1,22 @@
 
 // --- URL Mapping for Clean URLs ---
+// --- URL Mapping for Clean URLs ---
 const urlToFile = {
     '/': '/index.html',
     '/home': '/index.html',
     '/about': '/about-en.html',
-    '/about-vn': '/about.html',
+    '/about-vn': '/about-vn.html',
     '/contact': '/contact-en.html',
-    '/contact-vn': '/contact.html',
+    '/contact-vn': '/contact-vn.html',
     '/features': '/vi.html',
 };
 
 const fileToUrl = {
     '/index.html': '/',
     '/about-en.html': '/about',
-    '/about.html': '/about-vn',
+    '/about-vn.html': '/about-vn',
     '/contact-en.html': '/contact',
-    '/contact.html': '/contact-vn',
+    '/contact-vn.html': '/contact-vn',
     '/vi.html': '/features',
 };
 
