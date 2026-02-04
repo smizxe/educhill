@@ -31,4 +31,16 @@ export default defineConfig({
       },
     },
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: 'index.html',
+        vi: 'vi.html',
+        about: 'about.html',
+        aboutEn: 'about-en.html',
+        contact: 'contact.html',
+        contactEn: 'contact-en.html',
+      },
+    },
+  },
 })
