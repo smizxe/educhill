@@ -315,8 +315,8 @@ scaleY(var(--tw-scale-y, 1))
     <div
       class="flex transition-all duration-300 hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] bg-white border-white/50 border rounded-full pt-2 pr-2 pb-2 pl-2 shadow-[0_2px_20px_rgba(0,0,0,0.04)] backdrop-blur-xl items-center justify-between aura-animate-fade-up">
       <a href="#"
-        class="inline-flex items-center justify-center bg-transparent w-[130px] h-[50px] text-slate-900 font-bold text-xl tracking-tight hover:opacity-80 transition-opacity">
-        Educhill
+        class="inline-flex items-center justify-center bg-transparent h-[50px] hover:opacity-80 transition-opacity">
+        <img src="educhill-logo-transparent.png" alt="Educhill" class="h-20 w-auto pl-4">
       </a>
 
       <div class="hidden md:flex items-center gap-8">
@@ -712,8 +712,8 @@ scaleY(var(--tw-scale-y, 1))
                     </div>
 
                     <div class="bg-slate-50 rounded-xl p-3 mb-3 h-16">
-                      <p id="typewriter-text" class="text-xs text-slate-600 font-medium leading-relaxed"></p>
-                      <span class="inline-block w-1.5 h-3 bg-indigo-500 animate-pulse align-middle ml-0.5"
+                      <p id="typewriter-text" class="text-xs text-slate-600 font-medium leading-relaxed inline"></p>
+                      <span class="inline-block w-1.5 h-3 bg-indigo-500 animate-cursor-blink align-middle ml-0.5"
                         id="cursor-blink"></span>
                     </div>
 
@@ -945,83 +945,421 @@ scaleY(var(--tw-scale-y, 1))
           </a>
         </div>
 
-        <!-- Right: Animated Interface -->
-        <div class="relative group">
-          <!-- Student Recording UI -->
+        <!-- Right: Animated Interface (Mac Browser Style) -->
+        <div class="relative group w-full max-w-[600px] mx-auto lg:mx-0">
+          <!-- Browser Frame -->
           <div
-            class="bg-white rounded-3xl shadow-xl border border-gray-100 p-8 relative z-10 overflow-hidden transform transition-transform group-hover:scale-[1.01]">
-            <div class="flex justify-between items-center mb-6">
-              <div class="flex items-center gap-3">
-                <div class="w-10 h-10 rounded-full bg-indigo-100 overflow-hidden">
-                  <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Student"
-                    class="w-full h-full" />
-                </div>
-                <div>
-                  <div class="text-sm font-bold text-slate-900">Student Recording...</div>
-                  <div class="text-xs text-slate-500">00:14 / 02:00</div>
-                </div>
+            class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-200 overflow-hidden relative z-10 transform transition-transform group-hover:scale-[1.01]">
+            <!-- Browser Header -->
+            <div class="h-10 bg-[#F9FAFB] border-b border-gray-200 flex items-center px-4 gap-4">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
               </div>
-              <div class="flex items-center gap-1">
-                <span class="block w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
-                <span class="text-xs font-bold text-red-500 uppercase">Live</span>
-              </div>
-            </div>
-
-            <!-- Audio Waveform -->
-            <div
-              class="h-24 bg-slate-50 rounded-xl flex items-center justify-center gap-1 px-4 mb-6 overflow-hidden relative">
               <div
-                class="absolute inset-0 bg-gradient-to-r from-transparent via-indigo-500/10 to-transparent w-full h-full animate-[shimmer_2s_infinite]">
-              </div>
-              <!-- Bars -->
-              <div class="w-1.5 h-8 bg-indigo-300 rounded-full animate-[wave_1s_ease-in-out_infinite]"></div>
-              <div class="w-1.5 h-12 bg-indigo-400 rounded-full animate-[wave_1.2s_ease-in-out_infinite_0.1s]"></div>
-              <div class="w-1.5 h-6 bg-indigo-300 rounded-full animate-[wave_0.8s_ease-in-out_infinite_0.2s]"></div>
-              <div class="w-1.5 h-16 bg-indigo-500 rounded-full animate-[wave_1.4s_ease-in-out_infinite_0.3s]"></div>
-              <div class="w-1.5 h-10 bg-indigo-400 rounded-full animate-[wave_1.1s_ease-in-out_infinite_0.4s]"></div>
-              <div class="w-1.5 h-14 bg-indigo-300 rounded-full animate-[wave_1.3s_ease-in-out_infinite_0.5s]"></div>
-              <div class="w-1.5 h-6 bg-indigo-300 rounded-full animate-[wave_0.9s_ease-in-out_infinite_0.6s]"></div>
-            </div>
-
-            <button
-              class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold hover:bg-indigo-700 transition-shadow shadow-lg shadow-indigo-200">
-              Submit Assignment
-            </button>
-          </div>
-
-          <!-- Floating Feedback Card (Animated) -->
-          <div
-            class="absolute -right-8 top-1/2 -translate-y-1/2 bg-white rounded-2xl shadow-2xl border border-emerald-100 p-5 w-64 z-20 animate-[float_4s_ease-in-out_infinite]">
-            <div class="flex items-center gap-3 mb-3 border-b border-gray-50 pb-3">
-              <div
-                class="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center text-emerald-600 font-bold">
-                A</div>
-              <div>
-                <div class="text-sm font-bold text-slate-800">Grade: A-</div>
-                <div class="text-[10px] text-emerald-600 uppercase font-bold tracking-wider">AI Verified</div>
+                class="flex-1 max-w-[280px] h-6 bg-white border border-gray-200 rounded flex items-center justify-center gap-2 text-[10px] text-gray-400 font-medium">
+                <svg class="w-3 h-3 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                app.educhill.io/student/assignment
               </div>
             </div>
-            <div class="space-y-2">
-              <div class="text-xs text-slate-600">
-                <span class="font-bold text-slate-800">Fluency:</span> 9/10
-                <div class="w-full h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
-                  <div class="h-full bg-emerald-500 w-[90%] rounded-full"></div>
+
+            <!-- Content Area -->
+            <div class="relative h-[400px] bg-white p-6 font-sans">
+
+              <!-- STATE 1: SPEAKING -->
+              <div id="sv-state-speaking" class="absolute inset-0 p-8 flex flex-col transition-all duration-500">
+                <div class="flex items-center justify-between mb-8">
+                  <div>
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Speaking Task</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">Talk about yourself</h3>
+                  </div>
+                  <div class="px-2 py-1 bg-gray-100 rounded text-xs font-mono text-gray-500">02:00</div>
+                </div>
+
+                <!-- Mic / Waveform Container -->
+                <div class="flex-1 flex flex-col items-center justify-center relative">
+                  <!-- Initial: Record Button with Ripple -->
+                  <div id="sv-mic-container" class="relative flex items-center justify-center">
+                    <div id="sv-mic-ripple-1" class="absolute w-full h-full rounded-full bg-red-100 opacity-0"></div>
+                    <div id="sv-mic-ripple-2" class="absolute w-full h-full rounded-full bg-red-50 opacity-0"></div>
+                    <div id="sv-mic-btn"
+                      class="w-16 h-16 rounded-full bg-red-500 text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer relative z-10">
+                      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Active: Waveform (Hidden initially) -->
+                  <div id="sv-waveform" class="hidden w-full items-center justify-center gap-1 h-16">
+                    <span class="w-1.5 h-4 bg-indigo-400 rounded-full animate-[wave_0.5s_infinite]"></span>
+                    <span class="w-1.5 h-8 bg-indigo-500 rounded-full animate-[wave_0.6s_infinite]"></span>
+                    <span class="w-1.5 h-6 bg-indigo-400 rounded-full animate-[wave_0.4s_infinite]"></span>
+                    <span class="w-1.5 h-10 bg-indigo-600 rounded-full animate-[wave_0.7s_infinite]"></span>
+                    <span class="w-1.5 h-5 bg-indigo-400 rounded-full animate-[wave_0.5s_infinite]"></span>
+                    <span class="w-1.5 h-8 bg-indigo-500 rounded-full animate-[wave_0.6s_infinite]"></span>
+                  </div>
+                  <p id="sv-status-text" class="text-slate-400 font-medium mt-6 text-sm">Tap to record</p>
+                </div>
+
+                <button id="sv-submit-speaking"
+                  class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold opacity-50 cursor-not-allowed transition-all mt-auto">Submit
+                  Response</button>
+              </div>
+
+              <!-- STATE 2: WRITING (Hidden) -->
+              <div id="sv-state-writing"
+                class="absolute inset-0 p-8 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-x-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Writing Task</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">Write about your Dream</h3>
+                  </div>
+                </div>
+
+                <!-- Text Area Sim -->
+                <div
+                  class="flex-1 bg-slate-50 rounded-xl p-4 mb-4 border border-gray-100 font-sans text-slate-700 leading-relaxed text-sm relative">
+                  <p id="sv-typewriter-text" class="whitespace-pre-wrap inline"></p>
+                  <span
+                    class="w-0.5 h-4 bg-indigo-500 inline-block align-middle animate-cursor-blink ml-0.5 mb-1"></span>
+                </div>
+
+                <button id="sv-submit-writing" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold">Submit
+                  Essay</button>
+              </div>
+
+              <!-- STATE 3: FEEDBACK (Generic for both) -->
+              <div id="sv-state-feedback"
+                class="absolute inset-0 p-6 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-y-4">
+                <div class="flex items-center gap-3 mb-6">
+                  <div
+                    class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-lg">
+                    A</div>
+                  <div>
+                    <h3 class="text-lg font-bold text-slate-900 leading-none">Detailed AI Feedback</h3>
+                    <span
+                      class="inline-block mt-1 text-[10px] font-bold text-white bg-green-500 px-1.5 py-0.5 rounded shadow-sm tracking-wide">INSTANT
+                      ANALYSIS</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3 flex-1 overflow-y-auto pr-1 custom-scrollbar">
+                  <!-- Detailed Comment Box -->
+                  <div
+                    class="bg-indigo-50/50 border border-indigo-100 p-4 rounded-xl text-sm leading-relaxed text-slate-700">
+                    <div class="flex items-center gap-2 mb-2">
+                      <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                          d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                      </svg>
+                      <span class="font-bold text-indigo-900 text-xs uppercase tracking-wide">AI Assessment</span>
+                    </div>
+                    <p id="sv-feedback-comment">Great use of vocabulary! Your pronunciation of "fascinated" was clear.
+                      Try to improve your pacing in the second sentence.</p>
+                  </div>
+
+                  <!-- Score Card 1 -->
+                  <div
+                    class="bg-white border border-slate-100 p-3 rounded-xl flex items-center justify-between opacity-0 transition-all duration-500 translate-y-2"
+                    id="sv-score-1">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                        <svg id="sv-score-icon-1" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <span class="font-bold text-slate-700 text-sm" id="sv-score-label-1">Fluency</span>
+                    </div>
+                    <span class="font-bold text-indigo-600" id="sv-score-val-1">92/100</span>
+                  </div>
+
+                  <!-- Score Card 2 -->
+                  <div
+                    class="bg-white border border-slate-100 p-3 rounded-xl flex items-center justify-between opacity-0 transition-all duration-500 translate-y-2 delay-100"
+                    id="sv-score-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                        <svg id="sv-score-icon-2" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                      <span class="font-bold text-slate-700 text-sm" id="sv-score-label-2">Vocabulary</span>
+                    </div>
+                    <span class="font-bold text-emerald-600" id="sv-score-val-2">88/100</span>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div id="sv-feedback-progress" class="h-full bg-indigo-500 w-0"></div>
+                  </div>
+                  <div class="text-[10px] text-center text-gray-400 mt-2" id="sv-feedback-footer">Next task starting in
+                    3s...</div>
                 </div>
               </div>
-              <div class="text-xs text-slate-600">
-                <span class="font-bold text-slate-800">Vocabulary:</span> 8/10
-                <div class="w-full h-1.5 bg-gray-100 rounded-full mt-1 overflow-hidden">
-                  <div class="h-full bg-indigo-500 w-[80%] rounded-full"></div>
-                </div>
-              </div>
+
             </div>
           </div>
 
-          <!-- Decorative blob -->
-          <div
-            class="absolute top-10 left-10 w-full h-full bg-indigo-200/30 rounded-full blur-3xl -z-10 mix-blend-multiply">
-          </div>
+          <!-- Decorative Glow -->
+          <div class="absolute top-10 left-10 w-full h-full bg-indigo-500/20 rounded-full blur-3xl -z-10"></div>
         </div>
+
+        <style>
+          @keyframes ripple {
+            0% {
+              transform: scale(1);
+              opacity: 0.8;
+            }
+
+            100% {
+              transform: scale(2.5);
+              opacity: 0;
+            }
+          }
+
+          .animate-ripple {
+            animation: ripple 2s infinite ease-out;
+          }
+
+          .delay-700 {
+            animation-delay: 0.7s;
+          }
+
+          @keyframes wave {
+
+            0%,
+            0%,
+            100% {
+              height: 10%;
+            }
+
+            50% {
+              height: 100%;
+            }
+          }
+
+          @keyframes loadProgress {
+            0% {
+              width: 0%;
+            }
+
+            100% {
+              width: 100%;
+            }
+          }
+
+          @keyframes cursor-blink {
+
+            0%,
+            100% {
+              opacity: 1;
+            }
+
+            50% {
+              opacity: 0;
+            }
+          }
+
+          .animate-cursor-blink {
+            animation: cursor-blink 1s step-end infinite;
+          }
+        </style>
+
+        <script>
+
+          (function () {
+            // Student View Animation Logic
+            const stateSpeaking = document.getElementById('sv-state-speaking');
+            const stateWriting = document.getElementById('sv-state-writing');
+            const stateFeedback = document.getElementById('sv-state-feedback');
+
+            // Elements - Speaking
+            const micBtn = document.getElementById('sv-mic-btn');
+            const micRipple1 = document.getElementById('sv-mic-ripple-1');
+            const micRipple2 = document.getElementById('sv-mic-ripple-2');
+            const waveform = document.getElementById('sv-waveform');
+            const statusText = document.getElementById('sv-status-text');
+            const submitSpeaking = document.getElementById('sv-submit-speaking');
+
+            // Elements - Writing
+            const typewriterText = document.getElementById('sv-typewriter-text');
+            const submitWriting = document.getElementById('sv-submit-writing');
+
+            // Elements - Feedback
+            const feedbackComment = document.getElementById('sv-feedback-comment');
+            const scoreLabel1 = document.getElementById('sv-score-label-1');
+            const scoreVal1 = document.getElementById('sv-score-val-1');
+            const scoreLabel2 = document.getElementById('sv-score-label-2');
+            const scoreVal2 = document.getElementById('sv-score-val-2');
+            const feedbackFooter = document.getElementById('sv-feedback-footer');
+            const feedbackProgress = document.getElementById('sv-feedback-progress');
+
+            // Score Cards
+            const scoreCard1 = document.getElementById('sv-score-1');
+            const scoreCard2 = document.getElementById('sv-score-2');
+
+
+            const typingContent = "One of my biggest dreams is to travel to space. I have always been fascinated by the stars...";
+
+            // Helper to transition states
+            function switchState(hide, show) {
+              hide.classList.add('opacity-0', 'pointer-events-none');
+              hide.classList.remove('opacity-100', 'pointer-events-auto');
+
+              // Determine slide direction based on sequence
+              if (hide === stateSpeaking) hide.classList.add('-translate-x-8');
+              if (hide === stateWriting) hide.classList.add('-translate-x-8');
+              if (hide === stateFeedback) hide.classList.add('translate-y-4'); // Reset position
+
+              show.classList.remove('opacity-0', 'translate-x-8', 'translate-y-4', '-translate-x-8', 'pointer-events-none');
+              show.classList.add('opacity-100', 'translate-x-0', 'translate-y-0', 'pointer-events-auto');
+            }
+
+            function resetAll() {
+              // Reset Speaking
+              stateSpeaking.className = "absolute inset-0 p-8 flex flex-col transition-all duration-500 opacity-100 translate-x-0 pointer-events-auto";
+              stateWriting.className = "absolute inset-0 p-8 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-x-8";
+              stateFeedback.className = "absolute inset-0 p-6 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-y-4";
+
+              micBtn.style.display = 'flex';
+              micBtn.style.transform = 'scale(1)';
+              micRipple1.classList.remove('animate-ripple');
+              micRipple2.classList.remove('animate-ripple');
+              waveform.classList.add('hidden');
+              waveform.classList.remove('flex');
+              statusText.innerText = "Tap to record";
+              statusText.classList.remove('text-indigo-500', 'animate-pulse');
+              submitSpeaking.classList.add('opacity-50', 'cursor-not-allowed');
+
+              typewriterText.textContent = "";
+            }
+
+            async function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            async function runSequence() {
+              while (true) {
+                // --- PHASE 1: SPEAKING ---
+                resetAll();
+                await wait(1000);
+
+                // User Clicks Record
+                micBtn.style.transform = "scale(0.9)";
+                await wait(200);
+                micBtn.style.display = 'none';
+                waveform.classList.remove('hidden');
+                waveform.classList.add('flex');
+                micRipple1.classList.add('animate-ripple');
+                micRipple2.classList.add('animate-ripple');
+                statusText.innerText = "Recording...";
+                statusText.classList.add('text-indigo-500', 'animate-pulse');
+
+                await wait(2000); // Recording duration
+                submitSpeaking.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                await wait(1000); // Wait before submit
+
+                // User Clicks Submit
+                submitSpeaking.style.transform = "scale(0.95)";
+                await wait(150);
+                submitSpeaking.style.transform = "scale(1)";
+
+                // --- PHASE 2: SPEAKING FEEDBACK ---
+                // Setup Feedback Data
+                feedbackComment.innerHTML = 'Great fluency! Your pronunciation of <strong>"fascinated"</strong> was clear. Try to improve pacing in deep explanations.';
+                scoreLabel1.innerText = "Fluency"; scoreVal1.innerText = "92/100";
+                scoreLabel2.innerText = "Pronunciation"; scoreVal2.innerText = "89/100";
+                feedbackFooter.innerText = "Next task: Writing...";
+
+                // Hide Cards for Animation
+                scoreCard1.classList.add('opacity-0', 'translate-y-2');
+                scoreCard2.classList.add('opacity-0', 'translate-y-2');
+                feedbackProgress.style.animation = 'none'; // Reset animation
+
+                switchState(stateSpeaking, stateFeedback);
+
+                // Animate Cards In
+                await wait(300); scoreCard1.classList.remove('opacity-0', 'translate-y-2');
+                await wait(200); scoreCard2.classList.remove('opacity-0', 'translate-y-2');
+
+                // Progress Bar
+                feedbackProgress.style.width = '0%';
+                void feedbackProgress.offsetWidth; // Force reflow
+                feedbackProgress.style.animation = 'loadProgress 4s linear forwards';
+
+                await wait(4500); // Read Feedback Time
+
+                // --- PHASE 3: WRITING ---
+                switchState(stateFeedback, stateWriting);
+
+                // Clear content to prevent flash
+                setTimeout(() => {
+                  feedbackComment.innerHTML = "";
+                  scoreVal1.innerHTML = "";
+                  scoreVal2.innerHTML = "";
+                }, 500); // Wait for fade out
+
+                await wait(800);
+
+                // Typing Effect
+                let currentText = "";
+                for (let i = 0; i < typingContent.length; i++) {
+                  currentText += typingContent[i];
+                  typewriterText.textContent = currentText;
+                  await wait(30); // Fast typing
+                }
+
+                await wait(1000);
+
+                // Submit Writing
+                submitWriting.style.transform = "scale(0.95)";
+                await wait(150);
+                submitWriting.style.transform = "scale(1)";
+
+                // --- PHASE 4: WRITING FEEDBACK ---
+                // Setup Feedback Data
+                feedbackComment.innerHTML = 'Strong vocabulary usage. Consider using transitional phrases like <strong>"Furthermore"</strong> to connect ideas smoothly.';
+                scoreLabel1.innerText = "Grammar"; scoreVal1.innerText = "95/100";
+                scoreLabel2.innerText = "Coherence"; scoreVal2.innerText = "85/100";
+                feedbackFooter.innerText = "Restarting demo...";
+
+                // Hide Cards
+                scoreCard1.classList.add('opacity-0', 'translate-y-2');
+                scoreCard2.classList.add('opacity-0', 'translate-y-2');
+                feedbackProgress.style.animation = 'none';
+
+                switchState(stateWriting, stateFeedback);
+
+                // Animate Cards In
+                await wait(300); scoreCard1.classList.remove('opacity-0', 'translate-y-2');
+                await wait(200); scoreCard2.classList.remove('opacity-0', 'translate-y-2');
+
+
+                feedbackProgress.style.width = '0%';
+                void feedbackProgress.offsetWidth;
+                feedbackProgress.style.animation = 'loadProgress 4s linear forwards';
+
+                await wait(4500);
+              }
+            }
+
+
+
+
+
+            runSequence(); // Start the 4-stage loop
+
+          })();
+        </script>
       </div>
     </section>
 

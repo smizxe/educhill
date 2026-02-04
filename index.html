@@ -1,16 +1,2072 @@
-<!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Prism - SaaS Landing Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educhill - Teach online. Without the overload.</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style id="aura-editor-visibility-style">
+    .invisible {
+      visibility: hidden !important;
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* Smooth scrolling for charts */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .font-serif-accent {
+      font-family: 'Instrument Serif', serif;
+    }
+  </style>
+  <script>
+    // Configure Tailwind to include our custom 3D transform utilities
+    tailwind.config = {
+      theme: {
+        extend: {
+          // Add any custom theme extensions here if needed
+        }
+      },
+      plugins: [
+        function ({ addUtilities }) {
+          const rotateXUtilities = {};
+          const rotateYUtilities = {};
+          const rotateZUtilities = {};
+          const rotateValues = [0, 5, 10, 15, 20, 30, 45, 75];
+          // Generate rotate-x utilities
+          rotateValues.forEach((value) => {
+            rotateXUtilities[`.rotate-x-${value}`] = {
+              '--tw-rotate-x': `${value}deg`,
+              transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+            };
+            if (value !== 0) {
+              rotateXUtilities[`.-rotate-x-${value}`] = {
+                '--tw-rotate-x': `-${value}deg`,
+                transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+              };
+            }
+          });
+          // Generate rotate-y utilities
+          rotateValues.forEach((value) => {
+            rotateYUtilities[`.rotate-y-${value}`] = {
+              '--tw-rotate-y': `${value}deg`,
+              transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+            };
+            if (value !== 0) {
+              rotateYUtilities[`.-rotate-y-${value}`] = {
+                '--tw-rotate-y': `-${value}deg`,
+                transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+              };
+            }
+          });
+          // Generate rotate-z utilities
+          rotateValues.forEach((value) => {
+            rotateZUtilities[`.rotate-z-${value}`] = {
+              '--tw-rotate-z': `${value}deg`,
+              transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+            };
+            if (value !== 0) {
+              rotateZUtilities[`.-rotate-z-${value}`] = {
+                '--tw-rotate-z': `-${value}deg`,
+                transform: `
+translate3d(var(--tw-translate-x, 0), var(--tw-translate-y, 0), var(--tw-translate-z, 0))
+rotateX(var(--tw-rotate-x, 0))
+rotateY(var(--tw-rotate-y, 0))
+rotateZ(var(--tw-rotate-z, 0))
+skewX(var(--tw-skew-x, 0))
+skewY(var(--tw-skew-y, 0))
+scaleX(var(--tw-scale-x, 1))
+scaleY(var(--tw-scale-y, 1))
+`.replace(/\\s+/g, ' ').trim(),
+              };
+            }
+          });
+          // Perspective utilities
+          const perspectiveUtilities = {
+            ".perspective-none": { perspective: "none" },
+            ".perspective-dramatic": { perspective: "100px" },
+            ".perspective-near": { perspective: "300px" },
+            ".perspective-normal": { perspective: "500px" },
+            ".perspective-midrange": { perspective: "800px" },
+            ".perspective-distant": { perspective: "1200px" },
+          };
+          // Transform style utilities
+          const transformStyleUtilities = {
+            ".transform-style-preserve-3d": { "transform-style": "preserve-3d" },
+            ".transform-style-flat": { "transform-style": "flat" },
+          };
+          addUtilities({
+            ...rotateXUtilities,
+            ...rotateYUtilities,
+            ...rotateZUtilities,
+            ...perspectiveUtilities,
+            ...transformStyleUtilities,
+          });
+        }
+      ]
+    };
+  </script>
+  <style id="aura-editor-visibility-style">
+    .invisible {
+      visibility: hidden !important;
+    }
+  </style>
+  <meta name="disabled-font-classes"
+    content="font-roboto,font-poppins,font-merriweather,font-work-sans,font-pt-serif,font-space-mono,font-playfair,font-instrument-serif,font-jakarta,font-nunito,font-bricolage,font-oswald,font-google-sans-flex,font-space-grotesk,font-geist,font-geist-mono,font-quicksand,font-montserrat,font-manrope,font-dm-sans">
+  <link id="all-fonts-link-font-newsreader" rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400..800&amp;display=swap">
+  <style id="all-fonts-style-font-newsreader">
+    .font-newsreader {
+      font-family: 'Newsreader', serif !important;
+    }
+  </style>
+  <style>
+    /* 3D Transform utilities */
+    .perspective-none {
+      perspective: none !important;
+    }
+
+    .perspective-dramatic {
+      perspective: 100px !important;
+    }
+
+    .perspective-near {
+      perspective: 300px !important;
+    }
+
+    .perspective-normal {
+      perspective: 500px !important;
+    }
+
+    .perspective-midrange {
+      perspective: 800px !important;
+    }
+
+    .perspective-distant {
+      perspective: 1200px !important;
+    }
+
+    .transform-style-preserve-3d {
+      transform-style: preserve-3d !important;
+    }
+
+    .transform-style-flat {
+      transform-style: flat !important;
+    }
+  </style>
+  <style>
+    @keyframes auraFadeInUp {
+      0% {
+        opacity: 0;
+        transform: translateY(20px) scale(0.96);
+        filter: blur(4px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        filter: blur(0);
+      }
+    }
+
+    @keyframes auraFadeIn {
+      0% {
+        opacity: 0;
+        filter: blur(4px);
+      }
+
+      100% {
+        opacity: 1;
+        filter: blur(0);
+      }
+    }
+
+    .aura-animate-fade-up {
+      animation: auraFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .aura-animate-fade {
+      animation: auraFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+
+    .delay-100 {
+      animation-delay: 100ms;
+    }
+
+    .delay-200 {
+      animation-delay: 200ms;
+    }
+
+    .delay-300 {
+      animation-delay: 300ms;
+    }
+
+    .delay-400 {
+      animation-delay: 400ms;
+    }
+
+    .delay-500 {
+      animation-delay: 500ms;
+    }
+
+    .delay-700 {
+      animation-delay: 700ms;
+    }
+  </style>
+  <style>
+    .scroll-enter {
+      opacity: 0;
+      transform: translateY(24px) scale(0.98);
+      filter: blur(4px);
+      transition: all .8s cubic-bezier(.16, 1, .3, 1);
+      will-change: opacity, transform, filter
+    }
+
+    .scroll-enter-active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      filter: blur(0)
+    }
+  </style>
+</head>
+
+<body
+  class="antialiased overflow-x-hidden selection:bg-indigo-100 selection:text-indigo-600 text-slate-900 bg-[#F8F9FB]">
+  <!-- Background (component) added by Aura -->
+  <div class="aura-background-component fixed top-0 w-full h-screen -z-10 hue-rotate-15 blur-md" data-alpha-mask="80"
+    style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)">
+    <div class="aura-background-component top-0 w-full -z-10 absolute h-full">
+      <div data-us-project="ty3N7ZPaIU7KlWixQFIc" class="absolute w-full h-full left-0 top-0 -z-10"></div>
+      <script type="text/javascript">
+        !function () { if (!window.UnicornStudio) { window.UnicornStudio = { isInitialized: !1 }; var i = document.createElement("script"); i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js", i.onload = function () { window.UnicornStudio.isInitialized || (UnicornStudio.init(), window.UnicornStudio.isInitialized = !0) }, (document.head || document.body).appendChild(i) } }();
+      </script>
+    </div>
+  </div>
+
+  <!-- Ambient Background Gradients -->
+  <div class="fixed overflow-hidden -z-10 pointer-events-none w-full h-full top-0 left-0" style="">
+    <div class="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-gray-200/50 rounded-full blur-[120px]" style="">
+    </div>
+    <div class="absolute top-[10%] right-[-5%] w-[30%] h-[50%] rounded-full blur-[100px] bg-indigo-100/40" style="">
+    </div>
+  </div>
+
+  <!-- Navigation Pill -->
+  <nav class="fixed top-6 left-1/2 -translate-x-1/2 z-50 w-[90%] max-w-5xl">
+    <div
+      class="flex transition-all duration-300 hover:shadow-[0_4px_25px_rgba(0,0,0,0.06)] bg-white border-white/50 border rounded-full pt-2 pr-2 pb-2 pl-2 shadow-[0_2px_20px_rgba(0,0,0,0.04)] backdrop-blur-xl items-center justify-between aura-animate-fade-up">
+      <a href="#"
+        class="inline-flex items-center justify-center bg-transparent h-[50px] hover:opacity-80 transition-opacity">
+        <img src="educhill-logo-transparent.png" alt="Educhill" class="h-20 w-auto pl-4">
+      </a>
+
+      <div class="hidden md:flex items-center gap-8">
+        <a href="#" class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium"
+          style="">
+          Features
+        </a>
+        <a href="#" class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium"
+          style="">
+          Methodology
+        </a>
+        <a href="#" class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium"
+          style="">
+          Pricing
+        </a>
+        <a href="#" class="text-sm text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium"
+          style="">
+          Blog
+        </a>
+      </div>
+
+      <a href="#"
+        class="hover:bg-slate-800 shadow-slate-900/20 transition-all transform hover:scale-[1.02] text-sm text-white bg-[#0F172A] rounded-full pt-4 pr-8 pb-4 pl-8 shadow-lg font-sans font-medium"
+        style="">
+        Get Started
+      </a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main class="flex flex-col overflow-visible max-w-7xl mr-auto ml-auto pt-40 pb-20 relative items-center">
+    <!-- Decoration Elements (Floating) -->
+    <!-- Left Calendar -->
+    <div class="hidden lg:block absolute left-10 top-60 w-32 h-32 rotate-[-12deg] animate-float-slow opacity-80 z-0"
+      style="">
+      <div
+        class="relative w-full h-full bg-white/60 backdrop-blur-md border border-white/60 rounded-3xl shadow-[0_20px_40px_rgba(0,0,0,0.05)] flex flex-col items-center justify-center p-4">
+        <div class="absolute top-0 w-12 h-2 bg-gray-200 rounded-b-lg mb-2"></div>
+        <div class="flex gap-4 mb-2 absolute top-[-6px]">
+          <div class="w-2 h-4 bg-gray-300 rounded-full"></div>
+          <div class="w-2 h-4 bg-gray-300 rounded-full"></div>
+        </div>
+        <span class="text-6xl text-gray-300 font-newsreader mt-2">24</span>
+      </div>
+    </div>
+
+    <!-- Right Orange Glass Cards -->
+    <div class="hidden lg:block pointer-events-none z-0 w-48 h-48 absolute top-52 right-0">
+      <div
+        class="bg-gradient-to-br from-indigo-400 to-indigo-500 opacity-90 w-28 h-28 rounded-3xl absolute top-0 right-8 shadow-lg rotate-[10deg]">
+      </div>
+      <div
+        class="absolute right-14 top-8 w-32 h-32 bg-white/20 backdrop-blur-xl border border-white/40 rounded-3xl flex items-end justify-center pb-4 gap-2 z-10 rotate-[5deg] shadow-[0_20px_50px_rgba(99,102,241,0.2)]">
+        <div class="w-2 h-8 bg-white/40 rounded-full"></div>
+        <div class="w-2 h-14 bg-white/60 rounded-full"></div>
+        <div class="w-2 h-11 bg-white/40 rounded-full"></div>
+      </div>
+    </div>
+
+    <!-- Trust Badge -->
+    <div
+      class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white border border-gray-200/60 shadow-[0_2px_8px_rgba(0,0,0,0.02)] mb-10 transition-transform hover:scale-105 cursor-default aura-animate-fade delay-100">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="check-circle"
+        class="lucide lucide-check-circle w-3.5 h-3.5 text-emerald-500">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+        <polyline points="22 4 12 14.01 9 11.01"></polyline>
+      </svg>
+      <span class="text-xs text-slate-500 uppercase font-sans font-medium" style="">
+        Save time · Increase efficiency
+      </span>
+    </div>
+
+    <!-- Headlines -->
+    <h1
+      class="leading-[1.1] md:text-5xl lg:text-7xl text-4xl text-slate-900 font-newsreader text-center max-w-4xl mr-auto mb-8 ml-auto pr-4 pl-4 aura-animate-fade-up delay-200"
+      style="">
+      Teach online.
+      <br>
+      <span class="bg-clip-text text-transparent font-newsreader bg-gradient-to-r from-slate-900 to-slate-700">
+        Without the overload.
+      </span>
+    </h1>
+
+    <p
+      class="leading-relaxed md:text-2xl text-xl text-slate-700 font-newsreader text-center max-w-2xl mb-12 px-4 aura-animate-fade-up delay-300">
+      Educhill turns documents into interactive lessons, grades automatically, and tracks student progress — all in one
+      calm system.
+    </p>
+
+    <!-- CTA Buttons -->
+    <div
+      class="flex flex-col sm:flex-row gap-4 w-full mb-24 pr-4 pl-4 items-center justify-center aura-animate-fade-up delay-400">
+      <button
+        class="w-full sm:w-auto px-8 py-4 bg-[#0F172A] hover:bg-slate-800 text-white rounded-xl shadow-[0_4px_14px_0_rgba(0,0,0,0.39)] transition-all transform hover:-translate-y-0.5 text-lg font-sans font-medium"
+        style="">
+        Start Free Trial
+      </button>
+      <button
+        class="w-full sm:w-auto px-8 py-4 bg-white hover:bg-gray-50 text-slate-900 border border-gray-200/80 rounded-xl shadow-sm transition-all transform hover:-translate-y-0.5 text-lg flex items-center justify-center gap-2 font-sans font-medium"
+        style="">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          data-lucide="play-circle" class="lucide lucide-play-circle w-5 h-5 text-gray-400">
+          <path d="M9 9.003a1 1 0 0 1 1.517-.859l4.997 2.997a1 1 0 0 1 0 1.718l-4.997 2.997A1 1 0 0 1 9 14.996z"></path>
+          <circle cx="12" cy="12" r="10"></circle>
+        </svg>
+        Watch Demo
+      </button>
+    </div>
+
+    <!-- Browser Mockup -->
+    <div
+      class="group z-10 w-full max-w-[1200px] mr-auto mb-32 ml-auto pr-4 pl-4 relative aura-animate-fade-up delay-500">
+      <!-- Glow behind dashboard -->
+      <div
+        class="-inset-1 transition-all duration-700 group-hover:opacity-50 group-hover:duration-300 group-hover:blur-2xl bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 opacity-20 rounded-[1.6rem] absolute blur-xl"
+        style="background-size: 200% 200%; animation: aura-gradient-move 4s ease infinite;">
+        <style>
+          @keyframes aura-gradient-move {
+            0% {
+              background-position: 0% 50%
+            }
+
+            50% {
+              background-position: 100% 50%
+            }
+
+            100% {
+              background-position: 0% 50%
+            }
+          }
+        </style>
+      </div>
+
+      <div
+        class="overflow-hidden bg-white border-gray-200/80 border rounded-3xl relative shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px]">
+        <!-- Browser Header -->
+        <div class="flex bg-[#F9FAFB] h-10 border-gray-200 border-b pr-4 pl-4 items-center justify-between">
+          <div class="flex gap-2">
+            <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+            <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+            <div class="w-3 h-3 rounded-full bg-slate-300"></div>
+          </div>
+          <div
+            class="bg-white border border-gray-200 px-3 py-0.5 rounded text-[11px] text-gray-400 flex items-center gap-1 font-sans font-medium"
+            style="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-lucide="lock"
+              class="lucide lucide-lock w-3 h-3">
+              <rect width="18" height="11" x="3" y="11" rx="2" ry="2"></rect>
+              <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+            </svg>
+            educhill.net
+          </div>
+          <div class="w-10"></div>
+          <!-- spacer -->
+        </div>
+
+        <!-- App Layout -->
+        <!-- App Layout -->
+        <div class="flex md:h-[600px] bg-white h-[700px] relative overflow-hidden" id="app-layout">
+          <style>
+            @keyframes float-pdf {
+              0% {
+                transform: translateY(0px) translateX(-50%);
+              }
+
+              50% {
+                transform: translateY(-10px) translateX(-50%);
+              }
+
+              100% {
+                transform: translateY(0px) translateX(-50%);
+              }
+            }
+
+            .animate-float-centered {
+              animation: float-pdf 3s ease-in-out infinite;
+            }
+          </style>
+
+          <!-- Sidebar -->
+          <aside class="hidden md:flex flex-col bg-[#FCFCFD] w-64 border-gray-100 border-r p-5 z-20">
+            <div class="flex items-center gap-3 mb-8">
+              <div
+                class="w-8 h-8 rounded-lg bg-indigo-600 flex items-center justify-center text-white font-bold shadow-md shadow-indigo-200">
+                E</div>
+              <div>
+                <div class="text-sm text-slate-900 font-bold">Educhill</div>
+                <div class="text-xs text-slate-500">Teacher Pro</div>
+              </div>
+            </div>
+
+            <nav class="space-y-1">
+              <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 bg-indigo-50 text-indigo-700 rounded-lg text-sm font-medium">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                  <line x1="12" y1="8" x2="12" y2="16"></line>
+                  <line x1="8" y1="12" x2="16" y2="12"></line>
+                </svg>
+                Import
+              </a>
+              <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                  <polyline points="14 2 14 8 20 8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                  <polyline points="10 9 9 9 8 9"></polyline>
+                </svg>
+                Assignments
+              </a>
+              <a href="#"
+                class="flex items-center gap-3 px-3 py-2.5 text-slate-600 hover:bg-gray-50 rounded-lg text-sm font-medium transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="20" x2="18" y2="10"></line>
+                  <line x1="12" y1="20" x2="12" y2="4"></line>
+                  <line x1="6" y1="20" x2="6" y2="14"></line>
+                </svg>
+                Analytics
+              </a>
+            </nav>
+
+            <div class="mt-auto">
+              <div class="bg-indigo-50/50 p-4 rounded-xl border border-indigo-100">
+                <p class="text-xs text-indigo-800 font-medium mb-1">Weekly Time Saved</p>
+                <p class="text-2xl font-bold text-indigo-600">4.5 hrs</p>
+              </div>
+            </div>
+          </aside>
+
+          <!-- Main Stage -->
+          <main class="flex-1 bg-white relative">
+
+            <!-- STAGE 1: IMPORT -->
+            <div id="stage-import"
+              class="absolute inset-0 flex flex-col items-center justify-center transition-all duration-700 bg-white z-10">
+              <div
+                class="w-[400px] h-[300px] border-2 border-dashed border-slate-200 rounded-2xl flex flex-col items-center justify-center bg-slate-50/50 group hover:border-indigo-400 hover:bg-indigo-50/10 transition-colors relative overflow-hidden">
+                <div class="absolute inset-0 bg-indigo-50/20 opacity-0 group-hover:opacity-100 transition-opacity">
+                </div>
+                <div
+                  class="w-16 h-16 bg-white rounded-full shadow-sm flex items-center justify-center mb-4 text-indigo-500 relative z-10">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                    <polyline points="17 8 12 3 7 8"></polyline>
+                    <line x1="12" y1="3" x2="12" y2="15"></line>
+                  </svg>
+                </div>
+                <p class="text-slate-600 font-medium relative z-10">Drop assignment PDF here</p>
+                <p class="text-slate-400 text-sm mt-1 relative z-10">or click to browse</p>
+              </div>
+
+              <!-- Floating PDF Icon (Animated via JS) -->
+              <div id="floating-pdf"
+                class="absolute top-1/2 left-[80%] bg-red-500 text-white w-12 h-16 rounded-lg shadow-xl flex items-center justify-center -translate-y-1/2 opacity-0 transform transition-all duration-1000 z-50">
+                <span class="font-bold text-xs">PDF</span>
+                <div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm">
+                  <svg class="w-3 h-3 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                      d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                  </svg>
+                </div>
+              </div>
+
+              <!-- Hand Cursor (Animated via JS) -->
+              <div id="hand-cursor"
+                class="absolute top-1/2 left-[80%] -translate-y-[40%] translate-x-4 w-8 h-8 opacity-0 transition-all duration-1000 z-50 pointer-events-none text-slate-800">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24" class="drop-shadow-lg">
+                  <path
+                    d="M7 19l4.4 2.2c1.1 0.6 2.5 0.3 3.1-0.8l5.5-10.7c0.2-0.5 0.1-1.1-0.4-1.3l-2.7-1.4c-0.5-0.2-1.1-0.1-1.3 0.4l-0.6 1.2v-6.6c0-0.6-0.4-1-1-1s-1 0.4-1 1v7h-1v-8c0-0.6-0.4-1-1-1s-1 0.4-1 1v8h-1v-6c0-0.6-0.4-1-1-1s-1 0.4-1 1v6h-3c-0.6 0-1 0.4-1 1v5l2.4 1.2z" />
+                </svg>
+              </div>
+            </div>
+
+            <!-- STAGE 2: PROCESSING (Hidden) -->
+            <div id="stage-processing"
+              class="absolute inset-0 flex flex-col items-center justify-center bg-white opacity-0 pointer-events-none transition-all duration-700 z-20">
+              <div class="relative w-24 h-24 mb-6">
+                <div class="absolute inset-0 border-4 border-indigo-100 rounded-full"></div>
+                <div class="absolute inset-0 border-4 border-indigo-600 rounded-full border-t-transparent animate-spin">
+                </div>
+                <div class="absolute inset-0 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-indigo-600 animate-pulse"
+                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                    stroke-linejoin="round">
+                    <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                    <polyline points="17 8 12 3 7 8" />
+                    <line x1="12" y1="3" x2="12" y2="15" />
+                  </svg>
+                </div>
+              </div>
+              <h3 class="text-xl font-medium text-slate-900 mb-2">Analyzing Document...</h3>
+              <p class="text-slate-500 font-medium" id="processing-text">Structuring questions</p>
+
+              <!-- AI Progress Lines -->
+              <div class="w-64 space-y-2 mt-4">
+                <div class="h-1 bg-gray-100 rounded-full overflow-hidden">
+                  <div class="h-full bg-indigo-500 w-0 animate-[loadProgress_2s_ease-out_forwards]"></div>
+                </div>
+                <div class="flex justify-between text-[10px] text-slate-400">
+                  <span>Scanning text</span>
+                  <span>Generating exercises</span>
+                </div>
+              </div>
+              <style>
+                @keyframes loadProgress {
+                  from {
+                    width: 0%;
+                  }
+
+                  to {
+                    width: 100%;
+                  }
+                }
+              </style>
+            </div>
+
+
+            <div id="stage-result"
+              class="absolute inset-0 flex flex-col bg-slate-50 opacity-0 pointer-events-none transition-all duration-700 z-10">
+              <!-- Header -->
+              <div class="h-16 bg-white border-b border-gray-100 flex items-center px-6 justify-between shrink-0">
+                <div class="flex items-center gap-3">
+                  <div class="w-8 h-8 rounded bg-indigo-100 flex items-center justify-center text-indigo-600">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>
+                  </div>
+                  <h2 class="font-medium text-slate-800">Review Generated Exercises</h2>
+                </div>
+                <button
+                  class="px-3 py-1.5 bg-indigo-600 text-white text-xs rounded-lg font-medium hover:bg-indigo-700 transition-colors shadow-sm">
+                  Publish to Class
+                </button>
+              </div>
+
+              <!-- Content: Exercise List -->
+              <div class="p-6 space-y-4 relative h-full">
+
+                <!-- Item 1: MCQ -->
+                <div id="exercise-item-1"
+                  class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4 transition-all duration-500 translate-y-4 opacity-0">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-orange-600 shrink-0 font-bold text-xs">
+                    MCQ
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-sm font-medium text-slate-800">Reading Comprehension Check</h4>
+                    <p class="text-xs text-slate-500 mt-1">5 Questions • Auto-graded</p>
+                  </div>
+                </div>
+
+                <!-- Item 2: Speaking (Focus for Config) -->
+                <div id="exercise-item-2"
+                  class="bg-white p-4 rounded-xl border-2 border-indigo-100 shadow-sm flex items-start gap-4 transition-all duration-500 delay-100 translate-y-4 opacity-0 relative overflow-visible group cursor-pointer hover:border-indigo-500 z-20">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-indigo-100 flex items-center justify-center text-indigo-600 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                      <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                      <line x1="12" y1="19" x2="12" y2="23" />
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-sm font-medium text-slate-800 group-hover:text-indigo-700 transition-colors">Unit 4
+                      Speaking Task</h4>
+                    <p class="text-xs text-slate-500 mt-1">AI Grading Enabled</p>
+                  </div>
+
+                  <!-- Config Popover (Animated) -->
+                  <div id="config-popover"
+                    class="absolute left-1/2 -translate-x-1/2 top-full mt-4 w-72 bg-white rounded-2xl shadow-xl border border-gray-100 p-4 opacity-0 scale-95 pointer-events-none transition-all duration-500 z-50 origin-top">
+                    <!-- Triangle -->
+                    <div
+                      class="absolute -top-2 left-1/2 -translate-x-1/2 w-4 h-4 bg-white border-t border-l border-gray-100 rotate-45">
+                    </div>
+
+                    <div class="flex items-center gap-2 mb-3">
+                      <div
+                        class="w-6 h-6 rounded-full bg-indigo-100 flex items-center justify-center text-[10px] font-bold text-indigo-700">
+                        AI</div>
+                      <span class="text-xs font-bold text-slate-700">Grading Configuration</span>
+                    </div>
+
+                    <div class="bg-slate-50 rounded-xl p-3 mb-3 h-16">
+                      <p id="typewriter-text" class="text-xs text-slate-600 font-medium leading-relaxed inline"></p>
+                      <span class="inline-block w-1.5 h-3 bg-indigo-500 animate-cursor-blink align-middle ml-0.5"
+                        id="cursor-blink"></span>
+                    </div>
+
+                    <button
+                      class="w-full py-1.5 bg-indigo-600 text-white rounded-lg text-xs font-medium hover:bg-indigo-700">Apply
+                      Rules</button>
+                  </div>
+                </div>
+
+                <!-- Item 3: Writing -->
+                <div id="exercise-item-3"
+                  class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm flex items-start gap-4 transition-all duration-500 delay-200 translate-y-4 opacity-0">
+                  <div
+                    class="w-8 h-8 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-600 shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                      <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                    </svg>
+                  </div>
+                  <div class="flex-1">
+                    <h4 class="text-sm font-medium text-slate-800">Essay: Cultural Differences</h4>
+                    <p class="text-xs text-slate-500 mt-1">Rubric: IELTS Task 2</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </main>
+        </div>
+
+        <script>
+          (function () {
+            // Animation Sequencing for Educhill
+            const stageImport = document.getElementById('stage-import');
+            const stageProcessing = document.getElementById('stage-processing');
+            const stageResult = document.getElementById('stage-result');
+
+            const floatingPdf = document.getElementById('floating-pdf');
+            const handCursor = document.getElementById('hand-cursor');
+
+            // Generated Items
+            const item1 = document.getElementById('exercise-item-1');
+            const item2 = document.getElementById('exercise-item-2');
+            const item3 = document.getElementById('exercise-item-3');
+            const configPopover = document.getElementById('config-popover');
+            const typewriterText = document.getElementById('typewriter-text');
+
+            function typeText(text, element, speed = 50) {
+              element.innerHTML = '';
+              let i = 0;
+              function type() {
+                if (i < text.length) {
+                  element.innerHTML += text.charAt(i);
+                  i++;
+                  setTimeout(type, speed);
+                }
+              }
+              type();
+            }
+
+            function runAnimation() {
+              // Reset
+              stageImport.style.opacity = '1';
+              stageImport.style.pointerEvents = 'auto';
+              stageProcessing.style.opacity = '0';
+              stageProcessing.style.pointerEvents = 'none';
+              stageResult.style.opacity = '0';
+              stageResult.style.pointerEvents = 'none';
+
+              // Pdf Reset
+              floatingPdf.style.opacity = '0';
+              floatingPdf.style.left = '80%';
+              floatingPdf.style.transform = 'translateY(-50%) rotate(0deg)';
+
+              // Cursor Reset
+              handCursor.style.opacity = '0';
+              handCursor.style.left = '80%';
+              handCursor.style.top = '50%';
+              handCursor.style.transform = 'translate(-40%, -40%) scale(1)';
+
+              // Items Reset
+              if (item1) { item1.classList.remove('opacity-100', 'translate-y-0'); item1.classList.add('opacity-0', 'translate-y-4'); }
+              if (item2) {
+                item2.classList.remove('opacity-100', 'translate-y-0', 'border-indigo-500');
+                item2.classList.add('opacity-0', 'translate-y-4', 'border-indigo-100');
+              }
+              if (item3) { item3.classList.remove('opacity-100', 'translate-y-0'); item3.classList.add('opacity-0', 'translate-y-4'); }
+
+              if (configPopover) {
+                configPopover.classList.remove('opacity-100', 'scale-100');
+                configPopover.classList.add('opacity-0', 'scale-95');
+              }
+              if (typewriterText) typewriterText.innerHTML = '';
+
+
+              // Step 1: Cursor appears
+              setTimeout(() => { handCursor.style.opacity = '1'; }, 1000);
+
+              // Step 2: Cursor Grabs PDF
+              setTimeout(() => {
+                floatingPdf.style.opacity = '1';
+                handCursor.style.transform = 'translate(-40%, -40%) scale(0.9)'; // Pinch
+              }, 2000);
+
+              // Step 3: Drag to center
+              setTimeout(() => {
+                handCursor.style.left = '50%';
+                handCursor.style.top = '50%';
+                floatingPdf.style.left = '50%';
+                floatingPdf.style.transform = 'translate(-50%, -50%) rotate(-5deg) scale(0.9)';
+              }, 2500);
+
+              // Step 4: Drop -> Explode/Load
+              setTimeout(() => {
+                handCursor.style.transform = 'translate(-40%, -40%) scale(1)'; // Release
+                floatingPdf.style.transform = 'translate(-50%, -50%) scale(0.8)';
+                floatingPdf.style.opacity = '0';
+                handCursor.style.opacity = '0'; // Hide cursor
+
+                // Show Processing
+                stageImport.style.opacity = '0';
+                stageProcessing.style.opacity = '1';
+              }, 3500);
+
+              // Step 5: Processing -> Result
+              setTimeout(() => {
+                stageProcessing.style.opacity = '0';
+                stageResult.style.opacity = '1';
+                stageResult.style.pointerEvents = 'auto';
+              }, 6000);
+
+              // Step 6: Reveal Items
+              setTimeout(() => {
+                item1.classList.remove('opacity-0', 'translate-y-4');
+                item1.classList.add('opacity-100', 'translate-y-0');
+              }, 6300);
+
+              setTimeout(() => {
+                item2.classList.remove('opacity-0', 'translate-y-4');
+                item2.classList.add('opacity-100', 'translate-y-0');
+              }, 6500);
+
+              setTimeout(() => {
+                item3.classList.remove('opacity-0', 'translate-y-4');
+                item3.classList.add('opacity-100', 'translate-y-0');
+              }, 6700);
+
+              // Step 7: Config Interaction
+              setTimeout(() => {
+                // Highlight Speaking Item
+                item2.classList.remove('border-indigo-100');
+                item2.classList.add('border-indigo-500');
+
+                // Show Popover
+                configPopover.classList.remove('opacity-0', 'scale-95');
+                configPopover.classList.add('opacity-100', 'scale-100');
+              }, 7500);
+
+              // Step 8: Type Text
+              setTimeout(() => {
+                typeText("Focus on clear pronunciation and intonation.", typewriterText, 40);
+              }, 8000);
+
+              // Loop
+              setTimeout(runAnimation, 14000);
+            }
+
+            // Start
+            setTimeout(runAnimation, 1000);
+          })();
+        </script>
+      </div>
+    </div>
+
+    <!-- STUDENT VIEW SECTION -->
+    <section class="w-full max-w-7xl mx-auto mb-32 px-4 pt-16">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <!-- Left: Text Context -->
+        <div>
+          <div
+            class="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 text-xs font-bold uppercase tracking-wider mb-6">
+            Student Experience
+          </div>
+          <h2 class="text-4xl lg:text-5xl font-newsreader text-slate-900 mb-6 leading-tight">
+            Immediate feedback. <br>
+            <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">No
+              waiting.</span>
+          </h2>
+          <p class="text-xl text-slate-500 mb-8 leading-relaxed font-sans font-medium">
+            Students get instant, AI-powered feedback on their speaking and writing. They learn faster from immediate
+            corrections, and you skip the grading weekend.
+          </p>
+
+          <ul class="space-y-4 mb-8">
+            <li class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mt-1 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-slate-700 font-medium">Pronunciation scoring & accent coaching</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mt-1 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-slate-700 font-medium">Grammar & vocabulary suggestions</span>
+            </li>
+            <li class="flex items-start gap-3">
+              <div
+                class="w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-600 mt-1 shrink-0">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              </div>
+              <span class="text-slate-700 font-medium">Aligned to IELTS, TOEFL, or custom rubrics</span>
+            </li>
+          </ul>
+
+          <a href="#" class="inline-flex items-center gap-2 text-indigo-600 font-bold hover:gap-3 transition-all">
+            See student demo <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Right: Animated Interface (Mac Browser Style) -->
+        <div class="relative group w-full max-w-[600px] mx-auto lg:mx-0">
+          <!-- Browser Frame -->
+          <div
+            class="bg-white rounded-2xl shadow-[0_20px_50px_-12px_rgba(0,0,0,0.1)] border border-gray-200 overflow-hidden relative z-10 transform transition-transform group-hover:scale-[1.01]">
+            <!-- Browser Header -->
+            <div class="h-10 bg-[#F9FAFB] border-b border-gray-200 flex items-center px-4 gap-4">
+              <div class="flex gap-1.5">
+                <div class="w-3 h-3 rounded-full bg-[#FF5F56] border border-[#E0443E]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#FFBD2E] border border-[#DEA123]"></div>
+                <div class="w-3 h-3 rounded-full bg-[#27C93F] border border-[#1AAB29]"></div>
+              </div>
+              <div
+                class="flex-1 max-w-[280px] h-6 bg-white border border-gray-200 rounded flex items-center justify-center gap-2 text-[10px] text-gray-400 font-medium">
+                <svg class="w-3 h-3 text-gray-300" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2">
+                  <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                  <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                </svg>
+                app.educhill.io/student/assignment
+              </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="relative h-[400px] bg-white p-6 font-sans">
+
+              <!-- STATE 1: SPEAKING -->
+              <div id="sv-state-speaking" class="absolute inset-0 p-8 flex flex-col transition-all duration-500">
+                <div class="flex items-center justify-between mb-8">
+                  <div>
+                    <span class="text-xs font-bold text-indigo-600 uppercase tracking-wider">Speaking Task</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">Talk about yourself</h3>
+                  </div>
+                  <div class="px-2 py-1 bg-gray-100 rounded text-xs font-mono text-gray-500">02:00</div>
+                </div>
+
+                <!-- Mic / Waveform Container -->
+                <div class="flex-1 flex flex-col items-center justify-center relative">
+                  <!-- Initial: Record Button with Ripple -->
+                  <div id="sv-mic-container" class="relative flex items-center justify-center">
+                    <div id="sv-mic-ripple-1" class="absolute w-full h-full rounded-full bg-red-100 opacity-0"></div>
+                    <div id="sv-mic-ripple-2" class="absolute w-full h-full rounded-full bg-red-50 opacity-0"></div>
+                    <div id="sv-mic-btn"
+                      class="w-16 h-16 rounded-full bg-red-500 text-white flex items-center justify-center shadow-lg hover:scale-105 transition-transform cursor-pointer relative z-10">
+                      <svg class="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+                      </svg>
+                    </div>
+                  </div>
+
+                  <!-- Active: Waveform (Hidden initially) -->
+                  <div id="sv-waveform" class="hidden w-full items-center justify-center gap-1 h-16">
+                    <span class="w-1.5 h-4 bg-indigo-400 rounded-full animate-[wave_0.5s_infinite]"></span>
+                    <span class="w-1.5 h-8 bg-indigo-500 rounded-full animate-[wave_0.6s_infinite]"></span>
+                    <span class="w-1.5 h-6 bg-indigo-400 rounded-full animate-[wave_0.4s_infinite]"></span>
+                    <span class="w-1.5 h-10 bg-indigo-600 rounded-full animate-[wave_0.7s_infinite]"></span>
+                    <span class="w-1.5 h-5 bg-indigo-400 rounded-full animate-[wave_0.5s_infinite]"></span>
+                    <span class="w-1.5 h-8 bg-indigo-500 rounded-full animate-[wave_0.6s_infinite]"></span>
+                  </div>
+                  <p id="sv-status-text" class="text-slate-400 font-medium mt-6 text-sm">Tap to record</p>
+                </div>
+
+                <button id="sv-submit-speaking"
+                  class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold opacity-50 cursor-not-allowed transition-all mt-auto">Submit
+                  Response</button>
+              </div>
+
+              <!-- STATE 2: WRITING (Hidden) -->
+              <div id="sv-state-writing"
+                class="absolute inset-0 p-8 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-x-8">
+                <div class="flex items-center justify-between mb-6">
+                  <div>
+                    <span class="text-xs font-bold text-emerald-600 uppercase tracking-wider">Writing Task</span>
+                    <h3 class="text-xl font-bold text-slate-800 mt-1">Write about your Dream</h3>
+                  </div>
+                </div>
+
+                <!-- Text Area Sim -->
+                <div
+                  class="flex-1 bg-slate-50 rounded-xl p-4 mb-4 border border-gray-100 font-sans text-slate-700 leading-relaxed text-sm relative">
+                  <p id="sv-typewriter-text" class="whitespace-pre-wrap inline"></p>
+                  <span
+                    class="w-0.5 h-4 bg-indigo-500 inline-block align-middle animate-cursor-blink ml-0.5 mb-1"></span>
+                </div>
+
+                <button id="sv-submit-writing" class="w-full py-3 bg-indigo-600 text-white rounded-xl font-bold">Submit
+                  Essay</button>
+              </div>
+
+              <!-- STATE 3: FEEDBACK (Generic for both) -->
+              <div id="sv-state-feedback"
+                class="absolute inset-0 p-6 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-y-4">
+                <div class="flex items-center gap-3 mb-6">
+                  <div
+                    class="w-10 h-10 rounded-full bg-green-100 flex items-center justify-center text-green-600 font-bold text-lg">
+                    A</div>
+                  <div>
+                    <h3 class="text-lg font-bold text-slate-900 leading-none">Detailed AI Feedback</h3>
+                    <span
+                      class="inline-block mt-1 text-[10px] font-bold text-white bg-green-500 px-1.5 py-0.5 rounded shadow-sm tracking-wide">INSTANT
+                      ANALYSIS</span>
+                  </div>
+                </div>
+
+                <div class="space-y-3 flex-1 overflow-y-auto pr-1 custom-scrollbar">
+                  <!-- Detailed Comment Box -->
+                  <div
+                    class="bg-indigo-50/50 border border-indigo-100 p-4 rounded-xl text-sm leading-relaxed text-slate-700">
+                    <div class="flex items-center gap-2 mb-2">
+                      <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                          d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H6l-2 2V4h16v12z" />
+                      </svg>
+                      <span class="font-bold text-indigo-900 text-xs uppercase tracking-wide">AI Assessment</span>
+                    </div>
+                    <p id="sv-feedback-comment">Great use of vocabulary! Your pronunciation of "fascinated" was clear.
+                      Try to improve your pacing in the second sentence.</p>
+                  </div>
+
+                  <!-- Score Card 1 -->
+                  <div
+                    class="bg-white border border-slate-100 p-3 rounded-xl flex items-center justify-between opacity-0 transition-all duration-500 translate-y-2"
+                    id="sv-score-1">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center">
+                        <svg id="sv-score-icon-1" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                      </div>
+                      <span class="font-bold text-slate-700 text-sm" id="sv-score-label-1">Fluency</span>
+                    </div>
+                    <span class="font-bold text-indigo-600" id="sv-score-val-1">92/100</span>
+                  </div>
+
+                  <!-- Score Card 2 -->
+                  <div
+                    class="bg-white border border-slate-100 p-3 rounded-xl flex items-center justify-between opacity-0 transition-all duration-500 translate-y-2 delay-100"
+                    id="sv-score-2">
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center">
+                        <svg id="sv-score-icon-2" class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                      </div>
+                      <span class="font-bold text-slate-700 text-sm" id="sv-score-label-2">Vocabulary</span>
+                    </div>
+                    <span class="font-bold text-emerald-600" id="sv-score-val-2">88/100</span>
+                  </div>
+                </div>
+
+                <div class="mt-4">
+                  <div class="h-1 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div id="sv-feedback-progress" class="h-full bg-indigo-500 w-0"></div>
+                  </div>
+                  <div class="text-[10px] text-center text-gray-400 mt-2" id="sv-feedback-footer">Next task starting in
+                    3s...</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Decorative Glow -->
+          <div class="absolute top-10 left-10 w-full h-full bg-indigo-500/20 rounded-full blur-3xl -z-10"></div>
+        </div>
+
+        <style>
+          @keyframes ripple {
+            0% {
+              transform: scale(1);
+              opacity: 0.8;
+            }
+
+            100% {
+              transform: scale(2.5);
+              opacity: 0;
+            }
+          }
+
+          .animate-ripple {
+            animation: ripple 2s infinite ease-out;
+          }
+
+          .delay-700 {
+            animation-delay: 0.7s;
+          }
+
+          @keyframes wave {
+
+            0%,
+            0%,
+            100% {
+              height: 10%;
+            }
+
+            50% {
+              height: 100%;
+            }
+          }
+
+          @keyframes loadProgress {
+            0% {
+              width: 0%;
+            }
+
+            100% {
+              width: 100%;
+            }
+          }
+
+          @keyframes cursor-blink {
+
+            0%,
+            100% {
+              opacity: 1;
+            }
+
+            50% {
+              opacity: 0;
+            }
+          }
+
+          .animate-cursor-blink {
+            animation: cursor-blink 1s step-end infinite;
+          }
+        </style>
+
+        <script>
+
+          (function () {
+            // Student View Animation Logic
+            const stateSpeaking = document.getElementById('sv-state-speaking');
+            const stateWriting = document.getElementById('sv-state-writing');
+            const stateFeedback = document.getElementById('sv-state-feedback');
+
+            // Elements - Speaking
+            const micBtn = document.getElementById('sv-mic-btn');
+            const micRipple1 = document.getElementById('sv-mic-ripple-1');
+            const micRipple2 = document.getElementById('sv-mic-ripple-2');
+            const waveform = document.getElementById('sv-waveform');
+            const statusText = document.getElementById('sv-status-text');
+            const submitSpeaking = document.getElementById('sv-submit-speaking');
+
+            // Elements - Writing
+            const typewriterText = document.getElementById('sv-typewriter-text');
+            const submitWriting = document.getElementById('sv-submit-writing');
+
+            // Elements - Feedback
+            const feedbackComment = document.getElementById('sv-feedback-comment');
+            const scoreLabel1 = document.getElementById('sv-score-label-1');
+            const scoreVal1 = document.getElementById('sv-score-val-1');
+            const scoreLabel2 = document.getElementById('sv-score-label-2');
+            const scoreVal2 = document.getElementById('sv-score-val-2');
+            const feedbackFooter = document.getElementById('sv-feedback-footer');
+            const feedbackProgress = document.getElementById('sv-feedback-progress');
+
+            // Score Cards
+            const scoreCard1 = document.getElementById('sv-score-1');
+            const scoreCard2 = document.getElementById('sv-score-2');
+
+
+            const typingContent = "One of my biggest dreams is to travel to space. I have always been fascinated by the stars...";
+
+            // Helper to transition states
+            function switchState(hide, show) {
+              hide.classList.add('opacity-0', 'pointer-events-none');
+              hide.classList.remove('opacity-100', 'pointer-events-auto');
+
+              // Determine slide direction based on sequence
+              if (hide === stateSpeaking) hide.classList.add('-translate-x-8');
+              if (hide === stateWriting) hide.classList.add('-translate-x-8');
+              if (hide === stateFeedback) hide.classList.add('translate-y-4'); // Reset position
+
+              show.classList.remove('opacity-0', 'translate-x-8', 'translate-y-4', '-translate-x-8', 'pointer-events-none');
+              show.classList.add('opacity-100', 'translate-x-0', 'translate-y-0', 'pointer-events-auto');
+            }
+
+            function resetAll() {
+              // Reset Speaking
+              stateSpeaking.className = "absolute inset-0 p-8 flex flex-col transition-all duration-500 opacity-100 translate-x-0 pointer-events-auto";
+              stateWriting.className = "absolute inset-0 p-8 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-x-8";
+              stateFeedback.className = "absolute inset-0 p-6 flex flex-col bg-white opacity-0 pointer-events-none transition-all duration-500 translate-y-4";
+
+              micBtn.style.display = 'flex';
+              micBtn.style.transform = 'scale(1)';
+              micRipple1.classList.remove('animate-ripple');
+              micRipple2.classList.remove('animate-ripple');
+              waveform.classList.add('hidden');
+              waveform.classList.remove('flex');
+              statusText.innerText = "Tap to record";
+              statusText.classList.remove('text-indigo-500', 'animate-pulse');
+              submitSpeaking.classList.add('opacity-50', 'cursor-not-allowed');
+
+              typewriterText.textContent = "";
+            }
+
+            async function wait(ms) { return new Promise(r => setTimeout(r, ms)); }
+
+            async function runSequence() {
+              while (true) {
+                // --- PHASE 1: SPEAKING ---
+                resetAll();
+                await wait(1000);
+
+                // User Clicks Record
+                micBtn.style.transform = "scale(0.9)";
+                await wait(200);
+                micBtn.style.display = 'none';
+                waveform.classList.remove('hidden');
+                waveform.classList.add('flex');
+                micRipple1.classList.add('animate-ripple');
+                micRipple2.classList.add('animate-ripple');
+                statusText.innerText = "Recording...";
+                statusText.classList.add('text-indigo-500', 'animate-pulse');
+
+                await wait(2000); // Recording duration
+                submitSpeaking.classList.remove('opacity-50', 'cursor-not-allowed');
+
+                await wait(1000); // Wait before submit
+
+                // User Clicks Submit
+                submitSpeaking.style.transform = "scale(0.95)";
+                await wait(150);
+                submitSpeaking.style.transform = "scale(1)";
+
+                // --- PHASE 2: SPEAKING FEEDBACK ---
+                // Setup Feedback Data
+                feedbackComment.innerHTML = 'Great fluency! Your pronunciation of <strong>"fascinated"</strong> was clear. Try to improve pacing in deep explanations.';
+                scoreLabel1.innerText = "Fluency"; scoreVal1.innerText = "92/100";
+                scoreLabel2.innerText = "Pronunciation"; scoreVal2.innerText = "89/100";
+                feedbackFooter.innerText = "Next task: Writing...";
+
+                // Hide Cards for Animation
+                scoreCard1.classList.add('opacity-0', 'translate-y-2');
+                scoreCard2.classList.add('opacity-0', 'translate-y-2');
+                feedbackProgress.style.animation = 'none'; // Reset animation
+
+                switchState(stateSpeaking, stateFeedback);
+
+                // Animate Cards In
+                await wait(300); scoreCard1.classList.remove('opacity-0', 'translate-y-2');
+                await wait(200); scoreCard2.classList.remove('opacity-0', 'translate-y-2');
+
+                // Progress Bar
+                feedbackProgress.style.width = '0%';
+                void feedbackProgress.offsetWidth; // Force reflow
+                feedbackProgress.style.animation = 'loadProgress 4s linear forwards';
+
+                await wait(4500); // Read Feedback Time
+
+                // --- PHASE 3: WRITING ---
+                switchState(stateFeedback, stateWriting);
+
+                // Clear content to prevent flash
+                setTimeout(() => {
+                  feedbackComment.innerHTML = "";
+                  scoreVal1.innerHTML = "";
+                  scoreVal2.innerHTML = "";
+                }, 500); // Wait for fade out
+
+                await wait(800);
+
+                // Typing Effect
+                let currentText = "";
+                for (let i = 0; i < typingContent.length; i++) {
+                  currentText += typingContent[i];
+                  typewriterText.textContent = currentText;
+                  await wait(30); // Fast typing
+                }
+
+                await wait(1000);
+
+                // Submit Writing
+                submitWriting.style.transform = "scale(0.95)";
+                await wait(150);
+                submitWriting.style.transform = "scale(1)";
+
+                // --- PHASE 4: WRITING FEEDBACK ---
+                // Setup Feedback Data
+                feedbackComment.innerHTML = 'Strong vocabulary usage. Consider using transitional phrases like <strong>"Furthermore"</strong> to connect ideas smoothly.';
+                scoreLabel1.innerText = "Grammar"; scoreVal1.innerText = "95/100";
+                scoreLabel2.innerText = "Coherence"; scoreVal2.innerText = "85/100";
+                feedbackFooter.innerText = "Restarting demo...";
+
+                // Hide Cards
+                scoreCard1.classList.add('opacity-0', 'translate-y-2');
+                scoreCard2.classList.add('opacity-0', 'translate-y-2');
+                feedbackProgress.style.animation = 'none';
+
+                switchState(stateWriting, stateFeedback);
+
+                // Animate Cards In
+                await wait(300); scoreCard1.classList.remove('opacity-0', 'translate-y-2');
+                await wait(200); scoreCard2.classList.remove('opacity-0', 'translate-y-2');
+
+
+                feedbackProgress.style.width = '0%';
+                void feedbackProgress.offsetWidth;
+                feedbackProgress.style.animation = 'loadProgress 4s linear forwards';
+
+                await wait(4500);
+              }
+            }
+
+
+
+
+
+            runSequence(); // Start the 4-stage loop
+
+          })();
+        </script>
+      </div>
+    </section>
+
+    <!-- NEW FEATURE SECTION -->
+    <section class="w-full max-w-7xl mx-auto mb-24 px-4">
+      <!-- Section Header -->
+      <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 px-4">
+        <div class="max-w-2xl">
+          <div class="flex items-center gap-3 mb-6 scroll-enter">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">
+              01
+            </span>
+            <span class="h-px w-20 bg-gradient-to-r to-transparent from-indigo-200"></span>
+          </div>
+          <h2 class="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-newsreader scroll-enter delay-100">
+            Features built for modern teaching
+          </h2>
+          <p class="text-xl text-slate-500 leading-relaxed font-sans font-medium scroll-enter delay-200">
+            Everything you need to manage your classroom efficiently. From automated grading to detailed student
+            analytics.
+          </p>
+        </div>
+      </div>
+
+      <!-- Bento Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-x-6 gap-y-6">
+        <!-- Card 1: Interactive Exercises (Previously Velocity) -->
+        <div
+          class="feature-card flex flex-col transition-all duration-700 ease-out bg-white border-gray-100 border rounded-3xl p-8 shadow-sm gap-8 scroll-enter group hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                <line x1="12" y1="19" x2="12" y2="23" />
+                <line x1="8" y1="23" x2="16" y2="23" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-medium text-slate-900">Speaking & Writing</h3>
+              <p class="text-slate-500 mt-1 font-sans font-medium">Auto-graded oral and written assignments.</p>
+            </div>
+          </div>
+
+          <div
+            class="bg-indigo-50/30 rounded-2xl p-6 border border-indigo-100 relative overflow-hidden h-48 flex items-center justify-center">
+            <!-- Waveform visual -->
+            <div class="flex items-center gap-1 h-20">
+              <div class="w-2 bg-indigo-400 rounded-full h-8 animate-pulse"></div>
+              <div class="w-2 bg-indigo-500 rounded-full h-12 animate-pulse delay-75"></div>
+              <div class="w-2 bg-indigo-600 rounded-full h-16 animate-pulse delay-150"></div>
+              <div class="w-2 bg-indigo-500 rounded-full h-10 animate-pulse delay-200"></div>
+              <div class="w-2 bg-indigo-400 rounded-full h-6 animate-pulse delay-300"></div>
+            </div>
+            <div
+              class="absolute bottom-4 right-4 bg-white px-3 py-1 rounded-full text-xs font-bold text-emerald-600 shadow-sm border border-emerald-100 flex items-center gap-1">
+              <svg class="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+              </svg>
+              Pronunciation: 95%
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Teacher Analytics (Previously Pipeline) -->
+        <div
+          class="feature-card flex flex-col transition-all duration-700 ease-out bg-white border-gray-100 border rounded-3xl p-8 shadow-sm gap-8 scroll-enter delay-100 group hover:shadow-xl hover:-translate-y-1">
+          <div class="flex items-start gap-4">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-200">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18" />
+                <path d="M18.7 8l-5.1 5.2-2.8-2.7L7 14.3" />
+              </svg>
+            </div>
+            <div>
+              <h3 class="text-2xl font-medium tracking-tight text-slate-900">Student Progress</h3>
+              <p class="text-slate-500 mt-1 font-sans font-medium">Identify struggling students early.</p>
+            </div>
+          </div>
+
+          <!-- Mini Chart visual -->
+          <div class="bg-indigo-50/30 rounded-2xl p-6 border border-indigo-100 h-48 relative">
+            <div class="flex items-end justify-between h-32 px-4 pb-2 border-b border-indigo-200 border-dashed">
+              <div class="w-8 bg-indigo-200 rounded-t-lg h-[40%] group-hover:h-[50%] transition-all duration-1000">
+              </div>
+              <div
+                class="w-8 bg-indigo-300 rounded-t-lg h-[60%] group-hover:h-[70%] transition-all duration-1000 delay-100">
+              </div>
+              <div
+                class="w-8 bg-indigo-400 rounded-t-lg h-[50%] group-hover:h-[85%] transition-all duration-1000 delay-200">
+              </div>
+              <div
+                class="w-8 bg-indigo-500 rounded-t-lg h-[75%] group-hover:h-[90%] transition-all duration-1000 delay-300">
+              </div>
+              <div
+                class="w-8 bg-indigo-600 rounded-t-lg h-[85%] group-hover:h-[95%] transition-all duration-1000 delay-400 relative">
+                <span
+                  class="absolute -top-6 left-1/2 -translate-x-1/2 text-xs font-bold text-indigo-700 opacity-0 group-hover:opacity-100 transition-opacity delay-500">A+</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Magic Import (Replacing Seamless Collab) - Full Width -->
+        <div
+          class="lg:col-span-2 feature-card flex flex-col md:flex-row transition-all duration-700 ease-out bg-white border-gray-100 border rounded-3xl p-8 shadow-sm gap-8 scroll-enter group hover:shadow-xl hover:-translate-y-1">
+          <div class="flex-1">
+            <div
+              class="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-200 mb-6">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                <polyline points="14 2 14 8 20 8" />
+                <line x1="16" y1="13" x2="8" y2="13" />
+                <line x1="16" y1="17" x2="8" y2="17" />
+                <polyline points="10 9 9 9 8 9" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-medium tracking-tight text-slate-900">Result to Quiz in Seconds</h3>
+            <p class="text-slate-500 mt-2 font-sans font-medium text-lg max-w-md">
+              Upload any PDF, Word doc, or image. Educhill extracts the content and creates interactive exercises
+              automatically.
+            </p>
+            <button
+              class="mt-8 px-5 py-2.5 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-800 transition-colors">
+              Try it for free
+            </button>
+          </div>
+          <div
+            class="flex-1 bg-slate-50 rounded-2xl border border-gray-100 relative overflow-hidden h-64 md:h-auto flex items-center justify-center p-8">
+            <!-- PDF to Quiz Animation Visual -->
+            <div class="relative w-full h-full flex items-center justify-center">
+              <div
+                class="absolute left-10 w-24 h-32 bg-white border border-gray-200 shadow-sm rounded-lg flex flex-col items-center justify-center z-10 group-hover:translate-x-12 group-hover:opacity-0 transition-all duration-700">
+                <span class="text-xs font-bold text-slate-400">PDF</span>
+              </div>
+
+              <div
+                class="w-10 h-10 rounded-full bg-indigo-500 text-white flex items-center justify-center z-20 shadow-lg relative">
+                <svg class="w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+                  <path class="opacity-75" fill="currentColor"
+                    d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+                  </path>
+                </svg>
+              </div>
+
+              <div
+                class="absolute right-10 w-64 bg-white border border-indigo-100 shadow-lg rounded-xl p-4 z-10 opacity-0 transform translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-700 delay-300">
+                <div class="h-2 w-1/3 bg-indigo-100 rounded mb-2"></div>
+                <div class="h-2 w-2/3 bg-slate-100 rounded mb-4"></div>
+                <div class="flex gap-2">
+                  <div class="h-8 w-8 rounded-full bg-indigo-50"></div>
+                  <div class="flex-1 h-8 bg-slate-50 rounded"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="w-full max-w-7xl mx-auto mb-32 px-4 overflow-hidden md:overflow-visible">
+      <div class="flex flex-col md:flex-row gap-6 mb-16 px-4 items-end justify-between">
+        <div class="max-w-2xl scroll-enter">
+          <div class="flex items-center gap-3 mb-6">
+            <span
+              class="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">
+              02
+            </span>
+            <span class="h-px w-20 bg-gradient-to-r from-orange-200 to-transparent"></span>
+          </div>
+          <h2 class="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-newsreader tracking-tight">
+            Trusted by modern educators
+          </h2>
+          <p class="text-xl text-slate-500 leading-relaxed font-sans font-medium">
+            Join thousands of teachers who are saving 10+ hours a week with Educhill.
+          </p>
+        </div>
+      </div>
+
+      <div
+        class="flex flex-col md:block md:h-[650px] w-full max-w-[1200px] mx-auto py-12 px-4 relative perspective-distant group/container scroll-enter delay-200"
+        id="testimonials-container">
+        <!-- Background Glow -->
+        <div
+          class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/4 h-3/4 bg-gradient-to-tr via-purple-50/40 to-blue-50/40 blur-[100px] rounded-full -z-10 pointer-events-none opacity-0 md:opacity-100 transition-opacity duration-700 from-indigo-100/40">
+        </div>
+
+        <!-- Navigation Arrows -->
+        <div class="hidden md:flex absolute bottom-8 left-1/2 -translate-x-1/2 gap-6 z-40">
+          <button onclick="handleTestimonialSwipe(-1)"
+            class="w-14 h-14 rounded-full border flex items-center justify-center transition-all duration-300 bg-white shadow-sm hover:scale-105 active:scale-95 text-slate-600 hover:text-slate-900 hover:border-slate-300">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+              <path d="m15 18-6-6 6-6"></path>
+            </svg>
+          </button>
+          <button onclick="handleTestimonialSwipe(1)"
+            class="w-14 h-14 rounded-full border border-orange-500/30 flex items-center justify-center hover:bg-orange-50 hover:border-orange-500 transition-all duration-300 bg-white shadow-sm hover:scale-105 active:scale-95 text-indigo-500 hover:text-orange-500">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+              <path d="m9 18 6-6-6-6"></path>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Card 1: Sarah (Initial Left) -->
+        <div id="testimonial-card-1"
+          class="transition-all duration-700 ease-out md:absolute md:top-1/2 md:left-1/2 w-full bg-white border border-slate-100 p-8 shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px] md:w-[400px] md:-translate-x-[125%] md:-translate-y-[60%] md:-rotate-[6deg] md:scale-[0.9] z-10 hover:z-20 rounded-[2rem] opacity-100 mb-6 md:mb-0">
+          <div class="flex items-center gap-1 mb-6 text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+          </div>
+          <blockquote class="leading-relaxed text-lg text-slate-800 mb-8 font-sans font-medium">
+            "Educhill has completely transformed how I grade essays. The feedback is instant, detailed, and my students
+            love it."
+          </blockquote>
+          <div class="flex items-center gap-4 pt-4 border-t border-gray-50">
+            <div
+              class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 text-sm ring-4 ring-white shadow-sm font-sans font-medium">
+              SJ
+            </div>
+            <div>
+              <div class="text-sm text-slate-900 font-sans font-medium">
+                Sarah J.
+              </div>
+              <div class="text-xs text-slate-500 font-sans font-medium">
+                CTO at TechFlow
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Michael (Initial Center) -->
+        <div id="testimonial-card-2"
+          class="transition-all duration-700 ease-out md:absolute md:top-1/2 md:left-1/2 w-full bg-white border border-gray-100 p-10 shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px] md:w-[460px] md:-translate-x-1/2 md:-translate-y-[65%] md:rotate-0 md:scale-100 z-30 rounded-[2.5rem] opacity-100 mb-6 md:mb-0">
+          <div
+            class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-400 to-transparent opacity-20">
+          </div>
+          <div class="flex items-center justify-between mb-8">
+            <div class="flex items-center gap-1.5 text-orange-500">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                class="w-5 h-5 drop-shadow-sm">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                class="w-5 h-5 drop-shadow-sm">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                class="w-5 h-5 drop-shadow-sm">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                class="w-5 h-5 drop-shadow-sm">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"
+                class="w-5 h-5 drop-shadow-sm">
+                <polygon
+                  points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+                </polygon>
+              </svg>
+            </div>
+            <span
+              class="px-3 py-1 rounded-full bg-indigo-50 text-indigo-600 text-xs uppercase border border-indigo-100 font-sans font-medium">
+              Featured
+            </span>
+          </div>
+          <blockquote class="text-[1.35rem] text-slate-900 mb-10 leading-snug font-newsreader">
+            "The feature flags integration is a game changer. We can test on
+            production with zero anxiety."
+          </blockquote>
+          <div class="flex items-center gap-5 pt-6 border-t border-gray-100">
+            <div class="relative">
+              <div
+                class="w-14 h-14 rounded-full bg-slate-100 flex items-center justify-center text-slate-600 text-base ring-4 shadow-md font-sans font-medium">
+                MK
+              </div>
+              <div class="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-[3px] border-white">
+              </div>
+            </div>
+            <div>
+              <div class="text-base text-slate-900 font-sans font-medium">
+                Michael Klein
+              </div>
+              <div class="text-sm text-slate-500 font-sans font-medium">
+                Lead Engineer at Vercel
+              </div>
+            </div>
+            <div class="ml-auto md:opacity-100 opacity-0 transition-opacity">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"
+                class="text-gray-200">
+                <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path>
+                <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Emily (Initial Right) -->
+        <div id="testimonial-card-3"
+          class="transition-all duration-700 ease-out md:absolute md:top-1/2 md:left-1/2 w-full bg-white border border-slate-100 p-8 shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px] md:w-[400px] md:translate-x-[25%] md:-translate-y-[60%] md:rotate-[6deg] md:scale-[0.9] z-10 hover:z-20 rounded-[2rem] opacity-100 mb-6 md:mb-0">
+          <div class="flex items-center gap-1 mb-6 text-indigo-400">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="currentColor"
+              class="w-4 h-4 text-orange-400">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2">
+              </polygon>
+            </svg>
+          </div>
+          <blockquote class="leading-relaxed text-lg text-slate-800 mb-8 font-sans font-medium">
+            "Simply the best tool for tracking velocity. It helped us identify
+            bottlenecks we didn't know existed."
+          </blockquote>
+          <div class="flex items-center gap-4 pt-4 border-t border-gray-50">
+            <div
+              class="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center text-slate-500 text-sm ring-4 ring-white shadow-sm font-sans font-medium">
+              EL
+            </div>
+            <div>
+              <div class="text-sm text-slate-900 font-sans font-medium">
+                Emily Liu
+              </div>
+              <div class="text-xs text-slate-500 font-sans font-medium">
+                VP Eng at Stripe
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // Configuration: [LeftCard, CenterCard, RightCard]
+          // Corresponds to Position 0, Position 1, Position 2
+          const cardIds = ['testimonial-card-1', 'testimonial-card-2', 'testimonial-card-3'];
+
+          // Store references
+          const cards = cardIds.map(id => document.getElementById(id));
+
+          // Define styles for each position
+          // Pos 0: Left
+          const pos0 = "md:w-[400px] md:-translate-x-[125%] md:-translate-y-[60%] md:-rotate-[6deg] md:scale-[0.9] z-10 hover:z-20 opacity-100 rounded-[2rem]";
+          // Pos 1: Center
+          const pos1 = "md:w-[460px] md:-translate-x-1/2 md:-translate-y-[65%] md:rotate-0 md:scale-100 z-30 opacity-100 rounded-[2.5rem] shadow-2xl";
+          // Pos 2: Right
+          const pos2 = "md:w-[400px] md:translate-x-[25%] md:-translate-y-[60%] md:rotate-[6deg] md:scale-[0.9] z-10 hover:z-20 opacity-100 rounded-[2rem]";
+
+          // Base classes for all
+          const baseClasses = "transition-all duration-700 ease-out md:absolute md:top-1/2 md:left-1/2 w-full bg-white border border-slate-100 shadow-[rgba(255,_255,_255,_0.1)_0px_1px_1px_0px_inset,_rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px] mb-6 md:mb-0";
+
+          // Helper to update classes
+          function updateCardClasses() {
+            // Card at index 0 gets pos0 (Left)
+            // Card at index 1 gets pos1 (Center)
+            // Card at index 2 gets pos2 (Right)
+
+            // Note: The Center card (index 1) has specific internal styling like 'border-gray-100' instead of 'border-slate-100'
+            // and bigger padding 'p-10' vs 'p-8'.
+            // We will swap these basic structural classes too to ensure smooth emphasis.
+
+            cards.forEach((card, index) => {
+              let specificClasses = "";
+              let paddingClasses = "";
+              let borderClasses = "";
+
+              if (index === 0) { // Left Position
+                specificClasses = pos0;
+                paddingClasses = "p-8";
+                borderClasses = "border-slate-100";
+              } else if (index === 1) { // Center Position
+                specificClasses = pos1;
+                paddingClasses = "p-10"; // Larger padding for center
+                borderClasses = "border-gray-100";
+              } else { // Right Position
+                specificClasses = pos2;
+                paddingClasses = "p-8";
+                borderClasses = "border-slate-100";
+              }
+
+              card.className = `${baseClasses} ${specificClasses} ${paddingClasses} ${borderClasses}`;
+            });
+          }
+
+          window.handleTestimonialSwipe = function (direction) {
+            if (direction === 1) {
+              // Next (Right Arrow clicked):
+              // Flow is Right -> Center -> Left -> Right(Wrap)
+              // Array shift: [Left, Center, Right] -> [Center, Right, Left] is WRONG flow.
+              // Visual Flow: Item at Right(Pos2) moves to Center(Pos1).
+              // This means the item at Index 2 moves to Index 1.
+              // Item at Index 1 (Center) moves to Index 0 (Left).
+              // Item at Index 0 (Left) moves to Index 2 (Right).
+              // This operation is: Take First element, move to End.
+              // [A, B, C] -> [B, C, A]
+              // Old A (Pos0) -> becomes Pos2 (Right).
+              // Old B (Pos1) -> becomes Pos0 (Left).
+              // Old C (Pos2) -> becomes Pos1 (Center).
+
+              const first = cards.shift();
+              cards.push(first);
+            } else {
+              // Prev (Left Arrow clicked):
+              // Flow is Left -> Center -> Right -> Left(Wrap)
+              // Item at Left(Pos0) moves to Center(Pos1).
+              // [A, B, C] -> [C, A, B]
+              // Old C (Pos2) -> becomes Pos0 (Left).
+              // Old A (Pos0) -> becomes Pos1 (Center).
+              // Old B (Pos1) -> becomes Pos2 (Right).
+
+              const last = cards.pop();
+              cards.unshift(last);
+            }
+            updateCardClasses();
+          };
+        })();
+      </script>
+    </section>
+
+    <!-- CONTACT / ENTERPRISE SECTION -->
+    <section class="max-w-5xl mx-auto px-4 mb-24 text-center">
+      <div class="bg-indigo-900 rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
+        <!-- Background decoration -->
+        <div class="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
+          <div
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-indigo-500 rounded-full blur-[120px]">
+          </div>
+        </div>
+
+        <div class="relative z-10">
+          <span
+            class="inline-block py-1 px-3 rounded-full bg-indigo-800/50 border border-indigo-700 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
+            For Schools & Districts
+          </span>
+          <h2 class="text-4xl md:text-5xl font-newsreader mb-6 leading-tight">
+            Bring AI grading to your <br /> entire institution.
+          </h2>
+          <p class="text-lg text-indigo-200 mb-10 max-w-xl mx-auto font-sans leading-relaxed">
+            Empower your teachers with the tools they need to save time and focus on students. Custom integration,
+            training, and support included.
+          </p>
+
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              class="w-full sm:w-auto px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
+              Book a Demo
+            </button>
+            <button
+              class="w-full sm:w-auto px-8 py-4 bg-transparent border border-indigo-500 text-white rounded-full font-bold hover:bg-indigo-800 transition-colors">
+              Contact Sales
+            </button>
+          </div>
+
+          <div
+            class="mt-12 pt-8 border-t border-indigo-800/50 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-12 text-indigo-400 text-sm font-medium">
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              FERPA & COPPA Compliant
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z">
+                </path>
+              </svg>
+              SSO Integration
+            </div>
+            <div class="flex items-center gap-2">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M18.364 5.636l-3.536 3.536m0 5.656l3.536 3.536M9.172 9.172L5.636 5.636m3.536 9.192l-3.536 3.536M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-5 0a4 4 0 11-8 0 4 4 0 018 0z">
+                </path>
+              </svg>
+              Priority Support
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t pt-10 pb-10">
+    <div class="sm:px-6 lg:px-8 max-w-7xl mr-auto ml-auto pr-4 pl-4" style="">
+      <!-- CTA REMOVED -->
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
+        <!-- Brand Column -->
+        <div class="lg:col-span-4 pr-0 lg:pr-12 scroll-enter">
+          <a href="#"
+            class="inline-flex items-center justify-center bg-center w-[130px] h-[50px] bg-[url(https://cdn.midjourney.com/1236bb43-5d1e-478e-a588-0715b46dfd77/0_3.png?w=800&amp;q=80)] bg-cover rounded-full"></a>
+          <p class="text-slate-500 leading-relaxed text-base mb-8 max-w-sm font-sans font-medium" style="">
+            The intelligent platform for creating, grading, and tracking
+            assignments effortlessly.
+          </p>
+          <div class="flex items-center gap-5">
+            <a href="#" class="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="github" class="lucide lucide-github w-5 h-5">
+                <path
+                  d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4">
+                </path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+            </a>
+            <a href="#" class="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="twitter" class="lucide lucide-twitter w-5 h-5 fill-current">
+                <path
+                  d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z">
+                </path>
+              </svg>
+            </a>
+            <a href="#" class="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                data-lucide="linkedin" class="lucide lucide-linkedin w-5 h-5 fill-current">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect width="4" height="12" x="2" y="9"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <!-- Links Column 1 -->
+        <div class="lg:col-span-2 scroll-enter delay-100">
+          <h3 class="text-lg text-slate-900 mb-6 font-sans font-medium" style="">
+            Product
+          </h3>
+          <ul class="space-y-4">
+            <li>
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Features
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Methodology
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Integrations
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Pricing
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Links Column 2 -->
+        <div class="lg:col-span-2 scroll-enter delay-200">
+          <h3 class="text-lg text-slate-900 mb-6 font-sans font-medium" style="">
+            Resources
+          </h3>
+          <ul class="space-y-4">
+            <li class="">
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Documentation
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                API Reference
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Community
+              </a>
+            </li>
+            <li>
+              <a href="#" class="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium" style="">
+                Status
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Newsletter Column -->
+        <div class="lg:col-span-4 scroll-enter delay-300">
+          <div
+            class="bg-white rounded-[1.5rem] p-8 border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-lg transition-shadow">
+            <h3 class="text-xl text-slate-900 mb-3 font-sans font-medium" style="">
+              Subscribe to Engineering Weekly
+            </h3>
+            <p class="text-slate-500 mb-6 text-sm leading-relaxed font-sans font-medium" style="">
+              Get the latest updates on CI/CD trends, engineering metrics, and
+              release strategies.
+            </p>
+            <div class="relative group">
+              <input type="email" placeholder="Email address"
+                class="w-full pl-6 pr-36 py-4 bg-slate-50 border border-slate-100 rounded-full text-slate-900 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all">
+              <button
+                class="absolute right-1.5 top-1.5 bottom-1.5 bg-[#0F172A] text-white pl-5 pr-4 rounded-full hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-md font-sans font-medium"
+                style="">
+                Subscribe
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  data-lucide="arrow-right" class="lucide lucide-arrow-right w-4 h-4">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="pt-8 border-t border-slate-100 flex flex-col md:flex-row items-center justify-between gap-4 text-sm font-medium text-slate-500">
+        <p class="font-sans font-medium" style="">
+          Designed for teachers, by teachers.
+        </p>
+        <p class="font-sans font-medium" style="">
+          Copyright © Educhill. All Rights Reserved
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    lucide.createIcons();
+  </script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => { const o = new IntersectionObserver(e => { e.forEach(t => { t.isIntersecting && (t.target.classList.add("scroll-enter-active"), o.unobserve(t.target)) }) }, { threshold: .1, rootMargin: "0px 0px -50px 0px" }); document.querySelectorAll(".scroll-enter").forEach(e => o.observe(e)) });
+  </script>
+
+</body>
+
 </html>
