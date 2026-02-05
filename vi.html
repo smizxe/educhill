@@ -9,7 +9,7 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://unpkg.com/lucide@latest"></script>
+  <script defer src="https://unpkg.com/lucide@latest"></script>
   <style id="aura-editor-visibility-style">
     .invisible {
       visibility: hidden !important;
@@ -268,10 +268,20 @@ scaleY(var(--tw-scale-y, 1))
 
     .aura-animate-fade-up {
       animation: auraFadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-play-state: paused;
+    }
+
+    .aura-animate-fade-up.in-view {
+      animation-play-state: running;
     }
 
     .aura-animate-fade {
       animation: auraFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation-play-state: paused;
+    }
+
+    .aura-animate-fade.in-view {
+      animation-play-state: running;
     }
 
     .delay-100 {
@@ -849,6 +859,12 @@ scaleY(var(--tw-scale-y, 1))
             }
 
             function runAnimation() {
+              // Check if visible
+              if (window.isMockupVisible && !window.isMockupVisible()) {
+                setTimeout(runAnimation, 1000); // Check again in 1s
+                return;
+              }
+
               // Reset
               stageImport.style.opacity = '1';
               stageImport.style.pointerEvents = 'auto';
@@ -2474,7 +2490,42 @@ scaleY(var(--tw-scale-y, 1))
   </script>
 
   <script>
-    document.addEventListener("DOMContentLoaded", () => { const o = new IntersectionObserver(e => { e.forEach(t => { t.isIntersecting && (t.target.classList.add("scroll-enter-active"), o.unobserve(t.target)) }) }, { threshold: .1, rootMargin: "0px 0px -50px 0px" }); document.querySelectorAll(".scroll-enter").forEach(e => o.observe(e)) });
+    document.addEventListener("DOMContentLoaded", () => {
+      // 1. General Scroll Reveal (CSS Animations)
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("scroll-enter-active", "in-view");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      document.querySelectorAll(".scroll-enter, .aura-animate-fade-up, .aura-animate-fade").forEach(el => observer.observe(el));
+
+      // 2. Optimized Browser Mockup Animation (JS Loop)
+      // Only run the heavy JS animation when the element is actually in view
+      const mockupContainer = document.querySelector('.group.max-w-\\[1200px\\]');
+      if (mockupContainer) {
+        let isVisible = false;
+
+        const mockupObserver = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            isVisible = entry.isIntersecting;
+          });
+        }, { threshold: 0.1 });
+
+        mockupObserver.observe(mockupContainer);
+
+        // Expose visibility to the animation loop
+        window.isMockupVisible = () => isVisible;
+      } else {
+        window.isMockupVisible = () => true; // Fallback
+      }
+    });
   </script>
 
   <!-- Floating Language Switcher -->
@@ -2485,14 +2536,16 @@ scaleY(var(--tw-scale-y, 1))
       <!-- English -->
       <a href="/" class="flex items-center gap-3 px-3 py-2.5 rounded-xl hover:bg-slate-50 transition-colors mb-1">
         <div class="w-6 h-4 rounded-sm bg-slate-200 overflow-hidden relative shadow-sm">
-          <img src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover" alt="English">
+          <img loading="lazy" decoding="async" src="https://flagcdn.com/w40/gb.png" class="w-full h-full object-cover"
+            alt="English">
         </div>
         <span class="font-medium text-slate-700 text-sm flex-1">English</span>
       </a>
       <!-- Vietnamese (Active) -->
       <a href="/features" class="flex items-center gap-3 px-3 py-2.5 rounded-xl bg-slate-100/80 transition-colors">
         <div class="w-6 h-4 rounded-sm bg-slate-200 overflow-hidden relative shadow-sm">
-          <img src="https://flagcdn.com/w40/vn.png" class="w-full h-full object-cover" alt="Vietnamese">
+          <img loading="lazy" decoding="async" src="https://flagcdn.com/w40/vn.png" class="w-full h-full object-cover"
+            alt="Vietnamese">
         </div>
         <span class="font-medium text-slate-900 text-sm">Tiếng Việt</span>
         <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-slate-900" viewBox="0 0 24 24" fill="none"
