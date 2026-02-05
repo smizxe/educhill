@@ -121,44 +121,33 @@ button {
 }
 
 /* Apple Liquid Glass Text Effect - V2 (Stronger) */
-/* Apple Liquid Glass Text Effect - V2 (Fixed) */
+/* Apple Liquid Glass Text Effect - V4 (Vibrant for Light Mode) */
 .text-apple-glass-liquid {
   position: relative;
   display: inline-block;
-  /* Essential for proper gradient rendering */
   font-weight: 800;
-  color: #4F46E5;
-  /* Fallback color (Indigo) */
-  -webkit-text-fill-color: transparent;
-  /* Only make transparent if supported */
 
-  /* Base Gradient: Reflective Glass Surface */
-  background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.95) 0%,
-      /* Bright White Top */
-      rgba(165, 180, 252, 0.8) 45%,
-      /* Light Indigo */
-      rgba(79, 70, 229, 0.6) 48%,
-      /* Darker cut line */
-      rgba(67, 56, 202, 1) 52%,
-      /* Deep Indigo bottom half */
-      rgba(99, 102, 241, 0.9) 100%
-      /* Glow bottom */
+  /* Vibrant Gradient for Light Background visibility */
+  background: linear-gradient(135deg,
+      #3B82F6 0%,
+      /* Blue shine top */
+      #6366F1 45%,
+      /* Indigo Body */
+      #8B5CF6 60%,
+      /* Purple Depth */
+      #EC4899 100%
+      /* Pinkish Glow bottom */
     );
 
-  -webkit-background-clip: text !important;
-  background-clip: text !important;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 
-  /* Glass Edge / Outline */
-  -webkit-text-stroke: 0px;
-  /* Removed stroke as it can look messy on some screens */
+  /* Glass Edge - definition */
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
 
-  /* Glow & Shadow Depth */
-  filter:
-    drop-shadow(0 0 10px rgba(99, 102, 241, 0.6))
-    /* Glow */
-    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
-  /* Depth */
+  /* Soft colored glow */
+  filter: drop-shadow(0 4px 10px rgba(99, 102, 241, 0.4));
 
   z-index: 10;
 }
