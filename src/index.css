@@ -121,44 +121,44 @@ button {
 }
 
 /* Apple Liquid Glass Text Effect - V2 (Stronger) */
+/* Apple Liquid Glass Text Effect - V2 (Fixed) */
 .text-apple-glass-liquid {
   position: relative;
+  display: inline-block;
+  /* Essential for proper gradient rendering */
   font-weight: 800;
-  /* Thicker font for glass effect */
-  color: transparent !important;
-  /* Force transparency */
+  color: #4F46E5;
+  /* Fallback color (Indigo) */
+  -webkit-text-fill-color: transparent;
+  /* Only make transparent if supported */
 
   /* Base Gradient: Reflective Glass Surface */
   background: linear-gradient(180deg,
-      rgba(255, 255, 255, 0.9) 0%,
-      /* White highlight top */
-      rgba(165, 180, 252, 0.6) 25%,
+      rgba(255, 255, 255, 0.95) 0%,
+      /* Bright White Top */
+      rgba(165, 180, 252, 0.8) 45%,
       /* Light Indigo */
-      rgba(99, 102, 241, 0.1) 45%,
-      /* Transparent middle */
-      rgba(79, 70, 229, 0.4) 55%,
-      /* Darker Indigo */
-      rgba(129, 140, 248, 0.8) 80%,
-      /* Light Indigo reflection */
-      rgba(255, 255, 255, 1) 100%
-      /* White rim bottom */
+      rgba(79, 70, 229, 0.6) 48%,
+      /* Darker cut line */
+      rgba(67, 56, 202, 1) 52%,
+      /* Deep Indigo bottom half */
+      rgba(99, 102, 241, 0.9) 100%
+      /* Glow bottom */
     );
 
   -webkit-background-clip: text !important;
   background-clip: text !important;
 
   /* Glass Edge / Outline */
-  -webkit-text-stroke: 1.5px rgba(255, 255, 255, 0.6);
+  -webkit-text-stroke: 0px;
+  /* Removed stroke as it can look messy on some screens */
 
   /* Glow & Shadow Depth */
   filter:
-    drop-shadow(0 0 2px rgba(255, 255, 255, 0.8))
-    /* Crisp edge glow */
-    drop-shadow(0 0 15px rgba(99, 102, 241, 0.6))
-    /* Wide purple glow */
-    drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
-  /* Depth shadow */
+    drop-shadow(0 0 10px rgba(99, 102, 241, 0.6))
+    /* Glow */
+    drop-shadow(0 4px 6px rgba(0, 0, 0, 0.2));
+  /* Depth */
 
-  /* Ensure it sits on top */
   z-index: 10;
 }
