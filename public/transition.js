@@ -235,14 +235,14 @@ async function handleTransition(url, pushState = true) {
                 const scrollObserver = new IntersectionObserver(entries => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            entry.target.classList.add("scroll-enter-active");
+                            entry.target.classList.add("scroll-enter-active", "in-view");
                             scrollObserver.unobserve(entry.target);
                         }
                     });
                 }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
 
-                document.querySelectorAll(".scroll-enter").forEach(el => {
-                    el.classList.remove("scroll-enter-active"); // Reset state
+                document.querySelectorAll(".scroll-enter, .aura-animate-fade-up, .aura-animate-fade").forEach(el => {
+                    el.classList.remove("scroll-enter-active", "in-view"); // Reset state
                     scrollObserver.observe(el);
                 });
             });
