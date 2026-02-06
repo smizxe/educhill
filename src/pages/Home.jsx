@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { Hero } from '../components/Hero';
 import { StudentView } from '../components/StudentView';
 import { Features } from '../components/Features';
+import { StudentUI } from '../components/StudentUI';
 import { Pricing } from '../components/Pricing';
 import { Testimonials } from '../components/Testimonials';
 import { ContactFormSection } from '../components/ContactFormSection';
@@ -33,6 +34,7 @@ export const Home = () => {
             <Hero />
             <StudentView />
             <Features />
+            <StudentUI />
             <Pricing />
             <Testimonials />
             <ContactFormSection />
