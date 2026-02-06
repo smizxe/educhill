@@ -1,33 +1,8 @@
 {
     "rewrites": [
         {
-            "source": "/",
+            "source": "/(.*)",
             "destination": "/index.html"
-        },
-        {
-            "source": "/home",
-            "destination": "/index.html"
-        },
-        {
-            "source": "/about",
-            "destination": "/about-en.html"
-        },
-        {
-            "source": "/about-vn",
-            "destination": "/about-vn.html"
-        },
-        {
-            "source": "/contact",
-            "destination": "/contact-en.html"
-        },
-        {
-            "source": "/contact-vn",
-            "destination": "/contact-vn.html"
-        },
-        {
-            "source": "/features",
-            "destination": "/vi.html"
         }
-    ],
-    "cleanUrls": true
+    ]
 }
