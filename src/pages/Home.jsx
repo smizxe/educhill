@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import { homeContent } from '../data/homeContent';
 import { Hero } from '../components/Hero';
 import { StudentView } from '../components/StudentView';
 import { Features } from '../components/Features';
@@ -11,6 +12,8 @@ import { SEO } from '../components/SEO';
 
 export const Home = () => {
     const location = useLocation();
+    const lang = location.pathname.startsWith('/vi') ? 'vi' : 'en';
+    const content = homeContent[lang];
 
     useEffect(() => {
         if (location.hash) {
@@ -31,13 +34,13 @@ export const Home = () => {
                 canonical="https://educhill.net/"
             />
             {/* Ambient Background handles its own rendering in Layout */}
-            <Hero />
-            <StudentView />
-            <Features />
-            <StudentUI />
-            <Pricing />
-            <Testimonials />
-            <ContactFormSection />
+            <Hero content={content.hero} />
+            <StudentView content={content.studentView} />
+            <Features content={content.features} />
+            <StudentUI content={content.studentUI} />
+            <Pricing content={content.pricing} />
+            <Testimonials content={content.testimonials} />
+            <ContactFormSection content={content.contact} />
         </main>
     );
 };

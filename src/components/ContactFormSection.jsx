@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mail } from 'lucide-react';
 
-export const ContactFormSection = () => {
+export const ContactFormSection = ({ content }) => {
     return (
         <section className="max-w-4xl w-full mx-auto px-4 mb-24 text-center">
             <div className="bg-indigo-900 rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
@@ -12,33 +12,33 @@ export const ContactFormSection = () => {
 
                 <div className="relative z-10 max-w-2xl mx-auto">
                     <span className="inline-block py-1 px-3 rounded-full bg-indigo-800/50 border border-indigo-700 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
-                        Get in Touch
+                        {content.badge}
                     </span>
                     <h2 className="text-4xl md:text-5xl font-serif mb-6 leading-tight">
-                        Contact Us
+                        {content.title}
                     </h2>
                     <p className="text-lg text-indigo-200 mb-10 font-sans leading-relaxed">
-                        Have questions or want a custom demo? Fill out the form below or book a call directly with our team.
+                        {content.description}
                     </p>
 
                     <div className="bg-white/5 p-6 md:p-8 rounded-3xl border border-indigo-500/30 backdrop-blur-sm mb-10 text-left">
                         <form className="space-y-4">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
-                                    <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="name">Name</label>
-                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="name" type="text" placeholder="Jane Doe" />
+                                    <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="name">{content.form.name}</label>
+                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="name" type="text" placeholder={content.form.placeholders.name} />
                                 </div>
                                 <div>
-                                    <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="email">Email</label>
-                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="email" type="email" placeholder="jane@school.edu" />
+                                    <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="email">{content.form.email}</label>
+                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="email" type="email" placeholder={content.form.placeholders.email} />
                                 </div>
                             </div>
                             <div>
-                                <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="message">Message</label>
-                                <textarea className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32" id="message" placeholder="Tell us about your needs..."></textarea>
+                                <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="message">{content.form.message}</label>
+                                <textarea className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32" id="message" placeholder={content.form.placeholders.message}></textarea>
                             </div>
                             <button type="button" className="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
-                                Send Message
+                                {content.submit}
                             </button>
                         </form>
                     </div>
@@ -46,14 +46,14 @@ export const ContactFormSection = () => {
                     <div className="flex flex-col items-center gap-6">
                         <div className="flex items-center gap-4 w-full justify-center opacity-50">
                             <div className="h-px bg-indigo-400 flex-1"></div>
-                            <span className="text-indigo-300 text-sm font-medium uppercase tracking-wider">Or Schedule Directly</span>
+                            <span className="text-indigo-300 text-sm font-medium uppercase tracking-wider">{content.orSchedule}</span>
                             <div className="h-px bg-indigo-400 flex-1"></div>
                         </div>
                         <a href="https://calendly.com/vuonghoanggiang0811/30min" target="_blank" rel="noreferrer" className="w-full sm:w-auto px-8 py-4 bg-transparent border border-indigo-500 text-white rounded-full font-bold hover:bg-indigo-800 transition-colors flex items-center justify-center gap-2 group">
                             <svg className="w-5 h-5 text-indigo-300 group-hover:text-white transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
-                            Book a Call
+                            {content.bookCall}
                         </a>
                     </div>
                 </div>

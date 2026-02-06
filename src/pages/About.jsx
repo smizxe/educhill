@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { SEO } from '../components/SEO';
 
+import { useLocation } from 'react-router-dom';
+import { homeContent } from '../data/homeContent';
+
 export const About = () => {
+    const location = useLocation();
+    const lang = location.pathname.startsWith('/vi') ? 'vi' : 'en';
+    const content = homeContent[lang].aboutPage;
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -9,14 +15,14 @@ export const About = () => {
     return (
         <div id="app-container" className="pt-8 pb-20 px-4 min-h-screen flex flex-col items-center justify-center">
             <SEO
-                title="About Educhill - Our Mission & Team"
-                description="Founded by teachers for teachers. Educhill's mission is to reduce administrative workload for English educators using advanced AI technology."
+                title={content.seoTitle}
+                description={content.seoDesc}
                 canonical="https://educhill.net/about"
             />
 
             {/* Hero Title */}
             <h1 className="font-newsreader text-5xl md:text-7xl text-slate-900 text-center mb-12 aura-animate-fade-up">
-                Founded by <span className="italic text-indigo-600">Educhill</span>.
+                {content.foundedBy} <span className="italic text-indigo-600">Educhill</span>.
             </h1>
 
             {/* Profile Card */}
@@ -60,23 +66,22 @@ export const About = () => {
                 <div className="md:col-span-7 flex flex-col justify-center h-full space-y-8 p-4">
 
                     <div>
-                        <h2 className="text-4xl text-slate-900 font-newsreader font-medium mb-2">Giang Vuong</h2>
-                        <p className="text-indigo-600 font-medium tracking-wide uppercase text-sm">Founder - CEO</p>
+                        <h2 className="text-4xl text-slate-900 font-newsreader font-medium mb-2">{content.founderName}</h2>
+                        <p className="text-indigo-600 font-medium tracking-wide uppercase text-sm">{content.role}</p>
                     </div>
 
                     <div className="space-y-6 text-lg text-slate-600 leading-relaxed font-newsreader">
                         <p>
-                            Giang Vuong is also the founder of <a href="https://www.yangai.site" target="_blank" rel="noopener noreferrer"
-                                className="text-indigo-600 underline decoration-indigo-300 hover:decoration-indigo-600 transition-all">Yangai</a>
-                            - an agency specializing in Web, App, and AI solutions for enterprises.
+                            {content.bio1Parts[0]}
+                            <a href="https://www.yangai.site" target="_blank" rel="noopener noreferrer"
+                                className="text-indigo-600 underline decoration-indigo-300 hover:decoration-indigo-600 transition-all">{content.bio1Parts[1]}</a>
+                            {content.bio1Parts[2]}
                         </p>
                         <p>
-                            Backed by his experience as an English teacher, Giang deeply understands the "pain points"
-                            regarding time and management pressures that teachers and training centers face daily.
+                            {content.bio2}
                         </p>
                         <p className="text-slate-900 font-medium italic">
-                            "Educhill was born not just as a tool, but as a solution to free teachers from administrative
-                            burdens, allowing them to focus on what matters most: Inspiring students."
+                            {content.bio3}
                         </p>
                     </div>
 
@@ -84,7 +89,7 @@ export const About = () => {
                     <div className="pt-6 border-t border-indigo-100">
                         <a href="https://www.yangai.site" target="_blank" rel="noopener noreferrer"
                             className="inline-flex items-center gap-2 text-slate-900 font-medium hover:gap-4 transition-all group">
-                            Learn more about me at Yangai
+                            {content.learnMore}
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
                                 stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                                 className="text-indigo-600">

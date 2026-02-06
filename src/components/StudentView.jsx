@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Mic, Check, ArrowRight } from 'lucide-react';
 
-export const StudentView = () => {
+export const StudentView = ({ content }) => {
     useEffect(() => {
         // Student View Animation Logic
         const stateSpeaking = document.getElementById('sv-state-speaking');
@@ -211,22 +211,18 @@ export const StudentView = () => {
                 {/* Left: Text Context */}
                 <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 bg-indigo-50 border border-indigo-100 rounded-full text-indigo-600 text-xs font-bold uppercase tracking-wider mb-6">
-                        Chill AI: Your Teaching Assistant
+                        {content.badge}
                     </div>
                     <h2 className="text-4xl lg:text-5xl font-serif text-slate-900 mb-6 leading-tight">
-                        You set the rules. <br />
-                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">AI handles the feedback.</span>
+                        {content.titleStart} <br />
+                        <span className="bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-violet-600">{content.titleHighlight}</span>
                     </h2>
                     <p className="text-xl text-slate-800 mb-8 leading-relaxed font-sans font-medium">
-                        Imagine grading 30 essays in seconds. You define the rubric, and Chill AI acts as your dedicated assistant—delivering detailed, human-like feedback on pronunciation and grammar. It’s not just grading; it’s personal coaching for every student.
+                        {content.description}
                     </p>
 
                     <ul className="space-y-4 mb-8">
-                        {[
-                            "Pronunciation scoring & Accent coaching",
-                            "Deep Grammar & Vocabulary suggestions",
-                            "Aligned to IELTS, TOEFL, or custom Rubrics"
-                        ].map((item, i) => (
+                        {content.features.map((item, i) => (
                             <li key={i} className="flex items-center gap-4 p-3 rounded-2xl bg-white/50 border border-emerald-100/50 hover:bg-white hover:shadow-lg hover:shadow-emerald-500/10 transition-all duration-300 group">
                                 <div className="w-8 h-8 rounded-xl bg-emerald-500 flex items-center justify-center text-white shrink-0 shadow-[0_0_15px_rgba(16,185,129,0.4)] group-hover:scale-110 transition-transform duration-300">
                                     <Check className="w-4 h-4" strokeWidth={2.5} />
@@ -237,7 +233,7 @@ export const StudentView = () => {
                     </ul>
 
                     <a href="#" className="inline-flex items-center gap-2 text-indigo-600 font-bold hover:gap-3 transition-all group">
-                        See student demo
+                        {content.demoLink}
                         <span className="bg-indigo-100 rounded-full p-1 group-hover:bg-indigo-600 group-hover:text-white transition-colors">
                             <ArrowRight className="w-4 h-4" strokeWidth={2.5} />
                         </span>

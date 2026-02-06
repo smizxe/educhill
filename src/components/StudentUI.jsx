@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { BookOpen, CheckCircle, ChevronLeft, ChevronRight, Layout, Menu, MoreVertical, MousePointer2 } from 'lucide-react';
 
-export const StudentUI = () => {
+export const StudentUI = ({ content }) => {
     const scrollContainerRef = useRef(null);
     const cursorRef = useRef(null);
     const leftPaneRef = useRef(null);
@@ -196,13 +196,13 @@ export const StudentUI = () => {
             {/* Header */}
             <div className="text-center mb-16">
                 <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-50 border border-emerald-100 rounded-full text-emerald-600 text-xs font-bold uppercase tracking-wider mb-4">
-                    Student Experience
+                    {content.badge}
                 </div>
                 <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4">
-                    Designed for <span className="text-indigo-600">Deep Focus</span>
+                    {content.title}
                 </h2>
                 <p className="text-xl text-slate-500 font-sans font-medium max-w-2xl mx-auto">
-                    No more endless scrolling or lost context. Our split-view interface keeps the content and questions side-by-side.
+                    {content.description}
                 </p>
             </div>
 

@@ -54,30 +54,8 @@ const Card = ({ testimonial, position }) => {
     );
 };
 
-export const Testimonials = () => {
-    const [cards, setCards] = useState([
-        {
-            id: 1,
-            quote: "Educhill automates our entire center's grading workflow. We scaled from 50 to 500 students without adding a single admin staff.",
-            name: "Jason Do",
-            role: "Founder at Jado Education",
-            initials: "JD"
-        },
-        {
-            id: 2,
-            quote: "Moving my classes online was seamless. The AI grading assistant works 24/7, giving me more time to focus on personalized coaching.",
-            name: "Henry Johnson",
-            role: "Solo English Teacher",
-            initials: "HJ"
-        },
-        {
-            id: 3,
-            quote: "My students love the instant feedback! It keeps them engaged, and they actually look forward to submitting their homework now.",
-            name: "Thuy Nguyen",
-            role: "IELTS Instructor",
-            initials: "TN"
-        }
-    ]);
+export const Testimonials = ({ content }) => {
+    const [cards, setCards] = useState(content.items);
 
     const handleSwipe = (direction) => {
         setCards(prev => {
@@ -100,14 +78,14 @@ export const Testimonials = () => {
             <div className="flex flex-col md:flex-row gap-6 mb-16 px-4 items-end justify-between">
                 <div className="max-w-2xl scroll-enter">
                     <div className="flex items-center gap-3 mb-6">
-                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">02</span>
+                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">{content.number}</span>
                         <span className="h-px w-20 bg-gradient-to-r from-orange-200 to-transparent"></span>
                     </div>
                     <h2 className="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-serif tracking-tight">
-                        Trusted by modern educators
+                        {content.title}
                     </h2>
                     <p className="text-xl text-slate-500 leading-relaxed font-sans font-medium">
-                        Join thousands of teachers who are saving 10+ hours a week with Educhill.
+                        {content.description}
                     </p>
                 </div>
             </div>

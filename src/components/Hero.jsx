@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import { CheckCircle, Send, ArrowRight, Lock, Layout, FileText, BarChart, Users, GraduationCap } from 'lucide-react';
 
-export const Hero = () => {
+export const Hero = ({ content }) => {
     const isMockupVisible = useRef(true); // Default to true, update with IntersectionObserver if possible or assume visible
 
     useEffect(() => {
@@ -220,29 +220,29 @@ export const Hero = () => {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full backdrop-blur-md bg-white/40 border border-white/60 shadow-[0_8px_32px_rgba(31,38,135,0.07),inset_0_1px_0_rgba(255,255,255,0.6)] mb-10 transition-transform hover:scale-105 cursor-default aura-animate-fade delay-100" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.2) 100%)' }}>
                 <CheckCircle className="w-3.5 h-3.5 text-emerald-500" />
                 <span className="text-xs text-slate-600 uppercase font-sans font-medium tracking-wide">
-                    Save time · Increase efficiency
+                    {content.badge}
                 </span>
             </div>
 
             {/* Headlines */}
             <h1 className="leading-[1.1] md:text-5xl lg:text-7xl text-4xl text-slate-900 font-serif text-center max-w-4xl mr-auto mb-8 ml-auto pr-4 pl-4 aura-animate-fade-up delay-200">
-                Bring your Class <span className="text-indigo-600 font-normal px-3 py-1 rounded-2xl backdrop-blur-md bg-white/40 border border-white/60 shadow-[0_8px_32px_rgba(99,102,241,0.15),inset_0_1px_0_rgba(255,255,255,0.6)]" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 100%)' }}>Online</span>
+                {content.titleStart} <span className="text-indigo-600 font-normal px-3 py-1 rounded-2xl backdrop-blur-md bg-white/40 border border-white/60 shadow-[0_8px_32px_rgba(99,102,241,0.15),inset_0_1px_0_rgba(255,255,255,0.6)]" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0.2) 100%)' }}>{content.titleHighlight}</span> {content.titleEnd}
             </h1>
 
             <p className="leading-relaxed md:text-2xl text-xl text-slate-900 font-serif text-center max-w-2xl mb-12 px-6 py-4 aura-animate-fade-up delay-300 relative z-10 rounded-3xl backdrop-blur-md border border-white/60 shadow-[0_8px_32px_rgba(0,0,0,0.08),inset_0_1px_0_rgba(255,255,255,0.6)]" style={{ background: 'linear-gradient(135deg, rgba(255,255,255,0.6) 0%, rgba(255,255,255,0.3) 100%)' }}>
-                Save your <span className="text-indigo-600 font-bold">time, energy</span>. Handle English exercises easily with our system so you can focus on teaching.
+                {content.subtitleStart} <span className="text-indigo-600 font-bold">{content.subtitleHighlight}</span>{content.subtitleEnd}
             </p>
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 w-full mb-24 pr-4 pl-4 items-center justify-center aura-animate-fade-up delay-400">
                 <a href="/contact" className="group w-full sm:w-auto shadow-indigo-500/30 hover:shadow-indigo-500/60 transition-all duration-300 overflow-hidden hover:bg-indigo-700 font-medium text-white bg-indigo-600 rounded-lg pt-4 pr-8 pb-4 pl-8 relative shadow-lg inline-flex items-center justify-center" style={{ boxShadow: '0 18px 40px -15px rgba(79, 70, 229, 0.5), inset 0 2px 4px rgba(255, 255, 255, 0.2)' }}>
                     <span className="flex items-center justify-center gap-2 relative">
-                        Contact Us
+                        {content.ctaPrimary}
                         <Send className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-300 w-4 h-4" />
                     </span>
                 </a>
                 <a href="#pricing" className="hover:bg-slate-50 transition-all flex text-sm font-medium text-slate-600 bg-gradient-to-b from-black/10 via-black/20 to-black/10 rounded-full pt-4 pr-8 pb-4 pl-8 gap-x-2 gap-y-2 items-center w-full sm:w-auto justify-center" style={{ boxShadow: '0 18px 35px rgba(31, 41, 55, 0.25), 0 0 0 1px rgba(209, 213, 219, 0.3)', color: '#e5e7eb', position: 'relative', '--border-gradient': 'linear-gradient(180deg, rgba(255, 255, 255, 0.8), rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.8))', '--border-radius-before': '9999px' }}>
-                    <span className="text-sm font-medium text-black/60 tracking-tight">View Plans</span>
+                    <span className="text-sm font-medium text-black/60 tracking-tight">{content.ctaSecondary}</span>
                     <ArrowRight className="w-4 h-4 text-gray-200" />
                 </a>
             </div>

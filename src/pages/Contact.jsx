@@ -1,7 +1,13 @@
 import React, { useEffect } from 'react';
 import { SEO } from '../components/SEO';
 
+import { useLocation } from 'react-router-dom';
+import { homeContent } from '../data/homeContent';
+
 export const Contact = () => {
+    const location = useLocation();
+    const lang = location.pathname.startsWith('/vi') ? 'vi' : 'en';
+    const content = homeContent[lang].contactPage;
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
@@ -9,14 +15,14 @@ export const Contact = () => {
     return (
         <>
             <SEO
-                title="Contact Educhill - Get in Touch"
-                description="Have questions or want a demo? Contact the Educhill team today. We are here to help you upgrade your English teaching business."
+                title={content.seoTitle}
+                description={content.seoDesc}
                 canonical="https://educhill.net/contact"
             />
             <div className="pt-8 pb-20 px-4 flex flex-col items-center justify-center">
                 {/* Hero Title */}
                 <h1 className="font-newsreader text-5xl md:text-7xl text-slate-900 text-center mb-12 aura-animate-fade-up">
-                    Chat with <span className="italic text-indigo-600">Educhill</span>.
+                    {content.titleStart} <span className="italic text-indigo-600">{content.titleHighlight}</span>.
                 </h1>
 
                 {/* Contact Form Section */}
@@ -32,14 +38,13 @@ export const Contact = () => {
                         <div className="relative z-10 max-w-2xl mx-auto">
                             <span
                                 className="inline-block py-1 px-3 rounded-full bg-indigo-800/50 border border-indigo-700 text-indigo-300 text-xs font-bold uppercase tracking-wider mb-6">
-                                Get in Touch
+                                {content.badge}
                             </span>
                             <h2 className="text-4xl md:text-5xl font-newsreader mb-6 leading-tight">
-                                Contact Us
+                                {content.heading}
                             </h2>
                             <p className="text-lg text-indigo-200 mb-10 font-sans leading-relaxed">
-                                Have questions or want a custom demo? Fill out the form below or book a call directly with our
-                                team.
+                                {content.desc}
                             </p>
 
                             <div
@@ -48,29 +53,29 @@ export const Contact = () => {
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                         <div>
                                             <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1"
-                                                htmlFor="name">Name</label>
+                                                htmlFor="name">{content.form.name}</label>
                                             <input
                                                 className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
-                                                id="name" type="text" placeholder="Jane Doe" />
+                                                id="name" type="text" placeholder={content.form.namePlaceholder} />
                                         </div>
                                         <div>
                                             <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1"
-                                                htmlFor="email">Email</label>
+                                                htmlFor="email">{content.form.email}</label>
                                             <input
                                                 className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
-                                                id="email" type="email" placeholder="jane@school.edu" />
+                                                id="email" type="email" placeholder={content.form.emailPlaceholder} />
                                         </div>
                                     </div>
                                     <div>
                                         <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1"
-                                            htmlFor="message">Message</label>
+                                            htmlFor="message">{content.form.message}</label>
                                         <textarea
                                             className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32"
-                                            id="message" placeholder="Tell us about your needs..."></textarea>
+                                            id="message" placeholder={content.form.messagePlaceholder}></textarea>
                                     </div>
                                     <button type="button"
                                         className="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
-                                        Send Message
+                                        {content.form.btn}
                                     </button>
                                 </form>
                             </div>
@@ -78,8 +83,7 @@ export const Contact = () => {
                             <div className="flex flex-col items-center gap-6">
                                 <div className="flex items-center gap-4 w-full justify-center opacity-50">
                                     <div className="h-px bg-indigo-400 flex-1"></div>
-                                    <span className="text-indigo-300 text-sm font-medium uppercase tracking-wider">Or Schedule
-                                        Directly</span>
+                                    <span className="text-indigo-300 text-sm font-medium uppercase tracking-wider">{content.orSchedule}</span>
                                     <div className="h-px bg-indigo-400 flex-1"></div>
                                 </div>
                                 <a href="https://calendly.com/vuonghoanggiang0811/30min" target="_blank"
@@ -89,7 +93,7 @@ export const Contact = () => {
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
                                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
-                                    Book a Call
+                                    {content.bookCall}
                                 </a>
                             </div>
                         </div>

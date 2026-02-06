@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const Features = () => {
+export const Features = ({ content }) => {
     const triggerExplosion = (lang) => {
         const pdf = document.getElementById(`pdf-card-${lang}`);
         const list = document.getElementById(`quiz-list-${lang}`);
@@ -26,14 +26,14 @@ export const Features = () => {
             <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 px-4">
                 <div className="max-w-2xl">
                     <div className="flex items-center gap-3 mb-6 scroll-enter">
-                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">01</span>
+                        <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">{content.number}</span>
                         <span className="h-px w-20 bg-gradient-to-r to-transparent from-indigo-200"></span>
                     </div>
                     <h2 className="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-serif scroll-enter delay-100">
-                        Features built for modern teaching
+                        {content.title}
                     </h2>
                     <p className="text-xl text-slate-500 leading-relaxed font-sans font-medium scroll-enter delay-200">
-                        Everything you need to manage your classroom efficiently. From automated grading to detailed student analytics.
+                        {content.description}
                     </p>
                 </div>
             </div>
@@ -52,8 +52,8 @@ export const Features = () => {
                             </svg>
                         </div>
                         <div>
-                            <h3 className="text-2xl font-medium text-slate-900">Speaking & Writing</h3>
-                            <p className="text-slate-500 mt-1 font-sans font-medium">Auto-graded oral and written assignments.</p>
+                            <h3 className="text-2xl font-medium text-slate-900">{content.cards.one.title}</h3>
+                            <p className="text-slate-500 mt-1 font-sans font-medium">{content.cards.one.desc}</p>
                         </div>
                     </div>
 
@@ -100,8 +100,8 @@ export const Features = () => {
                             </svg>
                         </div>
                         <div>
-                            <h3 className="text-2xl font-medium tracking-tight text-slate-900">Student Progress</h3>
-                            <p className="text-slate-500 mt-1 font-sans font-medium">Identify struggling students early.</p>
+                            <h3 className="text-2xl font-medium tracking-tight text-slate-900">{content.cards.two.title}</h3>
+                            <p className="text-slate-500 mt-1 font-sans font-medium">{content.cards.two.desc}</p>
                         </div>
                     </div>
                     <div className="bg-indigo-50/30 rounded-2xl p-6 border border-indigo-100 h-48 relative">
@@ -130,12 +130,12 @@ export const Features = () => {
                         <div className="w-12 h-12 rounded-xl bg-indigo-600 flex items-center justify-center shrink-0 shadow-lg shadow-indigo-200 mb-6">
                             <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" /><polyline points="14 2 14 8 20 8" /><line x1="16" y1="13" x2="8" y2="13" /><line x1="16" y1="17" x2="8" y2="17" /><polyline points="10 9 9 9 8 9" /></svg>
                         </div>
-                        <h3 className="text-2xl font-medium tracking-tight text-slate-900">Result to Quiz in Seconds</h3>
+                        <h3 className="text-2xl font-medium tracking-tight text-slate-900">{content.cards.three.title}</h3>
                         <p className="text-slate-500 mt-2 font-sans font-medium text-lg max-w-md">
-                            Upload any PDF, Word doc, or image. Educhill extracts the content and creates interactive exercises automatically.
+                            {content.cards.three.desc}
                         </p>
                         <button className="mt-8 px-5 py-2.5 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-800 transition-colors">
-                            Try it for free
+                            {content.cards.three.button}
                         </button>
                     </div>
 
@@ -146,7 +146,7 @@ export const Features = () => {
                                 <div className="h-8 w-8 bg-red-100 rounded flex items-center justify-center mb-2 pointer-events-none">
                                     <svg className="w-4 h-4 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 21h10a2 2 0 0 0 2-2V9.414a1 1 0 0 0-.293-.707l-5.414-5.414A1 1 0 0 0 12.586 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2z" /></svg>
                                 </div>
-                                <span className="text-[10px] font-bold text-slate-500 pointer-events-none">ClickMe.pdf</span>
+                                <span className="text-[10px] font-bold text-slate-500 pointer-events-none">{content.cards.three.clickMe}</span>
                                 <div className="absolute -inset-1 rounded-xl border-2 border-indigo-400/50 opacity-0 group-hover:opacity-100 group-hover:animate-ping pointer-events-none"></div>
                             </div>
 
@@ -154,15 +154,15 @@ export const Features = () => {
                             <div id="quiz-list-en" className="absolute flex flex-col gap-2 z-10 w-56 opacity-0 scale-90 pointer-events-none transition-all duration-500 ease-out">
                                 <div className="bg-white border border-indigo-50 shadow-md rounded-lg p-2.5 flex items-center gap-3">
                                     <div className="w-6 h-6 rounded bg-indigo-100 flex items-center justify-center shrink-0"><span className="text-[10px] font-bold text-indigo-600">1</span></div>
-                                    <span className="text-[10px] font-bold text-slate-600">Speaking (AI Active)</span>
+                                    <span className="text-[10px] font-bold text-slate-600">{content.cards.three.quizList[0]}</span>
                                 </div>
                                 <div className="bg-white border border-indigo-50 shadow-md rounded-lg p-2.5 flex items-center gap-3">
                                     <div className="w-6 h-6 rounded bg-indigo-100 flex items-center justify-center shrink-0"><span className="text-[10px] font-bold text-indigo-600">2</span></div>
-                                    <span className="text-[10px] font-bold text-slate-600">Multiple Choices</span>
+                                    <span className="text-[10px] font-bold text-slate-600">{content.cards.three.quizList[1]}</span>
                                 </div>
                                 <div className="bg-white border border-indigo-50 shadow-md rounded-lg p-2.5 flex items-center gap-3">
                                     <div className="w-6 h-6 rounded bg-indigo-100 flex items-center justify-center shrink-0"><span className="text-[10px] font-bold text-indigo-600">3</span></div>
-                                    <span className="text-[10px] font-bold text-slate-600">Writing Essay (AI Active)</span>
+                                    <span className="text-[10px] font-bold text-slate-600">{content.cards.three.quizList[2]}</span>
                                 </div>
                             </div>
                         </div>

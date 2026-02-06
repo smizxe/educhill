@@ -21,6 +21,13 @@ function App() {
                     <Route path="about" element={<About />} />
                     <Route path="contact" element={<Contact />} />
 
+                    {/* Vietnamese Routes */}
+                    <Route path="/vi" element={<Home />} />
+                    <Route path="/vi/about" element={<About />} />
+                    <Route path="/vi/contact" element={<Contact />} />
+                    <Route path="/vi/features" element={<Home />} /> {/* Fallback for features link */}
+                    <Route path="features" element={<Home />} /> {/* Fallback for features link */}
+
                     {/* Blog Routes */}
                     <Route path="blog" element={<BlogList />} />
                     <Route path="blog/:slug" element={<BlogPost />} />
