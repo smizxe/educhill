@@ -39,9 +39,9 @@ export const Footer = () => {
                         <h3 className="text-lg text-slate-900 mb-6 font-sans font-medium">Product</h3>
                         <ul className="space-y-4">
                             <li><Link to="/#features" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Features</Link></li>
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Methodology</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Integrations</a></li>
-                            <li><Link to="/#pricing" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Pricing</Link></li>
+                            <li><Link to="/#pricing" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Plans</Link></li>
+                            <li><Link to="/about" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">About Us</Link></li>
+                            <li><Link to="/contact" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Contact</Link></li>
                         </ul>
                     </div>
 
@@ -49,24 +49,21 @@ export const Footer = () => {
                     <div className="lg:col-span-2 scroll-enter delay-200">
                         <h3 className="text-lg text-slate-900 mb-6 font-sans font-medium">Resources</h3>
                         <ul className="space-y-4">
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Documentation</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">API Reference</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Community</a></li>
-                            <li><a href="#" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Status</a></li>
+                            <li><Link to="/blog" className="text-slate-600 hover:text-slate-900 transition-colors font-sans font-medium">Blog</Link></li>
                         </ul>
                     </div>
 
                     {/* Newsletter Column */}
                     <div className="lg:col-span-4 scroll-enter delay-300">
                         <div className="bg-white rounded-[1.5rem] p-8 border border-slate-100 shadow-[0_10px_30px_-10px_rgba(0,0,0,0.05)] hover:shadow-lg transition-shadow">
-                            <h3 className="text-xl text-slate-900 mb-3 font-sans font-medium">Subscribe to Engineering Weekly</h3>
+                            <h3 className="text-xl text-slate-900 mb-3 font-sans font-medium">Send us an Email to receive Demo</h3>
                             <p className="text-slate-500 mb-6 text-sm leading-relaxed font-sans font-medium">
-                                Get the latest updates on CI/CD trends, engineering metrics, and release strategies.
+                                Enter your email address and we will contact you to schedule a personalized demo.
                             </p>
                             <div className="relative group">
                                 <input type="email" placeholder="Email address" className="w-full pl-6 pr-36 py-4 bg-slate-50 border border-slate-100 rounded-full text-slate-900 placeholder:text-slate-400 focus:bg-white focus:ring-2 focus:ring-slate-900 focus:border-transparent outline-none transition-all" />
                                 <button className="absolute right-1.5 top-1.5 bottom-1.5 bg-[#0F172A] text-white pl-5 pr-4 rounded-full hover:bg-slate-800 transition-all hover:scale-105 active:scale-95 flex items-center gap-2 shadow-md font-sans font-medium">
-                                    Subscribe
+                                    Send
                                     <ArrowRight className="w-4 h-4" />
                                 </button>
                             </div>
