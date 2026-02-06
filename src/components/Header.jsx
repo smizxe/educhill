@@ -84,6 +84,7 @@ export const Header = () => {
             {isMobileMenuOpen && (
                 <div className="absolute top-full left-0 w-full mt-2 bg-white/95 backdrop-blur-xl border border-gray-100 rounded-3xl shadow-xl p-6 flex flex-col gap-4">
                     <Link to={getLink('/features')} onClick={() => setIsMobileMenuOpen(false)} className="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">{content.features}</Link>
+                    <Link to={getLink('/', '#pricing')} onClick={() => { handleNavClick('#pricing'); setIsMobileMenuOpen(false); }} className="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">{content.plans}</Link>
                     <Link to={getLink('/about')} onClick={() => setIsMobileMenuOpen(false)} className="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">{content.about}</Link>
                     <Link to={getLink('/contact')} onClick={() => setIsMobileMenuOpen(false)} className="text-base text-slate-600 font-medium p-2 hover:bg-slate-50 rounded-xl transition-colors">{content.contact}</Link>
                     <div className="h-px bg-gray-100 my-1"></div>
