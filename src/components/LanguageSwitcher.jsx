@@ -45,7 +45,7 @@ export const LanguageSwitcher = () => {
             {/* Main Button */}
             <button
                 onClick={toggleMenu}
-                className="w-14 h-14 bg-white/80 backdrop-blur border border-indigo-100 rounded-full flex items-center justify-center text-slate-900 hover:scale-110 active:scale-95 transition-all duration-300 shadow-lg focus:outline-none"
+                className="w-12 h-12 flex items-center justify-center text-slate-900 hover:scale-110 active:scale-95 transition-all duration-300 focus:outline-none"
             >
                 <Globe className="w-6 h-6" />
             </button>
