@@ -4,10 +4,16 @@ import { BookOpen, CheckCircle, ChevronLeft, ChevronRight, Layout, Menu, MoreVer
 export const StudentUI = () => {
     const scrollContainerRef = useRef(null);
     const cursorRef = useRef(null);
+    const leftPaneRef = useRef(null);
+    const rightPaneRef = useRef(null);
+    const resizeHandleRef = useRef(null);
 
     useEffect(() => {
         const cursor = cursorRef.current;
         const scrollContainer = scrollContainerRef.current;
+        const leftPane = leftPaneRef.current;
+        const rightPane = rightPaneRef.current;
+        const resizeHandle = resizeHandleRef.current;
         const option7B = document.getElementById('opt-7-b');
         const option8A = document.getElementById('opt-8-a');
         const btnSubmit = document.getElementById('btn-submit-test');
@@ -15,7 +21,7 @@ export const StudentUI = () => {
         let isAnimating = true;
 
         const animate = async () => {
-            if (!cursor || !scrollContainer || !option7B || !option8A) return;
+            if (!cursor || !scrollContainer || !option7B || !option8A || !leftPane || !rightPane) return;
 
             const wait = (ms) => new Promise(r => setTimeout(r, ms));
 
@@ -202,7 +208,7 @@ export const StudentUI = () => {
                             </div>
 
                             {/* Left Pane: Reading */}
-                            <div className="flex-1 p-6 md:p-8 overflow-y-auto border-b md:border-b-0 md:border-r border-gray-200 bg-white">
+                            <div ref={leftPaneRef} className="flex-1 p-6 md:p-8 overflow-y-auto border-b md:border-b-0 md:border-r border-gray-200 bg-white transition-[flex] duration-100 ease-linear">
                                 <div className="max-w-prose mx-auto">
                                     <span className="inline-block px-3 py-1 bg-gray-100 text-slate-500 rounded text-[10px] font-bold uppercase tracking-wider mb-4">
                                         Reading Passage
@@ -237,12 +243,12 @@ export const StudentUI = () => {
                             </div>
 
                             {/* Resize Handle Visual */}
-                            <div className="hidden md:flex w-4 bg-gray-100 items-center justify-center cursor-col-resize hover:bg-indigo-100 transition-colors">
-                                <div className="h-8 w-1 bg-gray-300 rounded-full"></div>
+                            <div ref={resizeHandleRef} className="hidden md:flex w-4 bg-gray-100 items-center justify-center cursor-col-resize hover:bg-indigo-100 transition-colors z-10 relative">
+                                <div className="h-8 w-1 bg-gray-300 rounded-full pointer-events-none"></div>
                             </div>
 
                             {/* Right Pane: Questions */}
-                            <div className="flex-1 bg-slate-50/50 flex flex-col h-full overflow-hidden">
+                            <div ref={rightPaneRef} className="flex-1 bg-slate-50/50 flex flex-col h-full overflow-hidden transition-[flex] duration-100 ease-linear">
                                 <div className="h-14 border-b border-gray-200 bg-white px-6 flex items-center justify-between shrink-0">
                                     <span className="text-xs font-bold text-slate-500 uppercase">ANSWER SHEET</span>
                                     <span className="text-xs font-bold text-slate-900">2 / 40 Questions</span>
