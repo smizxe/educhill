@@ -27,7 +27,9 @@ export const StudentUI = () => {
 
             const moveCursor = async (target, offsetX = 0, offsetY = 0) => {
                 const rect = target.getBoundingClientRect();
-                const containerRect = scrollContainer.parentElement.getBoundingClientRect(); // Window frame
+                const frame = rightPane.parentElement; // The relative parent for the absolute cursor
+                const containerRect = frame.getBoundingClientRect();
+
                 // Calculate relative position within the frame
                 const x = rect.left - containerRect.left + rect.width / 2 + offsetX;
                 const y = rect.top - containerRect.top + rect.height / 2 + offsetY;
@@ -37,10 +39,10 @@ export const StudentUI = () => {
             };
 
             const click = async (element) => {
-                cursor.classList.add('scale-90');
+                cursor.classList.add('scale-75');
                 element.classList.add('ring-2', 'ring-indigo-400', 'bg-indigo-50');
                 await wait(150);
-                cursor.classList.remove('scale-90');
+                cursor.classList.remove('scale-75');
                 // Permanent selection style
                 element.querySelector('.radio-circle').classList.remove('border-gray-300');
                 element.querySelector('.radio-circle').classList.add('border-indigo-600', 'bg-indigo-600');
@@ -68,6 +70,93 @@ export const StudentUI = () => {
                 cursor.style.transition = 'transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s';
                 cursor.style.opacity = '1';
 
+                // ==========================
+                // 0. Resize Animation Demo
+                // ==========================
+                if (resizeHandle) {
+                    await moveCursor(resizeHandle);
+
+                    // "Grab" effect
+                    cursor.classList.add('scale-75');
+                    resizeHandle.classList.add('bg-indigo-300');
+                    cursor.style.transition = 'none'; // Direct control for dragging
+
+                    const dragSteps = 30; // More steps = smoother
+                    const startLeft = 1;
+                    const startRight = 1;
+
+                    // Drag Left (Expand Right)
+                    // From 1:1 to 0.7:1.3 
+                    for (let i = 0; i <= dragSteps; i++) {
+                        const progress = i / dragSteps; // 0 to 1
+                        // Linear interp
+                        const currentLeft = 1 - (0.3 * progress); // 1 -> 0.7
+                        const currentRight = 1 + (0.3 * progress); // 1 -> 1.3
+
+                        leftPane.style.flex = `${currentLeft}`;
+                        rightPane.style.flex = `${currentRight}`;
+
+                        // Manual cursor position update to track handle
+                        const handleRect = resizeHandle.getBoundingClientRect();
+                        const frameRect = rightPane.parentElement.getBoundingClientRect();
+                        const x = handleRect.left - frameRect.left + handleRect.width / 2;
+                        const y = handleRect.top - frameRect.top + handleRect.height / 2;
+                        cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+                        await wait(20);
+                    }
+                    await wait(300);
+
+                    // Drag Right (Expand Left)
+                    // From 0.7:1.3 back to 1:1 then to 1.3:0.7
+                    // Let's just go straight to 1.3:0.7
+                    // Start: 0.7, 1.3. End: 1.3, 0.7
+                    for (let i = 0; i <= dragSteps; i++) {
+                        const progress = i / dragSteps;
+                        const currentLeft = 0.7 + (0.6 * progress); // 0.7 -> 1.3
+                        const currentRight = 1.3 - (0.6 * progress); // 1.3 -> 0.7
+
+                        leftPane.style.flex = `${currentLeft}`;
+                        rightPane.style.flex = `${currentRight}`;
+
+                        const handleRect = resizeHandle.getBoundingClientRect();
+                        const frameRect = rightPane.parentElement.getBoundingClientRect();
+                        const x = handleRect.left - frameRect.left + handleRect.width / 2;
+                        const y = handleRect.top - frameRect.top + handleRect.height / 2;
+                        cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+                        await wait(20);
+                    }
+                    await wait(300);
+
+                    // Return to Center
+                    for (let i = 0; i <= dragSteps / 2; i++) {
+                        const progress = i / (dragSteps / 2);
+                        const currentLeft = 1.3 - (0.3 * progress); // 1.3 -> 1
+                        const currentRight = 0.7 + (0.3 * progress); // 0.7 -> 1
+
+                        leftPane.style.flex = `${currentLeft}`;
+                        rightPane.style.flex = `${currentRight}`;
+
+                        const handleRect = resizeHandle.getBoundingClientRect();
+                        const frameRect = rightPane.parentElement.getBoundingClientRect();
+                        const x = handleRect.left - frameRect.left + handleRect.width / 2;
+                        const y = handleRect.top - frameRect.top + handleRect.height / 2;
+                        cursor.style.transform = `translate(${x}px, ${y}px)`;
+
+                        await wait(20);
+                    }
+
+                    resizeHandle.classList.remove('bg-indigo-300');
+                    cursor.classList.remove('scale-75'); // Release
+                    cursor.style.transition = 'transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), opacity 0.3s'; // Restore smooth
+                    await wait(500);
+                }
+
+                // ==========================
+                // 1. Answer Selection Demo
+                // ==========================
+
                 // 1. Move to Option 7B
                 await moveCursor(option7B, 20, 10);
                 await wait(200);
@@ -87,9 +176,9 @@ export const StudentUI = () => {
                 // 4. Move to Submit (Visual only, don't actually submit)
                 if (btnSubmit) {
                     await moveCursor(btnSubmit, 0, 0);
-                    cursor.classList.add('scale-90');
+                    cursor.classList.add('scale-75');
                     await wait(150);
-                    cursor.classList.remove('scale-90');
+                    cursor.classList.remove('scale-75');
                 }
 
                 await wait(3000); // Pause before loop
@@ -146,7 +235,7 @@ export const StudentUI = () => {
                         <div className="flex items-center gap-4">
                             <button className="flex items-center gap-1 text-slate-500 hover:text-slate-900 transition-colors">
                                 <ChevronLeft className="w-5 h-5" />
-                                <span className="font-bold text-sm">Quay lại</span>
+                                <span className="font-bold text-sm">Back</span>
                             </button>
                             <span className="h-4 w-px bg-gray-200"></span>
                             <div className="flex items-center gap-2">
@@ -154,8 +243,8 @@ export const StudentUI = () => {
                                     <BookOpen className="w-4 h-4" />
                                 </div>
                                 <div>
-                                    <h3 className="text-sm font-bold text-slate-900">Lớp Test</h3>
-                                    <p className="text-[10px] text-slate-500 font-medium">4 bài tập</p>
+                                    <h3 className="text-sm font-bold text-slate-900">Class Test</h3>
+                                    <p className="text-[10px] text-slate-500 font-medium">4 assignments</p>
                                 </div>
                             </div>
                         </div>
@@ -163,7 +252,7 @@ export const StudentUI = () => {
                         <div className="hidden md:flex items-center gap-6">
                             <div className="flex flex-col w-48">
                                 <div className="flex justify-between text-[10px] font-bold text-slate-500 mb-1">
-                                    <span>Tiến độ</span>
+                                    <span>Progress</span>
                                     <span>25%</span>
                                 </div>
                                 <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
@@ -171,7 +260,7 @@ export const StudentUI = () => {
                                 </div>
                             </div>
                             <button id="btn-submit-test" className="px-5 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-lg text-sm font-bold shadow-sm shadow-emerald-200 transition-colors">
-                                Nộp bài
+                                Submit
                             </button>
                         </div>
                     </div>
@@ -186,15 +275,15 @@ export const StudentUI = () => {
                                         <CheckCircle className="w-4 h-4" />
                                     </div>
                                     <div className="hidden md:block">
-                                        <div className="text-xs font-bold text-slate-900">Bài tập mới</div>
-                                        <div className="text-[10px] text-slate-500">Đã hoàn thành</div>
+                                        <div className="text-xs font-bold text-slate-900">New Assignment</div>
+                                        <div className="text-[10px] text-slate-500">Completed</div>
                                     </div>
                                 </div>
                                 <div className="p-3 bg-indigo-50 rounded-xl shadow-sm border border-indigo-200 flex items-center gap-3">
                                     <div className="w-8 h-8 rounded-full bg-indigo-600 text-white flex items-center justify-center font-bold text-xs shrink-0">4</div>
                                     <div className="hidden md:block">
-                                        <div className="text-xs font-bold text-indigo-900 truncate max-w-[120px]">ĐỀ 10 - PHÁT TRIỂN MINH HỌA...</div>
-                                        <div className="text-[10px] text-indigo-500">Đang làm</div>
+                                        <div className="text-xs font-bold text-indigo-900 truncate max-w-[120px]">TEST 10 - ILLUSTRATION...</div>
+                                        <div className="text-[10px] text-indigo-500">In Progress</div>
                                     </div>
                                 </div>
                             </div>
@@ -208,7 +297,7 @@ export const StudentUI = () => {
                             </div>
 
                             {/* Left Pane: Reading */}
-                            <div ref={leftPaneRef} className="flex-1 p-6 md:p-8 overflow-y-auto border-b md:border-b-0 md:border-r border-gray-200 bg-white transition-[flex] duration-100 ease-linear">
+                            <div ref={leftPaneRef} className="flex-1 p-6 md:p-8 overflow-y-auto border-b md:border-b-0 md:border-r border-gray-200 bg-white transition-[flex] duration-75 ease-linear">
                                 <div className="max-w-prose mx-auto">
                                     <span className="inline-block px-3 py-1 bg-gray-100 text-slate-500 rounded text-[10px] font-bold uppercase tracking-wider mb-4">
                                         Reading Passage
@@ -242,13 +331,13 @@ export const StudentUI = () => {
                                 </div>
                             </div>
 
-                            {/* Resize Handle Visual */}
+                            {/* Resize Handle Visual - Made wider for easier visual grabbing */}
                             <div ref={resizeHandleRef} className="hidden md:flex w-4 bg-gray-100 items-center justify-center cursor-col-resize hover:bg-indigo-100 transition-colors z-10 relative">
                                 <div className="h-8 w-1 bg-gray-300 rounded-full pointer-events-none"></div>
                             </div>
 
                             {/* Right Pane: Questions */}
-                            <div ref={rightPaneRef} className="flex-1 bg-slate-50/50 flex flex-col h-full overflow-hidden transition-[flex] duration-100 ease-linear">
+                            <div ref={rightPaneRef} className="flex-1 bg-slate-50/50 flex flex-col h-full overflow-hidden transition-[flex] duration-75 ease-linear">
                                 <div className="h-14 border-b border-gray-200 bg-white px-6 flex items-center justify-between shrink-0">
                                     <span className="text-xs font-bold text-slate-500 uppercase">ANSWER SHEET</span>
                                     <span className="text-xs font-bold text-slate-900">2 / 40 Questions</span>
