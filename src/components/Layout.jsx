@@ -60,8 +60,6 @@ export const Layout = () => {
 
             <Footer />
 
-            <Footer />
-
             <LanguageSwitcher />
         </>
     );

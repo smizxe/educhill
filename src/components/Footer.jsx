@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Github, Twitter, Linkedin, ArrowRight } from 'lucide-react';
+import { Facebook, Linkedin, Instagram, Twitter, Mail, ArrowRight } from 'lucide-react';
 
 export const Footer = () => {
     return (
@@ -15,14 +15,20 @@ export const Footer = () => {
                         <p className="text-slate-500 leading-relaxed text-base mb-8 max-w-sm font-sans font-medium">
                             The intelligent platform for creating, grading, and tracking assignments effortlessly.
                         </p>
+                        <p className="flex items-center gap-2 text-slate-500 font-medium mb-6">
+                            <Mail className="w-4 h-4" /> yangaidev@gmail.com
+                        </p>
                         <div className="flex items-center gap-5">
-                            <a href="#" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
-                                <Github className="w-5 h-5" />
+                            <a href="https://facebook.com/smizxe" target="_blank" rel="noopener noreferrer" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+                                <Facebook className="w-5 h-5" />
                             </a>
-                            <a href="#" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+                            <a href="https://instagram.com/smizxe" target="_blank" rel="noopener noreferrer" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+                                <Instagram className="w-5 h-5" />
+                            </a>
+                            <a href="https://twitter.com/yangai" target="_blank" rel="noopener noreferrer" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
                                 <Twitter className="w-5 h-5 fill-current" />
                             </a>
-                            <a href="#" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
+                            <a href="https://linkedin.com/in/yangaidev" target="_blank" rel="noopener noreferrer" className="text-slate-900 hover:text-slate-600 transition-colors transform hover:scale-110">
                                 <Linkedin className="w-5 h-5 fill-current" />
                             </a>
                         </div>
