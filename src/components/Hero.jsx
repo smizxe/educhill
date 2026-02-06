@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { CheckCircle, Send, ArrowRight, Lock, Layout, FileText, BarChart, Users } from 'lucide-react';
+import { CheckCircle, Send, ArrowRight, Lock, Layout, FileText, BarChart, Users, GraduationCap } from 'lucide-react';
 
 export const Hero = () => {
     const isMockupVisible = useRef(true); // Default to true, update with IntersectionObserver if possible or assume visible
@@ -203,7 +203,7 @@ export const Hero = () => {
                         <div className="w-2 h-4 bg-gray-300 rounded-full"></div>
                         <div className="w-2 h-4 bg-gray-300 rounded-full"></div>
                     </div>
-                    <span className="text-6xl text-gray-300 font-serif mt-2">24</span>
+                    <GraduationCap className="w-12 h-12 text-gray-300 mt-2" />
                 </div>
             </div>
 
