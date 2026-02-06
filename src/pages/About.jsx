@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { SEO } from '../components/SEO';
 
 export const About = () => {
-    const [founderImageIndex, setFounderImageIndex] = useState(0);
-    // Assuming you have an array of images, though the HTML only showed one explicit img src.
-    // If there were JS logic to loop images, we'd replicate it here.
-    // Based on HTML, it seems there's a gallery logic. We'll start with just the static one
-    // and a placeholder for the logic if needed.
-
     useEffect(() => {
         window.scrollTo(0, 0);
     }, []);
 
-    // Placeholder for image switching logic if "changeFounderImage" was doing more than just swapping src
-    // For now we'll stick to the single image structure unless we see the JS for it.
-
     return (
         <div id="app-container" className="pt-8 pb-20 px-4 min-h-screen flex flex-col items-center justify-center">
+            <SEO
+                title="About Educhill - Our Mission & Team"
+                description="Founded by teachers for teachers. Educhill's mission is to reduce administrative workload for English educators using advanced AI technology."
+                canonical="https://educhill.net/about"
+            />
 
             {/* Hero Title */}
             <h1 className="font-newsreader text-5xl md:text-7xl text-slate-900 text-center mb-12 aura-animate-fade-up">
@@ -36,7 +33,7 @@ export const About = () => {
                         <img id="founder-img" src="/assets/portrait.jpg" alt="Giang Vuong"
                             className="w-full h-full object-cover transition-all duration-700" />
 
-                        {/* Overlay Controls (Hidden by default, shown on hover) - Kept for visual fidelity even if static for now */}
+                        {/* Overlay Controls (Hidden by default, shown on hover) */}
                         <div
                             className="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                             <button
