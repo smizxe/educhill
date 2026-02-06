@@ -82,6 +82,13 @@ function initPageTransition() {
         const targetUrl = new URL(link.href);
         if (targetUrl.origin !== location.origin) return;
 
+        // SKIP TRANSITION FOR REACT APP ROUTES
+        // These routes require a full reload to bootstrap the React application
+        const reactRoutes = ['/', '/index.html', '/about', '/contact'];
+        if (reactRoutes.includes(targetUrl.pathname)) {
+            return;
+        }
+
         // It's a local navigation
         e.preventDefault();
         handleTransition(targetUrl.href);

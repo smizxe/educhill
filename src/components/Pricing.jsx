@@ -1,117 +1,112 @@
 import React from 'react';
-import { Button } from './ui/Button';
 import { Check } from 'lucide-react';
 
 export const Pricing = () => {
     return (
-        <section id="pricing" style={{ padding: '6rem 0' }}>
-            <div className="container">
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'flex-end',
-                    marginBottom: '4rem',
-                    flexWrap: 'wrap',
-                    gap: '2rem'
-                }}>
-                    <div>
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Smart pricing for serious growth</h2>
-                        <p style={{ color: 'var(--color-text-secondary)', fontSize: '1.125rem' }}>
-                            One plan for collaboration, one for serious scaling.
-                        </p>
+        <section id="pricing" className="w-full max-w-7xl mx-auto mb-32 px-4">
+            <div className="text-center mb-16 max-w-3xl mx-auto scroll-enter">
+                <div className="flex items-center justify-center gap-3 mb-6">
+                    <span className="h-px w-12 bg-indigo-200"></span>
+                    <span className="text-indigo-600 text-sm font-bold uppercase tracking-wider">Pricing</span>
+                    <span className="h-px w-12 bg-indigo-200"></span>
+                </div>
+                <h2 className="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-serif tracking-tight">
+                    Plans for every stage
+                </h2>
+                <p className="text-xl text-slate-500 leading-relaxed font-sans font-medium">
+                    Start small, scale as you grow. Transparent pricing for educators and institutions.
+                </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                {/* Plan 1: Individual */}
+                <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 scroll-enter delay-100 relative group">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 font-sans">Individual</h3>
+                    <p className="text-slate-500 text-sm mb-6 font-medium">For solo teachers</p>
+                    <div className="flex items-baseline gap-1 mb-8">
+                        <span className="text-xl font-bold text-slate-900 tracking-tight">Best plan for solo teachers</span>
                     </div>
-                    <div style={{
-                        background: '#f1f5f9',
-                        padding: '4px',
-                        borderRadius: '99px',
-                        display: 'flex',
-                        fontSize: '0.875rem',
-                        fontWeight: 500
-                    }}>
-                        <button style={{ padding: '6px 16px', borderRadius: '20px', background: '#fff', boxShadow: '0 2px 5px rgba(0,0,0,0.05)' }}>Monthly</button>
-                        <button style={{ padding: '6px 16px', borderRadius: '20px', color: '#64748B' }}>Yearly (-20%)</button>
-                    </div>
+
+                    <ul className="space-y-4 mb-8">
+                        {[
+                            "AI Auto-grading",
+                            "Up to 50 students",
+                            "Basic Reports"
+                        ].map((feature, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                                <Check className="w-5 h-5 text-emerald-500 shrink-0" />
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <a href="/contact" className="block w-full py-3 px-6 rounded-xl bg-slate-50 text-slate-900 font-bold text-center border border-slate-200 hover:bg-slate-100 transition-colors">
+                        Contact Us
+                    </a>
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
-                    {/* Card 1 */}
-                    <div style={{
-                        background: '#fff',
-                        borderRadius: '24px',
-                        padding: '2.5rem',
-                        border: '1px solid #e2e8f0',
-                        display: 'flex',
-                        flexDirection: 'column'
-                    }}>
-                        <div style={{ marginBottom: '2rem' }}>
-                            <h3 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', marginBottom: '0.5rem' }}>Perfect for builders shipping side projects</h3>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                <span style={{ fontSize: '3rem', fontWeight: 700, fontFamily: 'var(--font-serif)' }}>$29</span>
-                                <span style={{ color: '#64748B' }}>/mo</span>
-                            </div>
-                        </div>
-
-                        <Button style={{ width: '100%', justifyContent: 'center', marginBottom: '2rem', background: '#0F172A' }}>
-                            Start building
-                        </Button>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {['Unlimited repositories', '500 mins of build time', 'Community support', '7 day log retention'].map(item => (
-                                <div key={item} style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                                    <div style={{ background: '#ecfccb', color: '#65a30d', borderRadius: '50%', padding: 2 }}>
-                                        <Check size={14} />
-                                    </div>
-                                    <span style={{ fontSize: '0.925rem' }}>{item}</span>
-                                </div>
-                            ))}
-                        </div>
+                {/* Plan 2: Center (Featured) */}
+                <div className="bg-white rounded-[2rem] p-8 border border-indigo-100 shadow-[rgba(50,_50,_93,_0.25)_0px_50px_100px_-20px,_rgba(0,_0,_0,_0.3)_0px_30px_60px_-30px] transform md:-translate-y-4 scroll-enter delay-200 relative z-10">
+                    <div className="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-indigo-600 text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-full shadow-lg">
+                        Most Popular
+                    </div>
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 font-sans">Center</h3>
+                    <p className="text-indigo-500 text-sm mb-6 font-medium">For growing centers</p>
+                    <div className="flex items-baseline gap-1 mb-8">
+                        <span className="text-xl font-bold text-slate-900 tracking-tight">Best for growing centers</span>
                     </div>
 
-                    {/* Card 2 */}
-                    <div style={{
-                        background: '#fff',
-                        borderRadius: '24px',
-                        padding: '2.5rem',
-                        border: '1px solid #e2e8f0',
-                        display: 'flex',
-                        flexDirection: 'column',
-                        position: 'relative',
-                        overflow: 'hidden'
-                    }}>
-                        <div style={{
-                            position: 'absolute',
-                            top: 0,
-                            right: 0,
-                            width: '100px',
-                            height: '100px',
-                            background: 'linear-gradient(135deg, #e0e7ff 0%, #fae8ff 100%)',
-                            filter: 'blur(40px)',
-                            zIndex: 0
-                        }}></div>
-
-                        <div style={{ marginBottom: '2rem', position: 'relative', zIndex: 1 }}>
-                            <h3 style={{ fontSize: '1.25rem', fontFamily: 'var(--font-serif)', marginBottom: '0.5rem' }}>Built for scaling engineering teams</h3>
-                            <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                                <span style={{ fontSize: '3rem', fontWeight: 700, fontFamily: 'var(--font-serif)' }}>$149</span>
-                                <span style={{ color: '#64748B' }}>/mo</span>
+                    <ul className="space-y-4 mb-8">
+                        <li className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                            <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center shrink-0">
+                                <Check className="w-3 h-3 text-indigo-600" strokeWidth={3} />
                             </div>
-                        </div>
-
-                        <Button variant="outline" style={{ width: '100%', justifyContent: 'center', marginBottom: '2rem', background: '#1e293b', color: '#fff', border: 'none' }}>
-                            Scale operations
-                        </Button>
-
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-                            {['Unlimited collaborators', 'Advanced CI/CD analytics', 'SAML & SSO', 'Priority live chat support', '99.99% Uptime SLA'].map(item => (
-                                <div key={item} style={{ display: 'flex', gap: '0.75rem', alignItems: 'center' }}>
-                                    <div style={{ background: '#dbeafe', color: '#2563eb', borderRadius: '50%', padding: 2 }}>
-                                        <Check size={14} />
-                                    </div>
-                                    <span style={{ fontSize: '0.925rem' }}>{item}</span>
+                            Running on <strong>Everything in Individual</strong>
+                        </li>
+                        {[
+                            "Team Management",
+                            "Up to 500 students",
+                            "Priority Support"
+                        ].map((feature, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                                <div className="w-5 h-5 rounded-full bg-indigo-100 flex items-center justify-center shrink-0">
+                                    <Check className="w-3 h-3 text-indigo-600" strokeWidth={3} />
                                 </div>
-                            ))}
-                        </div>
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <a href="/contact" className="block w-full py-4 px-6 rounded-xl bg-indigo-600 text-white font-bold text-center shadow-lg hover:bg-indigo-700 hover:shadow-indigo-500/30 transition-all">
+                        Contact Us
+                    </a>
+                </div>
+
+                {/* Plan 3: Enterprise */}
+                <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm hover:shadow-lg transition-all duration-300 scroll-enter delay-300 relative group">
+                    <h3 className="text-xl font-bold text-slate-900 mb-2 font-sans">Enterprise</h3>
+                    <p className="text-slate-500 text-sm mb-6 font-medium">For large institutions</p>
+                    <div className="flex items-baseline gap-1 mb-8">
+                        <span className="text-xl font-bold text-slate-900 tracking-tight">Best for large institutions</span>
                     </div>
+
+                    <ul className="space-y-4 mb-8">
+                        {[
+                            "Unlimited students",
+                            "LMS Integration",
+                            "White-labeling",
+                            "Dedicated Success Manager"
+                        ].map((feature, i) => (
+                            <li key={i} className="flex items-start gap-3 text-sm text-slate-700 font-medium">
+                                <Check className="w-5 h-5 text-slate-400 shrink-0" />
+                                {feature}
+                            </li>
+                        ))}
+                    </ul>
+
+                    <a href="/contact" className="block w-full py-3 px-6 rounded-xl bg-white text-slate-900 font-bold text-center border border-slate-200 hover:border-slate-300 transition-colors">
+                        Contact Us
+                    </a>
                 </div>
             </div>
         </section>

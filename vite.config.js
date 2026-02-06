@@ -5,10 +5,8 @@ import react from '@vitejs/plugin-react'
 const urlRewrites = {
   '/': '/index.html',
   '/home': '/index.html',
-  '/about': '/about-en.html',
-  '/about-vn': '/about.html',
-  '/contact': '/contact-en.html',
-  '/contact-vn': '/contact.html',
+  '/about-vn': '/about-vn.html',
+  '/contact-vn': '/contact-vn.html',
   '/features': '/index.html',
 };
 
