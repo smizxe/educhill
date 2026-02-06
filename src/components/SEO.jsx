@@ -7,6 +7,7 @@ export const SEO = ({ title, description, canonical, type = 'website', name = 'E
             {/* Standard metadata tags */}
             <title>{title}</title>
             <meta name='description' content={description} />
+            {keywords && <meta name="keywords" content={keywords} />}
             {canonical && <link rel="canonical" href={canonical} />}
 
             {/* Open Graph tags (Facebook, LinkedIn) */}

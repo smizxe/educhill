@@ -87,6 +87,7 @@ export default {
                 ...perspectiveUtilities,
                 ...transformStyleUtilities,
             });
-        }
+        },
+        require('@tailwindcss/typography'),
     ],
 }

@@ -43,6 +43,7 @@ export const BlogPost = () => {
             <SEO
                 title={`${post.title} - Educhill Blog`}
                 description={post.excerpt}
+                keywords={post.keywords}
                 canonical={`https://educhill.net/blog/${post.slug}`}
                 type="article"
             />
