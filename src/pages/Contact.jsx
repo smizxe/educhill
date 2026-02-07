@@ -33,14 +33,14 @@ export const Contact = () => {
                 throw new Error("Google Sheet URL not configured");
             }
 
-            const formBody = new FormData();
-            formBody.append('Name', formData.name);
-            formBody.append('Email', formData.email);
-            formBody.append('Message', formData.message);
+            const formPayload = new URLSearchParams();
+            formPayload.append('Name', formData.name);
+            formPayload.append('Email', formData.email);
+            formPayload.append('Message', formData.message);
 
             await fetch(scriptURL, {
                 method: 'POST',
-                body: formBody,
+                body: formPayload,
                 mode: 'no-cors'
             });
 

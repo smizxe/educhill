@@ -23,17 +23,17 @@ export const ContactFormSection = ({ content }) => {
                 throw new Error("Google Sheet URL not configured");
             }
 
-            const formBody = new FormData();
-            formBody.append('Name', formData.name);
-            formBody.append('Email', formData.email);
-            formBody.append('Message', formData.message);
-            formBody.append('test', '123'); // Optional test field
+            // Using URLSearchParams ensures data is sent as application/x-www-form-urlencoded
+            // This is the most reliable way for Google Apps Script to read e.parameter
+            const formPayload = new URLSearchParams();
+            formPayload.append("Name", formData.name);
+            formPayload.append("Email", formData.email);
+            formPayload.append("Message", formData.message);
+            // Append current timestamp if needed, but script does it via new Date()
 
-            // Using no-cors mode because Google Script often redirects or doesn't send CORS headers for simple POSTs
-            // This means we won't get a readable response JSON, but the request will go through.
             await fetch(scriptURL, {
                 method: 'POST',
-                body: formBody,
+                body: formPayload,
                 mode: 'no-cors'
             });
 
