@@ -301,23 +301,23 @@ export const homeContent = {
             items: [
                 {
                     id: 1,
-                    quote: "Educhill tự động hóa toàn bộ quy trình chấm bài của trung tâm. Chúng tôi mở rộng từ 50 lên 500 học sinh mà không cần thêm nhân viên.",
-                    name: "Minh Đức",
-                    role: "Giám đốc Trung tâm Anh ngữ",
-                    initials: "MĐ"
+                    quote: "Educhill tự động hóa toàn bộ quy trình chấm bài của trung tâm. Mình mở rộng từ 50 lên 500 học sinh mà không cần thuê thêm nhân viên hành chính nào!",
+                    name: "Jason Do",
+                    role: "Founder tại Jado Education",
+                    initials: "JD"
                 },
                 {
                     id: 2,
-                    quote: "Việc chuyển lớp học lên online thật dễ dàng. Trợ lý AI chấm bài 24/7, giúp tôi có thêm thời gian để coaching cá nhân.",
-                    name: "Thanh Hương",
-                    role: "Giáo viên Tiếng Anh Freelance",
-                    initials: "TH"
+                    quote: "Chuyển lớp lên online chưa bao giờ dễ đến vậy. AI chấm bài 24/7, giúp mình có thời gian tập trung coaching từng học sinh thay vì ngồi chấm bài cả đêm.",
+                    name: "Henry Johnson",
+                    role: "Giáo viên Tiếng Anh tại TP.HCM",
+                    initials: "HJ"
                 },
                 {
                     id: 3,
-                    quote: "Học sinh của tôi rất thích phản hồi tức thì! Điều đó giữ các em hào hứng và thực sự mong chờ nộp bài tập.",
-                    name: "Thảo Nguyên",
-                    role: "Giảng viên IELTS",
+                    quote: "Học sinh mình mê phản hồi tức thì luôn! Giờ các em háo hức nộp bài thay vì trì hoãn như trước. Game changer thật sự!",
+                    name: "Thuy Nguyen",
+                    role: "Giáo viên dạy thêm",
                     initials: "TN"
                 }
             ]
