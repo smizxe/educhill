@@ -10,13 +10,57 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <!-- Unicorn Studio Script (Preserved for background effects) -->
+  <!-- Unicorn Studio Script with Error Handling & Retry -->
   <script type="text/javascript">
-    !function () { if (!window.UnicornStudio) { window.UnicornStudio = { isInitialized: !1 }; var i = document.createElement("script"); i.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js", i.onload = function () { window.UnicornStudio.isInitialized || (UnicornStudio.init(), window.UnicornStudio.isInitialized = !0) }, (document.head || document.body).appendChild(i) } }();
+    (function () {
+      if (window.UnicornStudio) return;
+
+      window.UnicornStudio = { isInitialized: false, retryCount: 0, maxRetries: 3 };
+
+      function loadUnicornStudio() {
+        var script = document.createElement("script");
+        script.src = "https://cdn.jsdelivr.net/gh/hiunicornstudio/unicornstudio.js@v1.4.29/dist/unicornStudio.umd.js";
+
+        script.onload = function () {
+          if (!window.UnicornStudio.isInitialized) {
+            try {
+              UnicornStudio.init();
+              window.UnicornStudio.isInitialized = true;
+              // Hide fallback gradient once canvas is ready
+              setTimeout(function () {
+                var fallback = document.getElementById('us-fallback-bg');
+                if (fallback) fallback.style.opacity = '0';
+              }, 500);
+            } catch (e) {
+              console.warn('UnicornStudio init error, using fallback:', e);
+            }
+          }
+        };
+
+        script.onerror = function () {
+          window.UnicornStudio.retryCount++;
+          if (window.UnicornStudio.retryCount < window.UnicornStudio.maxRetries) {
+            console.warn('UnicornStudio load failed, retrying... (' + window.UnicornStudio.retryCount + '/' + window.UnicornStudio.maxRetries + ')');
+            setTimeout(loadUnicornStudio, 2000);
+          } else {
+            console.warn('UnicornStudio failed after ' + window.UnicornStudio.maxRetries + ' attempts. Using CSS fallback.');
+          }
+        };
+
+        (document.head || document.body).appendChild(script);
+      }
+
+      loadUnicornStudio();
+    })();
   </script>
 </head>
 
 <body class="bg-[#F8F9FB]">
+  <!-- CSS Fallback Gradient (always visible until UnicornStudio loads) -->
+  <div id="us-fallback-bg" class="fixed top-0 w-full h-screen -z-20 transition-opacity duration-1000"
+    style="background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(99, 102, 241, 0.15) 0%, transparent 50%), radial-gradient(ellipse 50% 40% at 90% 20%, rgba(139, 92, 246, 0.12) 0%, transparent 50%), radial-gradient(ellipse 40% 30% at 10% 40%, rgba(59, 130, 246, 0.08) 0%, transparent 50%);">
+  </div>
+
   <!-- Background (component) added by Aura/Unicorn Studio -->
   <div class="aura-background-component fixed top-0 w-full h-screen -z-10 hue-rotate-15 blur-md" data-alpha-mask="80"
     style="mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent); -webkit-mask-image: linear-gradient(to bottom, transparent, black 0%, black 80%, transparent)">

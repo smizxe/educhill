@@ -233,7 +233,6 @@ export const homeContent = {
         },
         features: {
             number: "01",
-            number: "01",
             titleStart: "Tính năng xây dựng cho",
             titleHighlight: "giáo dục hiện đại",
             description: "Mọi thứ bạn cần để quản lý lớp học hiệu quả. Từ chấm điểm tự động đến phân tích học sinh chi tiết.",
@@ -261,7 +260,8 @@ export const homeContent = {
         },
         studentUI: {
             badge: "Trải nghiệm học sinh",
-            title: "Thiết kế cho sự tập trung sâu",
+            titleStart: "Thiết kế để",
+            titleHighlight: "tập trung cao độ",
             description: "Một môi trường không xao nhãng nơi học sinh có thể luyện tập nói và viết một cách tự tin.",
             stat1: "Tỷ lệ hoàn thành",
             stat2: "Mức độ tương tác"
