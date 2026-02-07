@@ -301,29 +301,24 @@ export const homeContent = {
             items: [
                 {
                     id: 1,
-                    quote: "Educhill đã hoàn toàn thay đổi cách tôi chấm bài văn. Phản hồi tức thì, chi tiết, và học sinh của tôi rất thích điều đó.", // Sarah -> matches Jason? No, let's match the IDs or content properly.
-                    // In English: Jason Do. In Vi: Sarah J. are used. I will use the Vietnamese content exactly as provided in vi.html for the translation key.
-                    // Card 1 Vi: Sarah J (CTO TechFlow) "Educhill đã hoàn toàn..."
-                    // content.en.testimonials.items[0] is Jason Do.
-                    // To keep it 1:1, I should probably replace EN content to match VI or vice versa, OR just allow them to be different. 
-                    // The structure allows difference. I'll just map them array-index wise.
-                    name: "Sarah J.",
-                    role: "CTO at TechFlow",
-                    initials: "SJ"
+                    quote: "Educhill tự động hóa toàn bộ quy trình chấm bài của trung tâm. Chúng tôi mở rộng từ 50 lên 500 học sinh mà không cần thêm nhân viên.",
+                    name: "Minh Đức",
+                    role: "Giám đốc Trung tâm Anh ngữ",
+                    initials: "MĐ"
                 },
                 {
                     id: 2,
-                    quote: "Tính năng chấm điểm tự động thật sự thay đổi cuộc chơi. Chúng tôi có thể kiểm tra trên diện rộng mà không lo lắng.",
-                    name: "Michael Klein",
-                    role: "Lead Engineer at Vercel",
-                    initials: "MK"
+                    quote: "Việc chuyển lớp học lên online thật dễ dàng. Trợ lý AI chấm bài 24/7, giúp tôi có thêm thời gian để coaching cá nhân.",
+                    name: "Thanh Hương",
+                    role: "Giáo viên Tiếng Anh Freelance",
+                    initials: "TH"
                 },
                 {
                     id: 3,
-                    quote: "Đơn giản là công cụ tốt nhất để theo dõi tiến độ. Nó giúp chúng tôi xác định những điểm nghẽn mà trước đây không biết.",
-                    name: "Emily Liu",
-                    role: "VP Eng at Stripe",
-                    initials: "EL"
+                    quote: "Học sinh của tôi rất thích phản hồi tức thì! Điều đó giữ các em hào hứng và thực sự mong chờ nộp bài tập.",
+                    name: "Thảo Nguyên",
+                    role: "Giảng viên IELTS",
+                    initials: "TN"
                 }
             ]
         },

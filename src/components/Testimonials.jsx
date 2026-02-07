@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Star, ChevronLeft, ChevronRight, User } from 'lucide-react';
 
 const Card = ({ testimonial, position }) => {
@@ -56,6 +56,11 @@ const Card = ({ testimonial, position }) => {
 
 export const Testimonials = ({ content }) => {
     const [cards, setCards] = useState(content.items);
+
+    // Re-sync cards when content.items changes (e.g., language switch)
+    useEffect(() => {
+        setCards(content.items);
+    }, [content.items]);
 
     const handleSwipe = (direction) => {
         setCards(prev => {
