@@ -106,23 +106,23 @@ export const homeContent = {
             items: [
                 {
                     id: 1,
-                    quote: "Educhill automates our entire center's grading workflow. We scaled from 50 to 500 students without adding a single admin staff.",
+                    quote: "Educhill frees up my teachers to focus on what matters - creativity in their lessons. We leave the repetitive homework and grading to the AI assistant. It's a game changer for our center.",
                     name: "Jason Do",
                     role: "Founder at Jado Education",
                     initials: "JD"
                 },
                 {
                     id: 2,
-                    quote: "Moving my classes online was seamless. The AI grading assistant works 24/7, giving me more time to focus on personalized coaching.",
+                    quote: "No more printing tests or manually grading the same MCQs over and over. Even after class, my students keep practicing with the AI tutor at home. It's like having a 24/7 teaching assistant.",
                     name: "Henry Johnson",
-                    role: "Solo English Teacher",
+                    role: "English Teacher in HCMC",
                     initials: "HJ"
                 },
                 {
                     id: 3,
-                    quote: "My students love the instant feedback! It keeps them engaged, and they actually look forward to submitting their homework now.",
+                    quote: "I just message the AI my grading rules like I would text an assistant. My students get precise, personalized feedback and improve so much faster now.",
                     name: "Thuy Nguyen",
-                    role: "IELTS Instructor",
+                    role: "Private Tutor",
                     initials: "TN"
                 }
             ]
@@ -301,21 +301,21 @@ export const homeContent = {
             items: [
                 {
                     id: 1,
-                    quote: "Educhill tự động hóa toàn bộ quy trình chấm bài của trung tâm. Mình mở rộng từ 50 lên 500 học sinh mà không cần thuê thêm nhân viên hành chính nào!",
+                    quote: "Educhill giúp giáo viên trung tâm mình rảnh hơn, tập trung vào sáng tạo trong bài giảng. Phần bài tập online thì cứ để trợ giảng AI và hệ thống lo!",
                     name: "Jason Do",
                     role: "Founder tại Jado Education",
                     initials: "JD"
                 },
                 {
                     id: 2,
-                    quote: "Chuyển lớp lên online chưa bao giờ dễ đến vậy. AI chấm bài 24/7, giúp mình có thời gian tập trung coaching từng học sinh thay vì ngồi chấm bài cả đêm.",
+                    quote: "Có hệ thống này giúp mình đỡ phải đi in đề, hay chấm thủ công mấy bài trắc nghiệm lặp lại. Thậm chí sau khi nói ở trên lớp, về nhà học sinh vẫn được thực tập với trợ giảng AI.",
                     name: "Henry Johnson",
                     role: "Giáo viên Tiếng Anh tại TP.HCM",
                     initials: "HJ"
                 },
                 {
                     id: 3,
-                    quote: "Học sinh mình mê phản hồi tức thì luôn! Giờ các em háo hức nộp bài thay vì trì hoãn như trước. Game changer thật sự!",
+                    quote: "Mình chỉ cần nhắn rule cho AI như nhắn tin cho trợ giảng, học sinh nhận được đánh giá rất chính xác, cải thiện tốt.",
                     name: "Thuy Nguyen",
                     role: "Giáo viên dạy thêm",
                     initials: "TN"
