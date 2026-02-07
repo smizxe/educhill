@@ -2,6 +2,51 @@ import React from 'react';
 import { Mail } from 'lucide-react';
 
 export const ContactFormSection = ({ content }) => {
+    const [formData, setFormData] = React.useState({
+        name: '',
+        email: '',
+        message: ''
+    });
+    const [status, setStatus] = React.useState('idle'); // idle, submitting, success, error
+
+    const handleChange = (e) => {
+        setFormData({ ...formData, [e.target.id]: e.target.value });
+    };
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setStatus('submitting');
+
+        try {
+            const scriptURL = import.meta.env.VITE_GOOGLE_SHEET_URL;
+            if (!scriptURL) {
+                throw new Error("Google Sheet URL not configured");
+            }
+
+            const formBody = new FormData();
+            formBody.append('Name', formData.name);
+            formBody.append('Email', formData.email);
+            formBody.append('Message', formData.message);
+            formBody.append('test', '123'); // Optional test field
+
+            // Using no-cors mode because Google Script often redirects or doesn't send CORS headers for simple POSTs
+            // This means we won't get a readable response JSON, but the request will go through.
+            await fetch(scriptURL, {
+                method: 'POST',
+                body: formBody,
+                mode: 'no-cors'
+            });
+
+            setStatus('success');
+            setFormData({ name: '', email: '', message: '' });
+            setTimeout(() => setStatus('idle'), 5000);
+        } catch (error) {
+            console.error('Error!', error.message);
+            setStatus('error');
+            setTimeout(() => setStatus('idle'), 5000);
+        }
+    };
+
     return (
         <section className="max-w-4xl w-full mx-auto px-4 mb-24 text-center">
             <div className="bg-indigo-900 rounded-[2.5rem] p-12 md:p-20 text-white relative overflow-hidden shadow-2xl">
@@ -22,24 +67,55 @@ export const ContactFormSection = ({ content }) => {
                     </p>
 
                     <div className="bg-white/5 p-6 md:p-8 rounded-3xl border border-indigo-500/30 backdrop-blur-sm mb-10 text-left">
-                        <form className="space-y-4">
+                        <form className="space-y-4" onSubmit={handleSubmit}>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div>
                                     <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="name">{content.form.name}</label>
-                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="name" type="text" placeholder={content.form.placeholders.name} />
+                                    <input
+                                        className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                                        id="name"
+                                        type="text"
+                                        placeholder={content.form.placeholders.name}
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        required
+                                    />
                                 </div>
                                 <div>
                                     <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="email">{content.form.email}</label>
-                                    <input className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors" id="email" type="email" placeholder={content.form.placeholders.email} />
+                                    <input
+                                        className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors"
+                                        id="email"
+                                        type="email"
+                                        placeholder={content.form.placeholders.email}
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        required
+                                    />
                                 </div>
                             </div>
                             <div>
                                 <label className="block text-indigo-200 text-sm font-bold mb-2 ml-1" htmlFor="message">{content.form.message}</label>
-                                <textarea className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32" id="message" placeholder={content.form.placeholders.message}></textarea>
+                                <textarea
+                                    className="w-full px-4 py-3 bg-indigo-900/50 border border-indigo-700 rounded-xl text-white placeholder-indigo-400 focus:outline-none focus:border-indigo-400 transition-colors h-32"
+                                    id="message"
+                                    placeholder={content.form.placeholders.message}
+                                    value={formData.message}
+                                    onChange={handleChange}
+                                    required
+                                ></textarea>
                             </div>
-                            <button type="button" className="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20">
-                                {content.submit}
+                            <button
+                                type="submit"
+                                disabled={status === 'submitting'}
+                                className="w-full px-8 py-4 bg-white text-indigo-900 rounded-full font-bold hover:bg-indigo-50 transition-colors shadow-lg shadow-indigo-900/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                            >
+                                {status === 'submitting' ? (content.submitting || "Sending...") :
+                                    status === 'success' ? (content.success || "Sent!") :
+                                        (content.submit)}
                             </button>
+                            {status === 'success' && <p className="text-green-400 text-center text-sm font-bold mt-2">Message sent successfully!</p>}
+                            {status === 'error' && <p className="text-red-400 text-center text-sm font-bold mt-2">Error sending message. Please try again.</p>}
                         </form>
                     </div>
 
