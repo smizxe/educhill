@@ -29,8 +29,8 @@ export const Features = ({ content }) => {
                         <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-600 text-sm border border-indigo-200/50 shadow-sm font-sans font-medium">{content.number}</span>
                         <span className="h-px w-20 bg-gradient-to-r to-transparent from-indigo-200"></span>
                     </div>
-                    <h2 className="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-serif scroll-enter delay-100">
-                        {content.title}
+                    <h2 className="text-4xl lg:text-[2.75rem] text-slate-900 mb-5 font-serif scroll-enter delay-100 leading-tight">
+                        {content.titleStart} <span className="glass-box bg-gradient-to-r from-indigo-600 to-violet-600 bg-clip-text text-transparent italic font-light px-4">{content.titleHighlight}</span>
                     </h2>
                     <p className="text-xl text-slate-500 leading-relaxed font-sans font-medium scroll-enter delay-200">
                         {content.description}

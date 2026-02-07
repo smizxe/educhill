@@ -28,7 +28,9 @@ export const homeContent = {
         },
         features: {
             number: "01",
-            title: "Features built for modern teaching",
+            number: "01",
+            titleStart: "Features built for",
+            titleHighlight: "modern teaching",
             description: "Everything you need to manage your classroom efficiently. From automated grading to detailed student analytics.",
             cards: {
                 one: {
@@ -61,7 +63,8 @@ export const homeContent = {
             // Let's check StudentUI.jsx content again.
             // It has "Student Experience / Designed for Deep Focus".
             badge: "Student Experience",
-            title: "Designed for Deep Focus",
+            titleStart: "Designed for",
+            titleHighlight: "Deep Focus",
             description: "A distraction-free environment where students can practice speaking and writing with confidence.",
             stat1: "Completion Rate",
             stat2: "Avg. Engagement"
@@ -230,7 +233,9 @@ export const homeContent = {
         },
         features: {
             number: "01",
-            title: "Tính năng xây dựng cho giáo dục hiện đại",
+            number: "01",
+            titleStart: "Tính năng xây dựng cho",
+            titleHighlight: "giáo dục hiện đại",
             description: "Mọi thứ bạn cần để quản lý lớp học hiệu quả. Từ chấm điểm tự động đến phân tích học sinh chi tiết.",
             cards: {
                 one: {

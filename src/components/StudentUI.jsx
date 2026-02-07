@@ -199,7 +199,7 @@ export const StudentUI = ({ content }) => {
                     {content.badge}
                 </div>
                 <h2 className="text-4xl md:text-5xl font-serif text-slate-900 mb-4">
-                    {content.title}
+                    {content.titleStart} <span className="text-emerald-500 italic font-medium animate-glow-loop">{content.titleHighlight}</span>
                 </h2>
                 <p className="text-xl text-slate-500 font-sans font-medium max-w-2xl mx-auto">
                     {content.description}
