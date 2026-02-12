@@ -79,7 +79,7 @@ export const homeContent = {
                     name: "Individual",
                     desc: "For solo teachers",
                     highlight: "Best plan for solo teachers",
-                    features: ["AI Auto-grading", "Up to 50 students", "Basic Reports"],
+                    features: ["Configurable AI Tool", "Up to 100 students", "Detailed Student Analytics"],
                     cta: "Contact Us",
                     popular: false
                 },
@@ -87,7 +87,7 @@ export const homeContent = {
                     name: "Center",
                     desc: "For growing centers",
                     highlight: "Best for growing centers",
-                    features: ["Everything in Individual", "Team Management", "Up to 500 students", "Priority Support"],
+                    features: ["Everything in Individual", "Teacher Team Management", "Customizable Student Limit", "Priority Support", "Smarter AI Model"],
                     cta: "Contact Us",
                     popular: true,
                     popularText: "Most Popular"
@@ -96,7 +96,7 @@ export const homeContent = {
                     name: "Enterprise",
                     desc: "For large institutions",
                     highlight: "Best for large institutions",
-                    features: ["Unlimited students", "LMS Integration", "White-labeling", "Dedicated Success Manager"],
+                    features: ["Customizable Student Limit", "LMS Integration", "White-labeling", "Private Support"],
                     cta: "Contact Us",
                     popular: false
                 }
@@ -276,7 +276,7 @@ export const homeContent = {
                     name: "Cá nhân",
                     desc: "Dành cho giáo viên độc lập",
                     highlight: "Tốt nhất cho giáo viên độc lập",
-                    features: ["Chấm điểm AI tự động", "Tối đa 50 học sinh", "Báo cáo cơ bản"],
+                    features: ["Công cụ AI tùy biến", "Tối đa 100 học sinh", "Phân tích học sinh chi tiết"],
                     cta: "Liên hệ",
                     popular: false
                 },
@@ -284,7 +284,7 @@ export const homeContent = {
                     name: "Trung tâm",
                     desc: "Dành cho trung tâm đang phát triển",
                     highlight: "Tốt nhất cho trung tâm",
-                    features: ["Bao gồm mọi thứ gói Cá nhân", "Quản lý đội ngũ", "Tối đa 500 học sinh", "Hỗ trợ ưu tiên"],
+                    features: ["Bao gồm mọi thứ gói Cá nhân", "Quản lý đội ngũ giáo viên", "Số lượng học sinh tùy chỉnh", "Hỗ trợ ưu tiên", "Mô hình AI thông minh hơn"],
                     cta: "Liên hệ",
                     popular: true,
                     popularText: "Phổ biến nhất"
@@ -293,7 +293,7 @@ export const homeContent = {
                     name: "Doanh nghiệp",
                     desc: "Dành cho tổ chức lớn",
                     highlight: "Tốt nhất cho tổ chức lớn",
-                    features: ["Không giới hạn học sinh", "Tích hợp LMS", "White-label (Thương hiệu riêng)", "Quản lý hỗ trợ riêng"],
+                    features: ["Số lượng học sinh tùy chỉnh", "Tích hợp LMS", "White-label (Thương hiệu riêng)", "Hỗ trợ riêng"],
                     cta: "Liên hệ",
                     popular: false
                 }
