@@ -96,7 +96,7 @@ export const homeContent = {
                     name: "Enterprise",
                     desc: "For large institutions",
                     highlight: "Best for large institutions",
-                    features: ["Customizable Student Limit", "LMS Integration", "White-labeling", "Private Support"],
+                    features: ["Everything in Center + Customizable Features", "Customizable Student Limit", "LMS Integration", "White-labeling", "Private Support"],
                     cta: "Contact Us",
                     popular: false
                 }
@@ -293,7 +293,7 @@ export const homeContent = {
                     name: "Doanh nghiệp",
                     desc: "Dành cho tổ chức lớn",
                     highlight: "Tốt nhất cho tổ chức lớn",
-                    features: ["Số lượng học sinh tùy chỉnh", "Tích hợp LMS", "White-label (Thương hiệu riêng)", "Hỗ trợ riêng"],
+                    features: ["Bao gồm tất cả tính năng gói Trung tâm", "Số lượng học sinh tùy chỉnh", "Tích hợp LMS", "White-label (Thương hiệu riêng)", "Hỗ trợ riêng"],
                     cta: "Liên hệ",
                     popular: false
                 }

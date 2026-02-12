@@ -273,6 +273,49 @@ body {
   }
 }
 
+
 .animate-glow-loop {
   animation: glowLoop 3s infinite ease-in-out;
+}
+
+/* Border Beam Animation */
+@keyframes border-beam {
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+.animate-border-beam {
+  --size: 200px;
+  --duration: 12s;
+  --anchor: 90;
+  --border-width: 1.5px;
+  --color-from: #ffaa40;
+  --color-to: #9c40ff;
+  --delay: 0s;
+
+  position: absolute;
+  inset: 0;
+  border: var(--border-width) solid transparent;
+  border-radius: inherit;
+  pointer-events: none;
+  mask: linear-gradient(transparent, transparent), linear-gradient(white, white);
+  mask-clip: padding-box, border-box;
+  mask-composite: intersect;
+  -webkit-mask-composite: source-in;
+}
+
+.animate-border-beam::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  aspect-ratio: 1;
+  background: linear-gradient(to bottom right, var(--color-from), var(--color-to));
+  offset-path: rect(0 auto auto 0 round var(--size));
+  offset-anchor: calc(var(--anchor) * 1%) 50%;
+  offset-distance: 0;
+  animation: border-beam var(--duration) linear infinite;
+  animation-delay: var(--delay);
 }
